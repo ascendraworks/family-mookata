@@ -117,11 +117,11 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="text-gray-600 space-y-3">
                 <p>
-                  Over the years, we've expanded, but our core values remain: meticulously sourced ingredients, daily signature marinades,
+                  Over the years, we&apos;ve expanded, but our core values remain: meticulously sourced ingredients, daily signature marinades,
                   and continuously refined broths for a delightful experience.
                 </p>
                 <p>
-                  The journey of Family Mookata is a testament to our passion for food and commitment to serving with a smile. We're grateful for the support that made us a beloved mookata destination.
+                  The journey of Family Mookata is a testament to our passion for food and commitment to serving with a smile. We&apos;re grateful for the support that made us a beloved mookata destination.
                 </p>
               </CardContent>
             </Card>
