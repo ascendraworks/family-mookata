@@ -5,7 +5,7 @@ import Image from 'next/image';
 // Link component might not be directly used in this client component if all links are in the server part
 // import Link from 'next/link'; 
 // import { Button } from '@/components/ui/button'; // Button not used directly in this client part from what's moved
-import { ChevronDown, ChevronRight, ExternalLink } from 'lucide-react'; // Added ExternalLink if used by menu items, removed Button
+import { ChevronDown, ChevronRight } from 'lucide-react'; // Added ExternalLink if used by menu items, removed Button
 
 // Data and Helper components (if any) that are purely for presentation and don't involve client hooks
 // can remain here or be passed as props from the server component if they are static.

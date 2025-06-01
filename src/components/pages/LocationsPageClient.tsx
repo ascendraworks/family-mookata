@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { MapPin as MapPinIcon, Search as SearchIcon, ExternalLink, Phone, Clock } from 'lucide-react';
 
@@ -169,7 +169,7 @@ export default function LocationsPageClient({ locationsData }: LocationsPageClie
 
         {showAllLocationDetails && searchTerm.trim() !== "" && (
           <div ref={outletSectionRef} className="mt-10 grid gap-6 md:grid-cols-1 lg:grid-cols-1 max-w-2xl mx-auto">
-            <h2 className="text-xl font-semibold text-gray-700 col-span-full">Our Outlets (Directions from "{searchTerm}"):</h2>
+            <h2 className="text-xl font-semibold text-gray-700 col-span-full">Our Outlets (Directions from &quot;{searchTerm}&quot;):</h2>
             {locationsData.map(location => (
               <div key={`details-${location.id}`} className="p-4 sm:p-6 bg-white rounded-xl shadow-lg border border-orange-200">
                 <h3 className="text-xl font-bold text-orange-600 mb-3">{location.name}</h3>
