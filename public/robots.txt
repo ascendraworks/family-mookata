@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.familymookata.sg/sitemap.xml
+# Replace with your actual domain
