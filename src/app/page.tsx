@@ -1,4 +1,4 @@
-// "use client"; // Removed as generateMetadata needs to be server-side
+"use client"; // Removed as generateMetadata needs to be server-side
 
 import { useState } from 'react';
 import type { Metadata } from 'next'; // Added for generateMetadata
