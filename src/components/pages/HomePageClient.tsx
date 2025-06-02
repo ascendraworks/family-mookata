@@ -109,7 +109,7 @@ export default function HomePageClient() {
               Family Mookata
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-black italic mb-8 md:mb-12">
-              Cheapest Mookata in<br /> Singapore
+              Cheapest Mookata Buffet in<br /> Singapore
             </p>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-orange-600 font-semibold italic mb-6 md:mb-10">
               Starting from ONLY $9.90!

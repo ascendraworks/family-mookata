@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="text-center md:text-left">
             <h3 className="text-xl font-semibold mb-2">Family Mookata</h3>
-            <p className="text-sm">Cheapest Mookata in Singapore starting from ONLY $9.90</p>
+            <p className="text-sm">Cheapest Mookata Buffet in Singapore starting from ONLY $9.90</p>
           </div>
           <div className="flex flex-col items-center space-y-3">
             <Link href={`tel:${contactNumber.replace(/\s/g, '')}`} className="flex items-center hover:text-orange-200 transition-colors">
