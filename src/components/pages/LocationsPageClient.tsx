@@ -126,12 +126,10 @@ export default function LocationsPageClient({ locationsData }: LocationsPageClie
               // The style positioning for the tooltip is complex and might need further refinement
               // based on the final map image and desired behavior across screen sizes.
               // The className approach for left/right based on mapX is generally more robust.
-              className={`absolute z-30 bg-white p-3 sm:p-4 rounded-lg shadow-xl border border-gray-200
-                         text-left flex flex-col gap-1.5 sm:gap-2 w-64 xs:w-72 
-                         ${parseInt(selectedLocation.mapX) > 70 ? 'transform -translate-x-[110%]' : parseInt(selectedLocation.mapX) < 30 ? 'transform translate-x-[10%]' : 'transform -translate-x-1/2'}
-                         ${parseInt(selectedLocation.mapY) > 70 ? 'bottom-full mb-2' : 'top-full mt-2'}
-                         sm:top-1/2 sm:transform sm:-translate-y-1/2 
-                         ${parseInt(selectedLocation.mapX) > 50 ? 'sm:right-full sm:mr-2 sm:ml-0' : 'sm:left-full sm:ml-2 sm:mr-0'}`}
+              className="absolute z-30 bg-white p-3 sm:p-4 rounded-lg shadow-xl border border-gray-200
+              text-left flex flex-col gap-1.5 sm:gap-2 w-64 xs:w-72
+              -translate-x-[-25%] -translate-y-[-15%] sm:transform sm:-translate-x-[-260%] sm:-translate-y-[-105%]"
+              
                style={{ 
                 // Fallback/override style if needed, but classes should ideally handle it.
                 // top: `calc(${selectedLocation.mapY})`, // Example: Centered on pin
