@@ -28,7 +28,7 @@ const locationsData: LocationDetail[] = [
     mapX: "50%",
     mapY: "27%",
     operatingHours: "1PM - 11PM Daily",
-    phone: "+65 1234 5670",
+    phone: "+65 8927 2782",
     details: "Located in Northview Bizhub, offering a spacious dining experience."
   },
   {
@@ -41,7 +41,7 @@ const locationsData: LocationDetail[] = [
     mapX: "65%",
     mapY: "60%",
     operatingHours: "1PM - 11PM Daily",
-    phone: "+65 1234 5671",
+    phone: "+65 8188 4738",
     details: "Your friendly neighborhood mookata spot in the heart of Bedok."
   },
   {
@@ -54,7 +54,7 @@ const locationsData: LocationDetail[] = [
     mapX: "54%",
     mapY: "45%",
     operatingHours: "1PM - 11PM Daily",
-    phone: "+65 1234 5672",
+    phone: "+65 8927 2782",
     details: "Conveniently located near Ang Mo Kio Hub."
   },
 ];

@@ -17,9 +17,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Data arrays
 const locations = [
-  { name: "Yishun", address: "6 Yishun Industrial Street 1 Northview Bizhub", postalCode: "Singapore 768090", imgSrc: "/img/yishun.jpg", description: "Vibrant atmosphere, perfect for gatherings." },
-  { name: "Bedok", address: "539 Bedok North Street 3, #01-593", postalCode: "Singapore 460539", imgSrc: "/img/bedok.jpg", description: "Cozy and welcoming, great for families." },
-  { name: "Ang Mo Kio", address: "Blk 215 Ang Mo Kio Ave 1, #01-877", postalCode: "Singapore 560215", imgSrc: "/img/amk.jpg", description: "Modern setup, ideal for a night out." },
+  { name: "Yishun", address: "6 Yishun Industrial Street 1 Northview Bizhub", postalCode: "Singapore 768090", imgSrc: "/img/yishun.jpg", description: "Vibrant atmosphere, perfect for gatherings.", phone: "8927 2782" },
+  { name: "Bedok", address: "539 Bedok North Street 3, #01-593", postalCode: "Singapore 460539", imgSrc: "/img/bedok.jpg", description: "Cozy and welcoming, great for families.", phone: "8188 4738" },
+  { name: "Ang Mo Kio", address: "Blk 215 Ang Mo Kio Ave 1, #01-877", postalCode: "Singapore 560215", imgSrc: "/img/amk.jpg", description: "Modern setup, ideal for a night out.", phone: "8927 2782" },
 ];
 
 // priceItems is not directly used by the new pricing card structure.
@@ -119,7 +119,7 @@ export default function HomePageClient() {
                 <Link href="/menu">Menu</Link>
               </Button>
               <Button asChild size="lg" className="bg-transparent border-3 border-[#FFB24F] text-[#FFB24F] font-bold hover:bg-[#FFF3E1] text-lg sm:text-xl px-12 py-4 rounded-lg shadow-lg">
-                <Link href="/order">Order</Link>
+                <Link href="https://familymookata.eposqr.com/" target="_blank" rel="noopener noreferrer">Place Delivery Order</Link>
               </Button>
             </div>
             <div className="flex flex-col sm:flex-row flex-wrap gap-x-6 sm:gap-x-10 md:gap-x-8 lg:gap-x-12 xl:gap-x-16 gap-y-4 sm:gap-y-5 text-black justify-center md:justify-start font-semibold italic">
@@ -164,7 +164,7 @@ export default function HomePageClient() {
               <div
                 key={`${location.name}-desktop`}
                 className="hidden md:flex group relative md:min-w-[80px] md:h-full rounded-[30px]
-                           flex-col justify-end p-5
+                           items-end
                            md:flex-grow md:hover:flex-grow-[7] cursor-pointer
                            transition-all duration-500 ease-in-out
                            bg-cover bg-center overflow-hidden shadow-lg"
@@ -172,20 +172,22 @@ export default function HomePageClient() {
                 aria-label={`View details for Family Mookata ${location.name} branch`}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
-                               opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded-[30px]"></div>
-                <h3
-                  className="relative z-10 text-white text-2xl font-bold
-                             opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0
-                             transition-all duration-400 ease-in-out delay-100"
-                >
-                  {location.name}
-                </h3>
-                <p className="relative z-10 text-gray-200 text-sm mt-1
-                            opacity-0 group-hover:opacity-100
-                            transition-opacity duration-400 ease-in-out delay-200 line-clamp-2"
-                >
-                  {location.description}
-                </p>
+                               opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded-[30px] pointer-events-none"></div>
+                <div className="relative z-10 p-5 w-full">
+                  <h3
+                    className="text-white text-2xl font-bold
+                               opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0
+                               transition-all duration-400 ease-in-out delay-100"
+                  >
+                    {location.name}
+                  </h3>
+                  <p className="text-gray-200 text-sm mt-1
+                              opacity-0 group-hover:opacity-100
+                              transition-opacity duration-400 ease-in-out delay-200 line-clamp-2"
+                  >
+                    {location.description}
+                  </p>
+                </div>
               </div>
             ))}
             {/* Mobile: Framer Motion Stacked Cards */}
@@ -260,7 +262,6 @@ export default function HomePageClient() {
           </div>
         </div>
       </section>
-
       {/* Our Prices Section */}
       <section className="relative py-12 md:py-20 bg-[#FFB24F] overflow-hidden">
         {/* Top Wave */}
@@ -285,29 +286,29 @@ export default function HomePageClient() {
             {/* Pricing Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 md:gap-x-8">
               
-              {/* Non-Seafood Buffet */}
+              {/* Protein  Buffet */}
               <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col min-h-[380px] relative">
                 <span className="absolute top-[-2%] left-[-5%] bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
                   Budget Option
                 </span>
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold mb-1">Non-Seafood Buffet</h3>
+                  <h3 className="text-xl font-bold mb-1">Protein Buffet</h3>
                   <p className="text-sm text-gray-500">Choice meats & veggies – <strong>no seafood</strong>.</p>
                 </div>
-                {/* Image for Non-Seafood Buffet - Assuming you'll add one */}
+                {/* Image for Protein Buffet - Assuming you'll add one */}
                 {/* <div className="relative h-40 w-full mb-4">
-                  <Image src="/img/non-seafood-mookata.jpg" alt="Non-seafood Mookata buffet option with various meats and vegetables" fill className="object-cover rounded-md" />
+                  <Image src="/img/protein-mookata.jpg" alt="Protein Mookata buffet option with various meats and vegetables" fill className="object-cover rounded-md" />
                 </div> */}
                 <div className="text-sm text-gray-700 space-y-4 flex-1">
                   <div>
                     <p className="font-semibold text-orange-600">Mon–Fri (Before 7PM)</p>
                     <p>Adult: <span className="font-bold text-gray-800">$14.90</span></p>
-                    <p>Kid (5–12y): <span className="font-bold text-gray-800">$9.90</span></p>
+                    <p>Kid (12-18): <span className="font-bold text-gray-800">$9.90</span></p>
                   </div>
                   <div className="pt-3 border-t border-dashed">
                     <p className="font-semibold text-orange-600">Peak (After 7PM, Weekends & PH)</p>
                     <p>Adult: <span className="font-bold text-gray-800">$16.90</span></p>
-                    <p>Kid (5–12y): <span className="font-bold text-gray-800">$11.90</span></p>
+                    <p>Kid (12-18y): <span className="font-bold text-gray-800">$11.90</span></p>
                   </div>
                 </div>
                 <div className="mt-6">
@@ -332,7 +333,7 @@ export default function HomePageClient() {
                 </div> */}
                 <div className="text-sm text-gray-700 space-y-4 flex-1">
                   <p>Adult: <span className="font-bold text-gray-800">$19.90</span></p>
-                  <p>Kid (5–12y): <span className="font-bold text-gray-800">$14.90</span></p>
+                  <p>Kid (12-18y): <span className="font-bold text-gray-800">$14.90</span></p>
                 </div>
                 <div className="mt-6">
                   <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg w-full">
@@ -343,12 +344,14 @@ export default function HomePageClient() {
 
               {/* Kid-Friendly Dining */}
               <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col min-h-[380px] relative">
-                <span className="absolute top-[-2%] left-[-5%] bg-orange-400 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-                  Family Favourite
+                <span className="absolute top-[-2%] left-[-5%] bg-red-500 text-white text-sm font-semibold px-3 py-1.5 rounded-full shadow-md transform -rotate-3">
+                  Family Favourite!
                 </span>
-                <div className="mb-4">
+                <div className="mb-4 mt-2">
                   <h3 className="text-xl font-bold mb-1">Kid-Friendly Dining</h3>
-                  <p className="text-sm text-gray-500"><strong>Kids under 12</strong> get discounted pricing across all tiers.</p>
+                  <p className="text-lg font-semibold text-orange-600 my-2 p-2 bg-orange-100 border-l-4 border-orange-500 rounded-md">
+                    <strong>Kids under 12</strong> eat for <strong className="text-red-600 underline">FREE!</strong>
+                  </p>
                 </div>
                 {/* Image for Kid-Friendly - Assuming you'll add one */}
                 {/* <div className="relative h-40 w-full mb-4">
@@ -385,7 +388,7 @@ export default function HomePageClient() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-2">Our Reviews</h2>
           <div className="text-center text-gray-500 mb-10 md:mb-12 flex items-center justify-center">
             3.9k+ Google Reviews &nbsp;&nbsp;
-            <StarRating rating={4.7} /> &nbsp; 4.7
+            <StarRating rating={4.9} /> &nbsp; 4.9
           </div>
           <Carousel
             opts={{

@@ -3,7 +3,7 @@ import type { Metadata } from 'next'; // Added for generateMetadata
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { UtensilsCrossed, BookOpenText, Smile } from 'lucide-react'; // Example icons
+import { UtensilsCrossed, BookOpenText, Smile, AlertTriangle, Lightbulb, Users, Heart, Award, Briefcase, PiggyBank } from 'lucide-react'; // Example icons
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -77,10 +77,10 @@ export default function AboutPage() {
                 </CardHeader>
                 <CardContent className="p-0 text-gray-700 space-y-4 text-md md:text-lg">
                   <p>
-                  At Family Mookata, we bring Thai BBQ and steamboat culture to Singapore in the most delicious, affordable way possible. We serve marinated meats, fresh seafood, and rich, handmade broths—perfect for both family dinners and late-night cravings
+                  At Family Mookata, we bring Thai BBQ and steamboat culture to Singapore in the most delicious, affordable way possible. We take pride in marinating our meats and preparing our signature chili in-house, ensuring fresh, bold flavors with no MSG or preservatives. Combined with fresh seafood and rich, handmade broths, it’s perfect for both family dinners and late-night cravings.
                   </p>
                   <p>
-                  We keep it affordable so you can keep coming back. That’s why many regulars say we’re the best-value mookata in Singapore—without sacrificing taste or quality.
+                  We keep it affordable so you can keep coming back. That’s why many regulars say we’re the best-value mookata in Singapore—without sacrificing taste or quality. Family Mookata is more than just a meal — it’s a place where everyone can come together without worrying about the bill. We believe in resilience, love, and the simple joy of sharing food.
                   </p>
                 </CardContent>
               </div>
@@ -93,35 +93,57 @@ export default function AboutPage() {
           <div className="text-center mb-10">
             <BookOpenText className="h-12 w-12 text-[#FFA500] mx-auto mb-3" />
             <h2 className="text-3xl sm:text-4xl font-bold text-[#FF8C00]">Our Journey</h2>
-            <p className="text-md text-gray-500 mt-2">From humble beginnings to a beloved community spot.</p>
+            <p className="text-md text-gray-500 mt-2">The story of Family Mookata, built on resilience and love for food.</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            <Card className="bg-white shadow-lg border border-orange-100">
-              <CardHeader>
-                <CardTitle className="text-2xl text-[#FF8C00] font-semibold">The Spark</CardTitle>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch">
+            {/* Card 1: The Challenge */}
+            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col">
+              <CardHeader className="text-center">
+                <Briefcase className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
+                <CardTitle className="text-xl text-[#FF8C00] font-semibold">A Challenging Start</CardTitle>
               </CardHeader>
-              <CardContent className="text-gray-600 space-y-3">
+              <CardContent className="text-gray-600 space-y-3 text-sm flex-grow">
                 <p>
-                  Family Mookata began with a simple dream: to share cherished family recipes
-                  and the communal joy of mookata. What started as a humble stall has grown through word-of-mouth, thanks to our dedication to
-                  authenticity and community love.
-                </p>
-                <p>
-                  We wanted to create a place where every meal feels like a family gathering, filled with warmth and great company.
+                  In 2020, COVID-19 brought widespread job losses, affecting our founder. With a large family to support, the high cost of dining out became a pressing concern.
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-white shadow-lg border border-orange-100 mt-0 md:mt-8"> {/* Slight offset for visual rhythm */}
-              <CardHeader>
-                <CardTitle className="text-2xl text-[#FF8C00] font-semibold">Growth & Values</CardTitle>
+
+            {/* Card 2: The Spark */}
+            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col mt-0 md:mt-4 lg:mt-0">
+              <CardHeader className="text-center">
+                <Lightbulb className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
+                <CardTitle className="text-xl text-[#FF8C00] font-semibold">The Idea Ignites</CardTitle>
               </CardHeader>
-              <CardContent className="text-gray-600 space-y-3">
+              <CardContent className="text-gray-600 space-y-3 text-sm flex-grow">
                 <p>
-                  Over the years, we&apos;ve expanded, but our core values remain: meticulously sourced ingredients, daily signature marinades,
-                  and continuously refined broths for a delightful experience.
+                  This challenge, coupled with a deep love for family meals and gatherings, sparked the vision for Family Mookata – a place for affordable, joyful dining.
                 </p>
+              </CardContent>
+            </Card>
+
+            {/* Card 3: The Mission */}
+            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col mt-0 md:mt-0 lg:mt-0">
+              <CardHeader className="text-center">
+                <PiggyBank className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
+                <CardTitle className="text-xl text-[#FF8C00] font-semibold">Our Unique Offer</CardTitle>
+              </CardHeader>
+              <CardContent className="text-gray-600 space-y-3 text-sm flex-grow">
                 <p>
-                  The journey of Family Mookata is a testament to our passion for food and commitment to serving with a smile. We&apos;re grateful for the support that made us a beloved mookata destination.
+                  Driven by passion and accessibility, we launched <em>Singapore’s FIRST CHEAPEST Mookata buffet</em>, designed for everyone to enjoy without financial worry.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Card 4: The Essence */}
+            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col mt-0 md:mt-4 lg:mt-0">
+              <CardHeader className="text-center">
+                <Heart className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
+                <CardTitle className="text-xl text-[#FF8C00] font-semibold">More Than a Meal</CardTitle>
+              </CardHeader>
+              <CardContent className="text-gray-600 space-y-3 text-sm flex-grow">
+                <p>
+                  Family Mookata is built on resilience, love, and the joy of shared food. It’s a welcoming space for all to gather, connect, and create memories.
                 </p>
               </CardContent>
             </Card>
