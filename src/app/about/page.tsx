@@ -3,7 +3,7 @@ import type { Metadata } from 'next'; // Added for generateMetadata
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { UtensilsCrossed, BookOpenText, Smile, AlertTriangle, Lightbulb, Users, Heart, Award, Briefcase, PiggyBank } from 'lucide-react'; // Example icons
+import { UtensilsCrossed, BookOpenText, Smile, Lightbulb, Heart, Briefcase, PiggyBank } from 'lucide-react'; // Example icons
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
