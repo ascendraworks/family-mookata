@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.familymookata.sg"), // Replace with your actual domain
+  metadataBase: new URL("https://www.familymookata.sg"), 
   title: {
     default: "Family Mookata - Delicious & Affordable Thai BBQ Steamboat in Singapore",
     template: "%s | Family Mookata Singapore",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Family Mookata - Delicious & Affordable Thai BBQ Steamboat",
     description: "The best place for authentic Mookata in Singapore. Fresh ingredients, great value!",
-    url: "https://www.familymookata.sg", // Replace with your actual domain
+    url: "https://www.familymookata.sg", 
     siteName: "Family Mookata",
     // images: [ // Add a default OG image
     //   {
@@ -57,24 +57,23 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Basic LocalBusiness Schema */}
-        {/* IMPORTANT: Update placeholders with actual business details */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Restaurant", // Could also be FoodEstablishment or LocalBusiness
             "name": "Family Mookata",
-            "image": "https://www.familymookata.sg/img/logo.png", // Replace with your actual logo URL
-            "@id": "https://www.familymookata.sg", // Replace with your actual domain
-            "url": "https://www.familymookata.sg", // Replace with your actual domain
-            "telephone": "+65-8927-2782", // Replace with actual phone
+            "image": "https://www.familymookata.sg/img/logo.png", 
+            "@id": "https://www.familymookata.sg", 
+            "url": "https://www.familymookata.sg", 
+            "telephone": "+65-8927-2782", 
             "priceRange": "$$", // Example: $, $$, $$$
             "servesCuisine": "Thai",
-            "address": { // For a central office or primary location if applicable
+            "address": { 
               "@type": "PostalAddress",
-              "streetAddress": "6 Yishun Industrial Street 1 Northview Bizhub, 768090", // Placeholder
+              "streetAddress": "6 Yishun Industrial Street 1 Northview Bizhub, 768090",
               "addressLocality": "Singapore",
-              "postalCode": "768090", // Placeholder
+              "postalCode": "768090",
               "addressCountry": "SG"
             },
             "geo": {
@@ -82,7 +81,7 @@ export default function RootLayout({
               "latitude": "1.4294",
               "longitude": "103.8351"
             },
-            "openingHoursSpecification": [ // Example, adjust for all your locations or primary
+            "openingHoursSpecification": [
               {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": [
@@ -111,7 +110,6 @@ export default function RootLayout({
           }) }}
         />
         {/* Google Analytics Scripts */}
-        {/* Replace G-YOUR_MEASUREMENT_ID with your actual Measurement ID */}
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-SQ04HXB3PE`}

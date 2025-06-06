@@ -102,8 +102,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="text-center md:text-right text-sm">
-            <p>Made by Ascendra (Placeholder)</p>
-            {/* This matches the wireframe, but you might want to change it */}
+            <p>Made by Ascendra</p>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-orange-400 text-center text-sm">
