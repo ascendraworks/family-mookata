@@ -152,7 +152,7 @@ export default function AboutPage() {
 
         {/* Call to Action or Values Section (Optional but good for engagement) */}
         <section className="relative text-center py-16 md:py-24 bg-white rounded-xl shadow-2xl overflow-hidden border-2 border-amber-500">
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/img/mookata-pattern.svg')", backgroundSize: 'cover' }}></div> {
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/img/mookata-pattern.svg')", backgroundSize: 'cover' }}></div> 
           <div className="relative z-10">
             <Smile className="h-16 w-16 text-amber-500 mx-auto mb-6 transform transition-transform hover:scale-110" />
             <h3 className="text-4xl md:text-5xl font-bold text-orange-600 mb-6">Become Part of Our Family!</h3>
