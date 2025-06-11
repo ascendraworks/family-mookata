@@ -1,9 +1,9 @@
 import React from 'react';
-import type { Metadata } from 'next'; // Added for generateMetadata
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { UtensilsCrossed, BookOpenText, Smile, Lightbulb, Heart, Briefcase, PiggyBank } from 'lucide-react'; // Example icons
+import { UtensilsCrossed, BookOpenText, Smile, Lightbulb, Heart, Briefcase, PiggyBank } from 'lucide-react';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
       url: '/about',
       images: [
         {
-          url: '/img/og-about.png', // Create: public/img/og-about.png (1200x630)
+          url: '/img/og-about.png',
           width: 1200,
           height: 630,
           alt: 'The Family Mookata team or restaurant ambiance',
@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       title: "Learn About Family Mookata - Our Commitment to You",
       description: "More than just food, it's about family and authentic Thai Mookata experiences.",
-      images: ['/img/twitter-about.png'], // Create: public/img/twitter-about.png
+      images: ['/img/twitter-about.png'],
     },
   };
 }
@@ -38,7 +38,8 @@ export default function AboutPage() {
   return (
     <div className="bg-[#FFF7ED] text-[#333333] py-8 md:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Section for About Page */}
+
+        {/* Hero Section - Static */}
         <section className="text-center mb-12 md:mb-20">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#FF8C00] mb-4">
             Discover Family Mookata
@@ -53,17 +54,13 @@ export default function AboutPage() {
           <Card className="bg-white shadow-xl overflow-hidden border-2 border-orange-200">
             <div className="md:flex">
               <div className="md:w-1/2 relative min-h-[300px] md:h-[450px] bg-orange-50 flex items-center justify-center overflow-hidden rounded-l-lg md:rounded-l-none md:rounded-r-lg">
-                {/* Ensure you have an image at /img/group.png or update the path */}
                 <Image
                   src="/img/about.png"
                   alt="Family enjoying Mookata"
                   layout="fill"
-                  objectFit="contain" // Changed from cover to contain
-                  className="p-4" // Added padding to let the background show if image is smaller
+                  objectFit="contain"
+                  className="p-4"
                 />
-                {/* Optional: overlay if needed, but 'contain' might make it less necessary
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                */}
               </div>
               <div className="md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
                 <CardHeader className="p-0 mb-4">
@@ -77,10 +74,10 @@ export default function AboutPage() {
                 </CardHeader>
                 <CardContent className="p-0 text-gray-700 space-y-4 text-md md:text-lg">
                   <p>
-                  At Family Mookata, we bring Thai BBQ and steamboat culture to Singapore in the most delicious, affordable way possible. We take pride in marinating our meats and preparing our signature chili in-house, ensuring fresh, bold flavors with no MSG or preservatives. Combined with fresh seafood and rich, handmade broths, it’s perfect for both family dinners and late-night cravings.
+                    At Family Mookata, we bring Thai BBQ and steamboat culture to Singapore in the most delicious, affordable way possible. We take pride in marinating our meats and preparing our signature chili in-house, ensuring fresh, bold flavors with no MSG or preservatives. Combined with fresh seafood and rich, handmade broths, it’s perfect for both family dinners and late-night cravings.
                   </p>
                   <p>
-                  We keep it affordable so you can keep coming back. That’s why many regulars say we’re the best-value mookata in Singapore—without sacrificing taste or quality. Family Mookata is more than just a meal — it’s a place where everyone can come together without worrying about the bill. We believe in resilience, love, and the simple joy of sharing food.
+                    We keep it affordable so you can keep coming back. That’s why many regulars say we’re the best-value mookata in Singapore—without sacrificing taste or quality. Family Mookata is more than just a meal — it’s a place where everyone can come together without worrying about the bill. We believe in resilience, love, and the simple joy of sharing food.
                   </p>
                 </CardContent>
               </div>
@@ -96,7 +93,6 @@ export default function AboutPage() {
             <p className="text-md text-gray-500 mt-2">The story of Family Mookata, built on resilience and love for food.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch">
-            {/* Card 1: The Challenge */}
             <Card className="bg-white shadow-lg border border-orange-100 flex flex-col">
               <CardHeader className="text-center">
                 <Briefcase className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
@@ -109,7 +105,6 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            {/* Card 2: The Spark */}
             <Card className="bg-white shadow-lg border border-orange-100 flex flex-col mt-0 md:mt-4 lg:mt-0">
               <CardHeader className="text-center">
                 <Lightbulb className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
@@ -122,8 +117,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            {/* Card 3: The Mission */}
-            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col mt-0 md:mt-0 lg:mt-0">
+            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col">
               <CardHeader className="text-center">
                 <PiggyBank className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
                 <CardTitle className="text-xl text-[#FF8C00] font-semibold">Our Unique Offer</CardTitle>
@@ -135,7 +129,6 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            {/* Card 4: The Essence */}
             <Card className="bg-white shadow-lg border border-orange-100 flex flex-col mt-0 md:mt-4 lg:mt-0">
               <CardHeader className="text-center">
                 <Heart className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
@@ -150,9 +143,9 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Call to Action or Values Section (Optional but good for engagement) */}
+        {/* Call to Action */}
         <section className="relative text-center py-16 md:py-24 bg-white rounded-xl shadow-2xl overflow-hidden border-2 border-amber-500">
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/img/mookata-pattern.svg')", backgroundSize: 'cover' }}></div> 
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/img/mookata-pattern.svg')", backgroundSize: 'cover' }}></div>
           <div className="relative z-10">
             <Smile className="h-16 w-16 text-amber-500 mx-auto mb-6 transform transition-transform hover:scale-110" />
             <h3 className="text-4xl md:text-5xl font-bold text-orange-600 mb-6">Become Part of Our Family!</h3>

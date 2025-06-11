@@ -22,6 +22,7 @@ interface LocationsPageClientProps {
   locationsData: LocationDetail[];
 }
 
+
 async function geocodeAddress(address: string): Promise<{ lat: number; lng: number } | null> {
   const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`);
   const data = await res.json();
@@ -33,12 +34,15 @@ async function geocodeAddress(address: string): Promise<{ lat: number; lng: numb
 
 function getDistanceKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const toRad = (x: number) => x * Math.PI / 180;
-  const R = 6371;
+  const R = 6371; // Earth radius in km
   const dLat = toRad(lat2 - lat1);
   const dLng = toRad(lng2 - lng1);
-  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+            Math.sin(dLng / 2) ** 2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
+
 
 export default function LocationsPageClient({ locationsData }: LocationsPageClientProps) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -49,50 +53,21 @@ export default function LocationsPageClient({ locationsData }: LocationsPageClie
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchTerm.trim() === "") {
+    if (searchTerm.trim() !== "") {
+      setShowAllLocationDetails(true);
+      setSelectedLocation(null); 
+      setTimeout(() => {
+        if (outletSectionRef.current) {
+          const offsetTop = outletSectionRef.current.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({ top: offsetTop - 100, behavior: 'smooth' }); 
+        }
+      }, 100);
+    } else {
       setShowAllLocationDetails(false);
       setSelectedLocation(null);
-      return;
-    }
-
-    const coords = await geocodeAddress(searchTerm);
-    if (!coords) {
-      alert("Could not locate the address. Please try again.");
-      return;
-    }
-
-    let minDist = Infinity;
-    let nearest: LocationDetail | null = null;
-
-    for (const loc of locationsData) {
-      const dist = getDistanceKm(coords.lat, coords.lng, loc.lat, loc.lng);
-      if (dist < minDist) {
-        minDist = dist;
-        nearest = loc;
-      }
-    }
-
-    if (nearest) {
-      searchTriggeredRef.current = true;
-      setSelectedLocation(nearest);
-      setShowAllLocationDetails(false);
     }
   };
 
-  useEffect(() => {
-    if (
-      selectedLocation &&
-      !showAllLocationDetails && // ← fix: you're in single-location mode
-      searchTriggeredRef.current &&
-      outletSectionRef.current
-    ) {  
-      outletSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      searchTriggeredRef.current = false;
-    }
-  }, [selectedLocation, showAllLocationDetails]);
-
-
-  
   const handleFlagClick = (location: LocationDetail) => {
     setSelectedLocation(location);
     setShowAllLocationDetails(false); // prevent auto-scroll on flag click
