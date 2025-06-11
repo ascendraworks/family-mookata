@@ -22,28 +22,72 @@ interface LocationsPageClientProps {
   locationsData: LocationDetail[];
 }
 
+
+async function geocodeAddress(address: string): Promise<{ lat: number; lng: number } | null> {
+  const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`);
+  const data = await res.json();
+  if (data && data.length > 0) {
+    return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+  }
+  return null;
+}
+
+function getDistanceKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
+  const toRad = (x: number) => x * Math.PI / 180;
+  const R = 6371; // Earth radius in km
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+            Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+
 export default function LocationsPageClient({ locationsData }: LocationsPageClientProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState<LocationDetail | null>(null);
   const [showAllLocationDetails, setShowAllLocationDetails] = useState(false);
   const outletSectionRef = useRef<HTMLDivElement>(null);
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchTerm.trim() !== "") {
-      setShowAllLocationDetails(true);
-      setSelectedLocation(null); 
+    if (searchTerm.trim() === "") {
+      setShowAllLocationDetails(false);
+      setSelectedLocation(null);
+      return;
+    }
+  
+    const coords = await geocodeAddress(searchTerm);
+    if (!coords) {
+      alert("Could not locate the address. Please try again.");
+      return;
+    }
+  
+    // Find nearest location
+    let minDist = Infinity;
+    let nearest: LocationDetail | null = null;
+  
+    for (const loc of locationsData) {
+      const dist = getDistanceKm(coords.lat, coords.lng, loc.lat, loc.lng);
+      if (dist < minDist) {
+        minDist = dist;
+        nearest = loc;
+      }
+    }
+  
+    if (nearest) {
+      setShowAllLocationDetails(false);
+      setSelectedLocation(nearest);
       setTimeout(() => {
         if (outletSectionRef.current) {
           const offsetTop = outletSectionRef.current.getBoundingClientRect().top + window.pageYOffset;
-          window.scrollTo({ top: offsetTop - 100, behavior: 'smooth' }); 
+          window.scrollTo({ top: offsetTop - 100, behavior: 'smooth' });
         }
       }, 100);
-    } else {
-      setShowAllLocationDetails(false);
-      setSelectedLocation(null);
     }
   };
+  
 
   const handleFlagClick = (location: LocationDetail) => {
     setSelectedLocation(location);
