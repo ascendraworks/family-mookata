@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google"; // Using Inter as a common, clean sans-serif font
 import Script from "next/script"; // Added for Google Analytics
 import "./globals.css";
+import NewNavbar from "@/components/layout/NewNavbar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils"; // For combining class names
@@ -131,14 +132,13 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-[#FFF7ED] font-sans antialiased", // Base background color from wireframe
+          "min-h-screen font-sans antialiased", // Base background color from wireframe
           inter.variable
         )}
       >
         <div className="flex flex-col min-h-screen">
-          <Navbar />
+          <NewNavbar />
           <main className="flex-grow">{children}</main>
-          <Footer />
         </div>
       </body>
     </html>
