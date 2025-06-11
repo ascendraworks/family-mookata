@@ -7,20 +7,25 @@ function newLocations() {
     return (
         <div className="flex justify-center">
             <div className="max-w-[1440px]">
-                <div className="flex flex-col items-center pb-8 gap-8">
+                <div className="flex flex-col items-center pb-8 gap-8 max-md:mx-8">
                     <div className="flex flex-col items-center gap-2">
                         <h1 className="text-5xl font-bold italic">Find Us</h1>
-                        <p className="text-xl italic">Get directions to the outlet nearest to you</p>
+                        <p className="text-xl italic text-center">Get directions to the outlet nearest to you</p>
                     </div>
-                        <div className="bg-[#FFB24F] w-1/2 flex items-center rounded-lg p-3 pr-6 gap-4">
+                    <div className="w-full flex flex-col items-center gap-4">
+                        <div className="bg-[#FFB24F] w-1/2 flex items-center rounded-lg p-3 pr-6 gap-4 max-md:w-full">
                             <Input className="bg-white flex-grow" placeholder="Enter address or postal code" />
-                            <Button className="bg-white text-[#FFB24F] hover:bg-gray-100 px-4 py-2 font-semibold">
+                            <Button className="bg-white text-[#FFB24F] hover:bg-gray-100 px-4 py-2 font-semibold max-sm:hidden">
                                 Show All
                             </Button>
                             <Button className="bg-white text-[#FFB24F] hover:bg-gray-100 p-2 rounded-md">
                                 <Search className="h-6 w-6" />
                             </Button>
-                            </div>
+                        </div>
+                        <Button className="bg-[#FFB24F] text-white hover:bg-gray-100 px-4 py-2 font-semibold sm:hidden">
+                            Show All
+                        </Button>
+                    </div>
                 </div>
                 <div className="w-full flex justify-center relative">
                     <img className="w-4/5" src="./img/new-map.png" />
