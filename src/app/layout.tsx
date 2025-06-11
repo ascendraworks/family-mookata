@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import NewNavbar from "@/components/layout/NewNavbar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
@@ -107,14 +108,13 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-[#FFF7ED] font-sans antialiased",
+          "min-h-screen bg-[#FFF7ED] font-sans antialiased", // Base background color from wireframe
           inter.variable
         )}
       >
         <div className="flex flex-col min-h-screen">
-          <Navbar />
+          <NewNavbar />
           <main className="flex-grow">{children}</main>
-          <Footer />
         </div>
       </body>
     </html>
