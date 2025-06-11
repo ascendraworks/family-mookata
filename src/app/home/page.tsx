@@ -53,6 +53,25 @@ const reviews = [
     },
 ];
 
+const badgeSet = () => (
+    <>
+      <div className="flex items-center gap-4 min-w-max flex-shrink-0">
+        <Star className="h-8 w-8 text-[#FFB24F]" />
+        <div className="text-xl font-bold">3.9K+ Reviews</div>
+      </div>
+      <div className="flex items-center gap-4 min-w-max flex-shrink-0">
+        <MapPin className="h-8 w-8 text-[#FFB24F]" />
+        <div className="text-xl font-bold">3 Locations</div>
+      </div>
+      <div className="flex items-center gap-4 min-w-max flex-shrink-0">
+        <Clock className="h-8 w-8 text-[#FFB24F]" />
+        <div className="text-xl font-bold">1PM – 11PM</div>
+      </div>
+    </>
+  );
+  
+  
+  
 function Home() {
       const [activeCardIndex, setActiveCardIndex] = useState(0);
       const handleCardTap = (index: number) => {
@@ -69,20 +88,44 @@ function Home() {
                         <Button className="bg-[#FFB24F]" size="lg">Menu</Button>
                         <Button className="bg-white border-2 border-[#FFB24F] text-[#FFB24F]" size="lg">Delivery</Button>
                     </div>
-                    <div className="flex pt-8 gap-8">
-                        <div className="flex items-center gap-4">
-                            <Star className="h-8 w-8 text-[#FFB24F]" />
-                            <div className="text-xl font-bold">3.9K+ Reviews</div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <MapPin className="h-8 w-8 text-[#FFB24F]" />
-                            <div className="text-xl font-bold">3 Locations</div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <Clock className="h-8 w-8 text-[#FFB24F]" />
-                            <div className="text-xl font-bold">1PM – 11PM</div>
-                        </div>
+                    {/* Desktop: Static Badges */}
+                    <div className="pt-8 gap-8 max-lg:hidden flex">
+                    <div className="flex items-center gap-4">
+                        <Star className="h-8 w-8 text-[#FFB24F]" />
+                        <div className="text-xl font-bold">3.9K+ Reviews</div>
                     </div>
+                    <div className="flex items-center gap-4">
+                        <MapPin className="h-8 w-8 text-[#FFB24F]" />
+                        <div className="text-xl font-bold">3 Locations</div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <Clock className="h-8 w-8 text-[#FFB24F]" />
+                        <div className="text-xl font-bold">1PM – 11PM</div>
+                    </div>
+                    </div>
+
+                    {/* Mobile ticker */}
+                    <style jsx global>{`
+                    @keyframes scroll-loop {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                    }
+                    `}</style>
+
+                    <div className="overflow-hidden w-full max-lg:flex hidden min-h-[64px]">
+                    <div
+                        className="flex w-max animate-[scroll-loop_5s_linear_infinite]"
+                    >
+                    <div className="flex gap-8 pr-8">{badgeSet()}</div>
+                    <div className="flex gap-8 pr-8">{badgeSet()}</div>
+                    </div>
+                    </div>
+
+
+
+
+
+
                 </div>
                 <img className="max-lg:w-2/3 max-lg:py-12" src="/img/hero-mookata.png" />
             </div>
