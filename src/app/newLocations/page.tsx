@@ -5,8 +5,11 @@ import Image from "next/image";
 import { Search, Flag, Clock, Phone } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
-function newLocations() {
+
+export default function NewLocations() 
+    {
     return (
         <div className="flex justify-center">
             <div className="max-w-[1440px]">
