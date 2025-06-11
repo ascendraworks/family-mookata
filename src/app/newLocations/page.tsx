@@ -12,10 +12,15 @@ function newLocations() {
                         <h1 className="text-5xl font-bold italic">Find Us</h1>
                         <p className="text-xl italic">Get directions to the outlet nearest to you</p>
                     </div>
-                    <div className="bg-[#FFB24F] w-1/2 flex items-center rounded-lg p-3 pr-6 gap-6">
-                        <Input className="bg-white" placeholder="Enter address or postal code" />
-                        <Search className="h-8 w-8 text-white" />
-                    </div>
+                        <div className="bg-[#FFB24F] w-1/2 flex items-center rounded-lg p-3 pr-6 gap-4">
+                            <Input className="bg-white flex-grow" placeholder="Enter address or postal code" />
+                            <Button className="bg-white text-[#FFB24F] hover:bg-gray-100 px-4 py-2 font-semibold">
+                                Show All
+                            </Button>
+                            <Button className="bg-white text-[#FFB24F] hover:bg-gray-100 p-2 rounded-md">
+                                <Search className="h-6 w-6" />
+                            </Button>
+                            </div>
                 </div>
                 <div className="w-full flex justify-center relative">
                     <img className="w-4/5" src="./img/new-map.png" />

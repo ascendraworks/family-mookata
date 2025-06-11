@@ -140,7 +140,7 @@ export default function HomePageClient() {
           <div className="relative w-full h-80 md:h-[550px] lg:h-[600px] mt-10 md:mt-0 flex items-center justify-center">
             <div className="absolute inset-0 flex items-center justify-center">
               <Image
-                src="/img/heronobg.png"
+                src="/img/hero-mookata.png"
                 alt="Delicious Mookata spread with various meats and vegetables on a hot pan"
                 width={600}
                 height={600}
