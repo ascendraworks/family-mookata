@@ -7,6 +7,11 @@ import { Flag, Search, MapPin as MapPinIcon, Clock, Phone, ExternalLink } from "
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { locationsData } from "@/lib/locationsData";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
 interface LocationDetail {
   id: string;
@@ -98,13 +103,13 @@ export default function NewLocations() {
   return (
     <div className="flex justify-center">
       <div className="max-w-[1440px]">
-        <div className="flex flex-col items-center pb-8 gap-8">
+        <div className="flex flex-col items-center pb-8 gap-4 max-sm:px-8">
           <div className="flex flex-col items-center gap-2">
             <h1 className="text-5xl font-bold italic">Find Us</h1>
-            <p className="text-xl italic">Get directions to the outlet nearest to you</p>
+            <p className="text-xl italic text-center">Get directions to the outlet nearest to you</p>
           </div>
 
-          <form onSubmit={handleSearch} className="bg-[#FFB24F] w-1/2 flex items-center rounded-lg p-3 pr-6 gap-4">
+          <form onSubmit={handleSearch} className="bg-[#FFB24F] w-1/2 flex items-center rounded-lg mt-3 p-3 pr-6 gap-4 max-sm:w-full">
             <Input
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -121,7 +126,7 @@ export default function NewLocations() {
                   outletSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }, 100);
               }}
-              className="bg-white text-[#FFB24F] hover:bg-gray-100 px-4 py-2 font-semibold"
+              className="bg-white text-[#FFB24F] hover:bg-gray-100 px-4 py-2 font-semibold max-sm:hidden"
             >
               Show All
             </Button>
@@ -129,6 +134,20 @@ export default function NewLocations() {
               <Search className="h-6 w-6" />
             </Button>
           </form>
+          <Button
+            type="button"
+            onClick={() => {
+              setSearchTerm("");
+              setSelectedLocation(null);
+              setShowAllLocationDetails(true);
+              setTimeout(() => {
+                outletSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }, 100);
+            }}
+            className="bg-[#FFB24F] text-white hover:bg-gray-100 px-4 py-2 font-semibold sm:hidden"
+          >
+            Show All
+          </Button>
         </div>
 
         <div className="w-full flex justify-center relative">
@@ -139,61 +158,39 @@ export default function NewLocations() {
               className="absolute transform -translate-x-1/2 -translate-y-1/2"
               style={{ top: loc.mapY, left: loc.mapX }}
             >
-              <button
-                onClick={(e) => { e.stopPropagation(); handleFlagClick(loc); }}
-                className={`p-1.5 sm:p-2 rounded-full z-10 relative
-                            ${selectedLocation?.id === loc.id ? 'bg-red-600 scale-110 animate-pulse' : 'bg-orange-500 hover:bg-orange-600'}
-                            text-white shadow-xl transition-all focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50`}
-                title={`Show details for ${loc.name}`}
-                aria-label={`Show details for ${loc.name}`}
-              >
-                <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-              </button>
+              <Popover>
+                <PopoverTrigger className="bg-[#FFB24F] rounded-full cursor-pointer p-2">
+                  <MapPinIcon className="h-4 w-4 text-white sm:h-5 sm:w-5" />
+                </PopoverTrigger>
+                <PopoverContent className="flex flex-col gap-2">
+                  <h3 className="text-sm sm:text-base font-semibold text-gray-800">
+                    {loc.name}
+                  </h3>
+                  <p className="text-[11px] sm:text-xs text-gray-600 whitespace-normal">
+                    {loc.address}, {loc.postalCode}
+                  </p>
+                  <a
+                    href={googleMapsUrl(loc, searchTerm)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center text-[11px] sm:text-xs px-2.5 sm:px-3 py-1.5
+                              bg-orange-400 hover:bg-orange-600 text-white
+                              font-semibold rounded-md shadow-sm mt-1"
+                  >
+                    Get Directions <ExternalLink className="ml-1 sm:ml-1.5 h-3 w-3" />
+                  </a>
+                </PopoverContent>
+              </Popover>
             </div>
           ))}
-
-          {selectedLocation && (
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className="absolute z-30 bg-white p-3 sm:p-4 rounded-lg shadow-xl border border-gray-200
-              text-left flex flex-col gap-1.5 sm:gap-2 w-64 xs:w-72
-              -translate-x-[0%] -translate-y-[-5%] sm:transform sm:-translate-x-[-100%] sm:-translate-y-[5%]"
-            >
-              <div className="flex justify-end">
-                <button
-                  onClick={() => setSelectedLocation(null)}
-                  className="text-gray-400 hover:text-gray-600 text-sm font-bold p-1 -mr-2 -mt-2"
-                  aria-label="Close"
-                >
-                  ✕
-                </button>
-              </div>
-              <h3 className="text-sm sm:text-base font-semibold text-gray-800">
-                {selectedLocation.name}
-              </h3>
-              <p className="text-[11px] sm:text-xs text-gray-600 whitespace-normal">
-                {selectedLocation.address}, {selectedLocation.postalCode}
-              </p>
-              <a
-                href={googleMapsUrl(selectedLocation, searchTerm)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center text-[11px] sm:text-xs px-2.5 sm:px-3 py-1.5
-                           bg-orange-400 hover:bg-orange-600 text-white
-                           font-semibold rounded-md shadow-sm mt-1"
-              >
-                Get Directions <ExternalLink className="ml-1 sm:ml-1.5 h-3 w-3" />
-              </a>
-            </div>
-          )}
         </div>
 
         <div className="flex flex-col items-center pt-8">
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2 px-8">
             <h1 className="text-3xl font-bold italic">
               {selectedLocation ? `Directions to ${selectedLocation.postalCode}` : "All Locations"}
             </h1>
-            <p className="text-xl italic">Dine with us wherever you are — here's where to find Family Mookata.</p>
+            <p className="text-xl italic text-center">Dine with us wherever you are — here's where to find Family Mookata.</p>
           </div>
 
           <div

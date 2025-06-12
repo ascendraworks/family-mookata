@@ -108,7 +108,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-[#FFF7ED] font-sans antialiased", // Base background color from wireframe
+          "min-h-screen font-sans antialiased", // Base background color from wireframe
           inter.variable
         )}
       >

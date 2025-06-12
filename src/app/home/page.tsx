@@ -85,8 +85,8 @@ function Home() {
                     <h1 className="text-7xl font-bold italic">Family Mookata</h1>
                     <p className="text-4xl pt-4 pb-8">Cheapest Mookata in Singapore</p>
                     <div className="flex gap-8 max-lg:justify-center">
-                        <Button className="bg-[#FFB24F]" size="lg">Menu</Button>
-                        <Button className="bg-white border-2 border-[#FFB24F] text-[#FFB24F]" size="lg">Delivery</Button>
+                        <Button className="bg-[#FFB24F] shadow-lg" size="lg">Menu</Button>
+                        <Button className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg" size="lg">Delivery</Button>
                     </div>
                     {/* Desktop: Static Badges */}
                     <div className="pt-8 gap-8 max-lg:hidden flex">
@@ -244,10 +244,10 @@ function Home() {
             <div className="w-full bg-[#FFB24F] flex justify-center">
                 <div className="w-full max-w-[1440px] relative">
                     <div className="w-full flex justify-center absolute top-[-70px]">
-                        <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8">Our Prices</h1>
+                        <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">Our Prices</h1>
                     </div>
                     <div className="bg-[#FFE6C6] flex rounded-2xl mx-12 px-12 pt-16 pb-12 gap-12 max-lg:gap-8 max-lg:flex-col max-sm:mx-4 max-sm:px-8">
-                        <div className="w-1/3 h-fit flex flex-col items-center bg-white rounded-xl text-center px-8 py-8 max-lg:w-full">
+                        <div className="w-1/3 h-fit flex flex-col items-center bg-white rounded-xl text-center shadow-lg px-8 py-8 max-lg:w-full">
                             <img className="h-[250px] object-cover" src="./img/banner.png" />
                             <div className="flex flex-col items-center">
                                 <h1 className="text-2xl text-orange-600 font-bold">Protein Buffet</h1>
@@ -264,7 +264,7 @@ function Home() {
                                 <p>Kid (12 - 18): $11.90</p>
                             </div>
                         </div>
-                        <div className="w-1/3 h-fit flex flex-col items-center bg-white rounded-2xl text-center px-8 py-8 max-lg:w-full">
+                        <div className="w-1/3 h-fit flex flex-col items-center bg-white rounded-2xl text-center shadow-lg px-8 py-8 max-lg:w-full">
                             <img className="h-[250px] object-cover" src="./img/banner.png" />
                             <div className="flex flex-col items-center">
                                 <h1 className="text-2xl text-orange-600 font-bold">Protein Buffet</h1>
@@ -281,7 +281,7 @@ function Home() {
                                 <p>Kid (12 - 18): $11.90</p>
                             </div>
                         </div>
-                        <div className="w-1/3 h-fit flex flex-col items-center bg-white rounded-2xl text-center px-8 py-8 max-lg:w-full">
+                        <div className="w-1/3 h-fit flex flex-col items-center bg-white rounded-2xl text-center shadow-lg px-8 py-8 max-lg:w-full">
                             <img className="h-[250px] object-cover" src="./img/banner.png" />
                             <div className="flex flex-col items-center">
                                 <h1 className="text-2xl text-orange-600 font-bold">Protein Buffet</h1>
