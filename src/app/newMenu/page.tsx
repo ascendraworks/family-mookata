@@ -32,7 +32,7 @@ function newMenu() {
                     <p className="text-xl italic">Filler text</p>
                 </div>
                 <div className="flex">
-                    <div className="w-1/5 flex flex-col border-r-2 border-[#FFB24F] px-12 py-8 gap-8 max-md:hidden">
+                    <div className="w-fit flex flex-col border-r-2 border-[#FFB24F] px-12 py-8 gap-8 max-md:hidden">
                         <p className="text-2xl max-lg:text-lg">Meats</p>
                         <p className="text-2xl max-lg:text-lg">Seafood</p>
                         <p className="text-2xl max-lg:text-lg">Vegetables</p>
@@ -43,7 +43,7 @@ function newMenu() {
                                 <img className="w-full rounded-lg aspect-square object-cover" src="./img/sheila.jpg" />
                             </CardHeader>
                             <CardContent className="flex justify-center pt-4 pb-6">
-                                <p className="text-xl font-bold text-center">Garlic Pork Slice</p>
+                                <p className="text-xl font-bold text-center max-lg:text-base">Garlic Pork Slice</p>
                             </CardContent>
                         </Card>
                         <Card className="h-fit basis-1/4 bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden p-0 gap-0 box-border max-md:basis-1/3">
@@ -51,7 +51,7 @@ function newMenu() {
                                 <img className="w-full rounded-lg aspect-square object-cover" src="./img/sheila.jpg" />
                             </CardHeader>
                             <CardContent className="flex justify-center pt-4 pb-6">
-                                <p className="text-xl font-bold text-center">Garlic Pork Slice</p>
+                                <p className="text-xl font-bold text-center max-lg:text-base">Garlic Pork Slice</p>
                             </CardContent>
                         </Card>
                         <Card className="h-fit basis-1/4 bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden p-0 gap-0 box-border max-md:basis-1/3">
@@ -59,7 +59,7 @@ function newMenu() {
                                 <img className="w-full rounded-lg aspect-square object-cover" src="./img/sheila.jpg" />
                             </CardHeader>
                             <CardContent className="flex justify-center pt-4 pb-6">
-                                <p className="text-xl font-bold text-center">Garlic Pork Slice</p>
+                                <p className="text-xl font-bold text-center max-lg:text-base">Garlic Pork Slice</p>
                             </CardContent>
                         </Card>
                         <Card className="h-fit basis-1/4 bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden p-0 gap-0 box-border max-md:basis-1/3">
@@ -67,7 +67,7 @@ function newMenu() {
                                 <img className="w-full rounded-lg aspect-square object-cover" src="./img/sheila.jpg" />
                             </CardHeader>
                             <CardContent className="flex justify-center pt-4 pb-6">
-                                <p className="text-xl font-bold text-center">Garlic Pork Slice</p>
+                                <p className="text-xl font-bold text-center max-lg:text-base">Garlic Pork Slice</p>
                             </CardContent>
                         </Card>
                     </div>

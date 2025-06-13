@@ -206,7 +206,7 @@ export default function NewLocations() {
                 <CardHeader>
                   <CardTitle className="text-xl font-semibold">{location.name}</CardTitle>
                 </CardHeader>
-                <CardContent className="flex flex-col gap-4">
+                <CardContent className="h-full flex flex-col gap-4 justify-between">
                   <div className="flex items-center gap-4">
                     <Flag className="h-8 min-w-8" />
                     <p>{location.address}, {location.postalCode}</p>

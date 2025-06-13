@@ -79,29 +79,33 @@ function Home() {
       };
 
     return (
-        <div className="w-full flex flex-col items-center overflow-hidden">
-            <div className="w-full max-w-[1440px] flex justify-between items-center px-12 max-lg:flex-col max-sm:px-0">
-                <div className="flex flex-col max-lg:text-center">
-                    <h1 className="text-7xl font-bold italic">Family Mookata</h1>
-                    <p className="text-4xl pt-4 pb-8">Cheapest Mookata in Singapore</p>
-                    <div className="flex gap-8 max-lg:justify-center">
+        <div className="w-full flex flex-col items-center">
+            <div className="w-full max-w-[1440px] flex justify-between items-center py-4 px-12 overflow-hidden max-lg:flex-col max-sm:px-0">
+                <div className="flex flex-col max-lg:text-center relative">
+                    <div className="w-full h-full flex justify-center items-center absolute z-0 max-lg:hidden">
+                        <div className="h-[400px] w-[400px] bg-orange-100 rounded-full blur-xl"></div>
+                    </div>
+                    <h1 className="text-7xl font-bold italic max-sm:text-4xl z-10">Family Mookata</h1>
+                    <p className="text-4xl pt-4 max-sm:text-xl z-10">Cheapest Mookata in Singapore</p>
+                    <p className="text-2xl text-orange-500 font-bold italic py-4 max-sm:text-xl z-10">Starting from $9.90 ONLY</p>
+                    <div className="flex gap-8 max-lg:justify-center z-10">
                         <Button className="bg-[#FFB24F] shadow-lg" size="lg">Menu</Button>
                         <Button className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg" size="lg">Delivery</Button>
                     </div>
                     {/* Desktop: Static Badges */}
-                    <div className="pt-8 gap-8 max-lg:hidden flex">
-                    <div className="flex items-center gap-4">
-                        <Star className="h-8 w-8 text-[#FFB24F]" />
-                        <div className="text-xl font-bold">3.9K+ Reviews</div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <MapPin className="h-8 w-8 text-[#FFB24F]" />
-                        <div className="text-xl font-bold">3 Locations</div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <Clock className="h-8 w-8 text-[#FFB24F]" />
-                        <div className="text-xl font-bold">1PM – 11PM</div>
-                    </div>
+                    <div className="pt-8 gap-8 max-lg:hidden flex z-10">
+                        <div className="flex items-center gap-4">
+                            <Star className="h-8 w-8 text-[#FFB24F]" />
+                            <div className="text-xl font-bold">3.9K+ Reviews</div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <MapPin className="h-8 w-8 text-[#FFB24F]" />
+                            <div className="text-xl font-bold">3 Locations</div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <Clock className="h-8 w-8 text-[#FFB24F]" />
+                            <div className="text-xl font-bold">1PM – 11PM</div>
+                        </div>
                     </div>
 
                     {/* Mobile ticker */}
@@ -111,21 +115,14 @@ function Home() {
                         100% { transform: translateX(-50%); }
                     }
                     `}</style>
-
                     <div className="overflow-hidden w-full max-lg:flex hidden min-h-[64px]">
-                    <div
-                        className="flex w-max animate-[scroll-loop_5s_linear_infinite]"
-                    >
-                    <div className="flex gap-8 pr-8">{badgeSet()}</div>
-                    <div className="flex gap-8 pr-8">{badgeSet()}</div>
+                        <div
+                            className="flex w-max animate-[scroll-loop_5s_linear_infinite]"
+                        >
+                        <div className="flex gap-8 pr-8">{badgeSet()}</div>
+                            <div className="flex gap-8 pr-8">{badgeSet()}</div>
+                        </div>
                     </div>
-                    </div>
-
-
-
-
-
-
                 </div>
                 <img className="max-lg:w-2/3 max-lg:py-12" src="/img/hero-mookata.png" />
             </div>

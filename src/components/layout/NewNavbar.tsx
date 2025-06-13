@@ -11,8 +11,8 @@ import { Menu } from "lucide-react";
 
 function NewNavbar() {
     return (
-        <div className="flex justify-between max-md:px-4 max-md:py-2">
-            <div className="w-full flex justify-between items-center px-16 py-4 max-md:hidden">
+        <div className="flex justify-between z-0 max-md:px-4 max-md:py-2">
+            <div className="w-full flex justify-between items-center px-16 max-md:hidden">
                 <Image src="/img/logo.png" alt="Family Mookata Logo" width={100} height={100} />
                 <div className="flex gap-12 text-lg overflow-hidden">
                     <a>Home</a>

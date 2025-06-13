@@ -6,6 +6,7 @@ import NewNavbar from "@/components/layout/NewNavbar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
+import NewFooter from "@/components/layout/NewFooter";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -115,6 +116,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen">
           <NewNavbar />
           <main className="flex-grow">{children}</main>
+          <NewFooter />
         </div>
       </body>
     </html>
