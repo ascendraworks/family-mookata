@@ -102,7 +102,7 @@ export default function NewLocations() {
 
   return (
     <div className="flex justify-center">
-      <div className="max-w-[1440px]">
+      <div className="max-w-[1440px] pt-4">
         <div className="flex flex-col items-center pb-8 gap-4 max-sm:px-8">
           <div className="flex flex-col items-center gap-2">
             <h1 className="text-5xl font-bold italic">Find Us</h1>

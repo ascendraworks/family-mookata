@@ -318,7 +318,7 @@ function Home() {
                     <CarouselContent className="max-sm:mx-4">
                         {reviews.map((review, index) => (
                             <CarouselItem key={index} className="basis-1/2 max-sm:basis-full">
-                                <Card className="h-hit min-w-1/2 flex-row py-0 gap-0 shadow-lg hover:shadow-xl transition-shadow duration-300 max-lg:flex-col">
+                                <Card className="h-fit min-w-1/2 flex-row py-0 gap-0 shadow-lg hover:shadow-xl transition-shadow duration-300 max-lg:flex-col">
                                     <div className="w-1/2 flex flex-col py-4 gap-4 max-lg:w-full">
                                         <CardHeader className="flex flex-row items-center px-4 gap-4">
                                             <img className="w-[60px] h-[60px] rounded-full object-cover" src="./img/sheila.jpg" />
