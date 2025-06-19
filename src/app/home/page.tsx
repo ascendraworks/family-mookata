@@ -115,7 +115,7 @@ function Home() {
                         100% { transform: translateX(-50%); }
                     }
                     `}</style>
-                    <div className="overflow-hidden w-full max-lg:flex hidden min-h-[64px]">
+                    <div className="overflow-hidden w-full max-lg:flex hidden min-h-[64px] mt-8">
                         <div
                             className="flex w-max animate-[scroll-loop_5s_linear_infinite]"
                         >

@@ -24,7 +24,7 @@ function NewFooter() {
                     <p>Facebook</p>
                 </div>
                 <div className="flex gap-4">
-                    <img className="w-6 h-6" src="/tiktok.svg" />
+                    <img className="w-6 h-6 invert" src="/tiktok.svg" />
                     <p>TikTok</p>
                 </div>
             </div>
