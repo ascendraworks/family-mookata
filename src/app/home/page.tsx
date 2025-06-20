@@ -13,6 +13,13 @@ import {
     // CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 
 const locations = [
     { name: "Yishun", address: "6 Yishun Industrial Street 1 Northview Bizhub", postalCode: "Singapore 768090", imgSrc: "/img/yishun.jpg", description: "Vibrant atmosphere, perfect for gatherings.", phone: "8927 2782" },
@@ -23,35 +30,71 @@ const locations = [
 const reviews = [
     {
       name: "Sheila Cheong",
-      rating: 5,
-      text: "Had an amazing time at Family Mookata Yishun! The outdoor seating was perfect for the late noon weather, breezy and relaxing, making it a great spot for family bonding. We loved the variety of fresh ingredients, especially their new Tiger prawns, which were sweet and juicy!" + "\tThe meats were well-marinated, and the soup became so flavorful as we grilled. My girl had so much fun helping to cook, and it was such a wonderful experience for the whole family. The staff was friendly, and the service was quick. Definitely a go-to place for delicious and affordable mookata." + "\t Highly recommend for a chill and satisfying meal!",
-      foodImgSrc: "/img/sheila.jpg",
-    },
-    {
-      name: "Namita Sinha",
-      rating: 4,
-      text: "Dining at Family Mookata was a wonderful experience. The place is so conveniently located and honestly it was the most affordable buffet I and my family ever had. The seafood and marinated meat was fresh and tasted great. There were nice veggies options to choose from. The taste of the broth and marinated chicken was great. I am surely going to come back again to bond over yummy & delicious food.",
-      foodImgSrc: "/img/namita.jpg",
+      avatar: "./img/sheila-face.png",
+      image: "./img/sheila.jpg",
+      text: `Had an amazing time at Family Mookata Yishun! The outdoor seating was perfect for the late noon weather, breezy and relaxing, making it a great spot for family bonding. We loved the variety of fresh ingredients, especially their new Tiger prawns, which were sweet and juicy!
+
+The meats were well-marinated, and the soup became so flavorful as we grilled. My girl had so much fun helping to cook, and it was such a wonderful experience for the whole family. The staff was friendly, and the service was quick. Definitely a go-to place for delicious and affordable mookata.
+
+Highly recommend for a chill and satisfying meal!
+
+Service
+Dine in
+
+Meal type
+Dinner
+
+Food: 5
+
+Service: 5
+
+Atmosphere: 5
+
+Recommended dishes
+Garlic Pork, Scallop, Mala Pork Slice, Thai Marinated Pork Slice`
     },
     {
       name: "Alex Ho",
-      rating: 5,
-      text: "Mookat buffet for 14.9 ? Wow, this is something rare in Singapore. The protein buffet is so worth it with plenty of meat and chicken marinades to choose from. The heart shape cheese dipping sauce is so cute. Will come back again for sure",
-      foodImgSrc: "/img/alex.jpg",
+      avatar: "./img/alex-ho-avatar.png",
+      image: "./img/cheese.png",
+      text: `Mookat buffet for 14.9 ? Wow, this is something rare in Singapore. The protein buffet is so worth it with plenty of meat and chicken marinades to choose from. The heart shape cheese dipping sauce is so cute. Will come back again for sure
+
+Meal type
+Dinner
+
+Price per person
+$10–20
+
+Food: 5
+
+Service: 5
+
+Atmosphere: 5
+
+Recommended dishes
+Garlic Pork, Mala Pork Slice, Black Pepper Chicken Thigh, Cheese Dipä, Thai Marinated Pork Slice, Garlic Chicken Thigh
+
+Wait time
+Up to 10 min`
     },
     {
-      name: "Valefor Ho",
-      rating: 5,
-      text: "I Been here for few times. Their price at $14.90 and $19.90 for meat and seafood buffet platter is extremely competitive and worthy. Recommended for family gathering dinner.",
-      foodImgSrc: "/img/valefor.jpg",
+      name: "Eddie Neo",
+      avatar: "./img/eddie-neo-avatar.png",
+      image: "./img/eddie-neo.webp",
+      text: `Value for money mookata 👍
+
+Adult $19.90 (seafood) $14.90 (protein)
+Buffet price. Super good marinated meat.
+Jiak ba ba rest of day no need eat already. Special highlight the pork ball also not bad. I had 3 servings. Chilli homemade! Green chili got kick!`
     },
     {
-      name: "rachel tang",
-      rating: 5,
-      text: "This is definitely a pocket friendly mookata buffet with a wide varieties of ingredients, the price starting from $9.90! Good service with good food! Will be back again!",
-      foodImgSrc: "/img/rachel.jpg",
-    },
-];
+      name: "Tan ANGELA",
+      avatar: "./img/tan-angela-avatar.png",
+      image: "./img/tan-angela.webp",
+      text: `Super worthy and yummy. Suitable for family and friends. Variety of ingredients for grilling and boiling. Seafood or protein buffet are available to choose. They have activity now for iPhone giveaway by collecting the loyalty cards for each visit. Highly recommended`
+    }
+  ];
+  
 
 const badgeSet = () => (
     <>
@@ -235,6 +278,20 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8 max-sm:px-0">
+                <div className="flex items-center py-16 gap-8">
+                    <div className="flex flex-col gap-2 max-sm:items-center">
+                        <h1 className="text-5xl font-bold italic">Become A Member</h1>
+                        <p className="text-xl font-bold italic">Join our mookata family today, It's completely FREE!</p>
+                        <ul className="flex flex-col list-disc p-4 gap-2">
+                            <li>Each person is 1 stamp</li>
+                            <li>Each person is 1 stamp</li>
+                            <li>Each person is 1 stamp</li>
+                        </ul>
+                    </div>
+                    <img className="w-1/2 h-[300px] rounded-xl object-cover" src="./img/loyalty_card.png" />
+                </div>
+            </div>
             <svg className="w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 210" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M1440 30.303L1380 54.2626C1320 78.2222 1200 126.141 1080 108.172C960 90.202 840 6.34335 720 0.353455C600 -5.63644 480 66.2424 360 84.2121C240 102.182 120 66.2424 60 48.2727L0 30.303V210H60C120 210 240 210 360 210C480 210 600 210 720 210C840 210 960 210 1080 210C1200 210 1320 210 1380 210H1440V30.303Z" fill="#FFB24F"/>
             </svg>
@@ -308,7 +365,7 @@ function Home() {
                         <p className="text-xl font-bold italic">3.9K+ Google Reviews</p>
                         <div className="flex items-center gap-3">
                             <p className="text-xl font-bold italic">4.9</p>
-                            <Star className="h-6 w-6 text-[#FFB24F]" />
+                            <Star className="h-6 w-6 text-[#FFB24F] fill-[#FFB24F]" />
                         </div>
                     </div>
                 </div>
@@ -316,33 +373,75 @@ function Home() {
                     opts={{ align: "start" }}
                     className="w-full">
                     <CarouselContent className="max-sm:mx-4">
-                        {reviews.map((review, index) => (
-                            <CarouselItem key={index} className="basis-1/2 max-sm:basis-full">
-                                <Card className="h-fit min-w-1/2 flex-row py-0 gap-0 shadow-lg hover:shadow-xl transition-shadow duration-300 max-lg:flex-col">
-                                    <div className="w-1/2 flex flex-col py-4 gap-4 max-lg:w-full">
-                                        <CardHeader className="flex flex-row items-center px-4 gap-4">
-                                            <img className="w-[60px] h-[60px] rounded-full object-cover" src="./img/sheila.jpg" />
-                                            <div className="flex flex-col gap-1">
-                                                <CardTitle className="text-md font-semibold">Sheila Cheong</CardTitle>
-                                                <div className="flex gap-1">
-                                                    <Star className="h-6 w-6 text-[#FFB24F]" />
-                                                    <Star className="h-6 w-6 text-[#FFB24F]" />
-                                                    <Star className="h-6 w-6 text-[#FFB24F]" />
-                                                    <Star className="h-6 w-6 text-[#FFB24F]" />
-                                                    <Star className="h-6 w-6 text-[#FFB24F]" />
+                    {reviews.map((review, index) => (
+                        <CarouselItem key={index} className="basis-1/2 max-sm:basis-full">
+                            <Card className="h-full min-w-1/2 flex-row py-0 gap-0 transition-shadow duration-300 max-lg:flex-col">
+                            <div className="w-1/2 flex flex-col py-4 gap-4 max-lg:w-full">
+                                <CardHeader className="flex flex-row items-center px-4 gap-4">
+                                <img className="w-[60px] h-[60px] rounded-full object-cover" src={review.avatar} />
+                                <div className="flex flex-col gap-1">
+                                    <CardTitle className="text-md font-semibold">{review.name}</CardTitle>
+                                    <div className="flex gap-1">
+                                    {[...Array(5)].map((_, i) => (
+                                        <Star key={i} className="h-6 w-6 text-[#FFB24F] fill-[#FFB24F]" />
+                                    ))}
+                                    </div>
+                                </div>
+                                </CardHeader>
+                                <CardContent className="flex-grow flex flex-col items-start justify-between px-4 gap-4">
+                                    <p>
+                                        {review.text.length > 200
+                                        ? review.text.slice(0, 200) + "..."
+                                        : review.text}
+                                    </p>
+
+                                    {review.text.length > 120 && (
+                                        <Dialog>
+                                            <DialogTrigger className="text-orange-600 font-semibold hover:underline">
+                                                Read more
+                                            </DialogTrigger>
+                                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                                                <DialogHeader>
+                                                <DialogTitle className="flex items-center gap-4">
+                                                    <img
+                                                    className="w-[60px] h-[60px] rounded-full object-cover"
+                                                    src={review.avatar}
+                                                    />
+                                                    <div className="flex flex-col">
+                                                    <p className="text-lg font-semibold">{review.name}</p>
+                                                    <div className="flex gap-1">
+                                                        {[...Array(5)].map((_, i) => (
+                                                        <Star
+                                                            key={i}
+                                                            className="h-5 w-5 text-[#FFB24F] fill-[#FFB24F]"
+                                                        />
+                                                        ))}
+                                                    </div>
+                                                    </div>
+                                                </DialogTitle>
+                                                </DialogHeader>
+                                                <div className="mt-4 px-2 pb-4 text-base whitespace-pre-wrap">
+                                                {review.text}
                                                 </div>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent className="flex-grow flex flex-col items-start px-4 gap-4">
-                                            <p>Had an amazing time at Family Mookata Yishun! The outdoor seating was perfect for the late noon weather, breezy and relaxing, making it a great spot for family bonding. We loved the variety of fresh...</p>
-                                        </CardContent>
-                                    </div>
-                                    <div className="w-1/2 aspect-square p-4 max-lg:w-full max-lg:max-h-[300px]">
-                                        <img className="w-full h-full rounded-xl object-cover" src="./img/sheila.jpg" />
-                                    </div>
-                                </Card>
-                            </CarouselItem>
-                        ))}
+                                                <div className="mt-4">
+                                                <img
+                                                    src={review.image}
+                                                    alt="review image"
+                                                    className="w-full h-[300px] object-cover rounded-xl"
+                                                />
+                                                </div>
+                                            </DialogContent>
+                                        </Dialog>
+                                    )}
+                                </CardContent>
+                            </div>
+
+                            <div className="w-1/2 aspect-square p-4 max-lg:w-full max-lg:max-h-[300px]">
+                                <img className="w-full h-full rounded-xl object-cover" src={review.image} />
+                            </div>
+                            </Card>
+                        </CarouselItem>
+                    ))}
                     </CarouselContent>
                 </Carousel>
             </div>
