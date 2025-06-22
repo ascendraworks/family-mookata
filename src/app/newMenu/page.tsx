@@ -14,24 +14,27 @@ const menuData = {
     title: "Meats",
     description: "Premium pork, beef, and chicken cuts",
     items: [
+      // Pork
       { name: "Black Pepper Pork", image: "/img/menu/black_pepper_pork.jpeg" },
+      { name: "Garlic Pork", image: "/img/menu/garlic_pork.jpeg" },
+      { name: "Pork Belly", image: "/img/menu/pork_belly.jpeg" },
+      { name: "Thai Pork", image: "/img/menu/thai_pork.jpeg" },
+
+      // Chicken
       { name: "Cajun Chicken", image: "/img/menu/cajun_chicken.jpeg" },
+      { name: "Honey Tomato Chicken", image: "/img/menu/honey_tomato_chicken.jpeg" },
+      { name: "Mala Chicken", image: "/img/menu/mala_chicken.jpeg" },
+      { name: "Tom Yum Chicken", image: "/img/menu/tom_yum_chicken.jpeg" },
+
+      // Others
       { name: "Cheese Ball", image: "/img/menu/cheese_ball.jpeg" },
       { name: "Cheese Tofu", image: "/img/menu/cheese_tofu.jpeg" },
-      { name: "Dory", image: "/img/menu/dory.jpeg" },
       { name: "Egg", image: "/img/menu/egg.jpeg" },
-      { name: "Garlic Pork", image: "/img/menu/garlic_pork.jpeg" },
-      { name: "Honey Tomato Chicken", image: "/img/menu/honey_tomato_chicken.jpeg" },
       { name: "Hotdog", image: "/img/menu/hotdog.jpeg" },
       { name: "Luncheon Meat", image: "/img/menu/luncheon_meat.jpeg" },
       { name: "Maggi", image: "/img/menu/maggi.jpeg" },
-      { name: "Mala Chicken", image: "/img/menu/mala_chicken.jpeg" },
       { name: "Meatball", image: "/img/menu/meatball.jpeg" },
-      { name: "Pork Belly", image: "/img/menu/pork_belly.jpeg" },
       { name: "Quail Egg", image: "/img/menu/quail_egg.jpeg" },
-      { name: "Sambal Stingray", image: "/img/menu/sambal_stingray.jpeg" },
-      { name: "Thai Pork", image: "/img/menu/thai_pork.jpeg" },
-      { name: "Tom Yum Chicken", image: "/img/menu/tom_yum_chicken.jpeg" },
     ],
   },
   seafood: {
@@ -45,6 +48,7 @@ const menuData = {
       { name: "Crab Ball", image: "/img/menu/crab_ball.jpeg" },
       { name: "Crab Stick", image: "/img/menu/crab_stick.jpeg" },
       { name: "Crab", image: "/img/menu/crab.jpeg" },
+      { name: "Dory", image: "/img/menu/dory.jpeg" },
       { name: "Fish Filament", image: "/img/menu/fish_filament.jpeg" },
       { name: "Fishroe Ball", image: "/img/menu/fishroe_ball.jpeg" },
       { name: "Flathead Lobster", image: "/img/menu/flathead_lobster.jpeg" },
@@ -54,6 +58,7 @@ const menuData = {
       { name: "Patin Fish Fillet", image: "/img/menu/patin_fish_fillet.jpeg" },
       { name: "Prawn", image: "/img/menu/prawn.jpeg" },
       { name: "Razor Clam", image: "/img/menu/razor_clam.jpeg" },
+      { name: "Sambal Stingray", image: "/img/menu/sambal_stingray.jpeg" },
       { name: "Squid Flower", image: "/img/menu/squid_flower.jpeg" },
       { name: "Squid Ring", image: "/img/menu/squid_ring.jpeg" },
     ],
@@ -126,14 +131,14 @@ function newMenu() {
           </div>
 
           {/* Item Cards */}
-          <div className="w-full grid grid-cols-4 py-8 px-12 gap-8 max-lg:grid-cols-3">
+          <div className="w-full grid grid-cols-3 py-8 px-12 gap-8">
             {menuData[selectedCategory].items.map((item, i) => (
                 <Card key={i} className="bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
                     <CardHeader className="px-4 pt-4">
                         <img
                         src={item.image}
                         alt={item.name}
-                        className="w-full rounded-lg aspect-square object-cover"
+                        className="w-full rounded-lg"
                         />
                     </CardHeader>
                     <CardContent className="flex justify-center pt-4 pb-6">
@@ -158,12 +163,12 @@ function newMenu() {
             <AccordionContent className="px-8">
               <div className="grid grid-cols-2 gap-8 px-4 py-8">
                 {items.map((item, i) => (
-                   <Card key={i} className="bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden">
+                   <Card key={i} className="bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
                     <CardHeader className="px-4 pt-4">
                         <img
                         src={item.image}
                         alt={item.name}
-                        className="w-full rounded-lg aspect-square object-cover"
+                        className="w-full rounded-lg"
                         />
                     </CardHeader>
                     <CardContent className="flex justify-center pt-4 pb-6">
