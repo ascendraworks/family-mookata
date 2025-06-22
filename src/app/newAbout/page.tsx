@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
     return (
       <div className="bg-white flex flex-col w-full text-gray-800">
         <section className="w-full h-[500px] relative">
-            <img className="w-full h-full object-cover" src="./img/cheese.png" />
+            <img className="w-full h-full object-cover" src="./img/seafoodbuffet/seafood-buffet-1.jpg" />
             <div className="w-full h-full bg-black opacity-60 absolute top-0"></div>
             <div className="flex flex-col gap-4 absolute top-1/3 left-24 text-white max-md:left-8 max-md:top-1/4">
                 <h1 className="text-8xl font-bold italic">Our Story</h1>
@@ -34,7 +34,7 @@ import { Button } from "@/components/ui/button";
         </section>
         <section className="flex my-16 mx-24 gap-16 max-lg:flex-col max-sm:mx-8">
             <div className="w-2/5 flex flex-col gap-8 max-lg:w-full">
-                <img className="w-full h-full rounded-xl object-cover shadow-xl" src="./img/alex.jpg" />
+                <img className="w-full h-full rounded-xl object-cover shadow-xl" src="./img/chopstick/chopstick-4.jpg" />
                 <p className="text-3xl italic max-sm:text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
             </div>
             <div className="w-3/5 flex flex-col gap-8 max-lg:w-full max-lg:flex-col-reverse">
