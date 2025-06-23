@@ -283,10 +283,62 @@ function Home() {
                     <div className="flex flex-col gap-2 max-sm:items-center">
                         <h1 className="text-5xl font-bold italic">Become A Member</h1>
                         <p className="text-xl font-bold italic">Join our mookata family today, It's completely FREE!</p>
-                        <ul className="flex flex-col list-disc p-4 gap-2">
-                            <li>Each person is 1 stamp</li>
-                            <li>Each person is 1 stamp</li>
-                            <li>Each person is 1 stamp</li>
+                        <ul className="flex flex-col list-disc py-8 gap-4 list-none">
+                            <li>
+                                <div className="flex items-center gap-4">
+                                    <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white font-bold">
+                                        1
+                                    </div>
+                                    <div>
+                                        <p className='font-bold text-xl'>Lifetime Free</p>
+                                        You have nothing to lose, it's FREE!
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="flex items-center gap-4">
+                                    <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white text-xl font-bold">
+                                        2
+                                    </div>
+                                    <div>
+                                        <p className='font-bold text-xl'>Points</p>
+                                        Points expires after 1 year of inactivity
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="flex items-center gap-4">
+                                    <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white text-xl font-bold">
+                                        3
+                                    </div>
+                                    <div>
+                                        <p className='font-bold text-xl'>How Does This Point System Works</p>
+                                        For every $1 spent = 1 point. Every 1 point is $0.01, points can be used on the next next visit for cashback.
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="flex items-center gap-4">
+                                    <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white font-bold">
+                                        4
+                                    </div>
+                                    <div>
+                                        <p className='font-bold text-xl'>Birthday Rewards</p>
+                                        5% off on your birthday month
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="flex items-center gap-4">
+                                    <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white font-bold">
+                                        5
+                                    </div>
+                                    <div>
+                                        <p className='font-bold text-xl'>Freebies</p>
+                                        Free cheese dip redemption on each visit
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <img className="w-1/2 h-[300px] rounded-xl object-cover" src="./img/loyalty_card.png" />
@@ -298,58 +350,76 @@ function Home() {
             <div className="w-full bg-[#FFB24F] flex justify-center">
                 <div className="w-full max-w-[1440px] relative">
                     <div className="w-full flex justify-center absolute top-[-70px]">
-                        <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">Our Prices</h1>
+                        <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">
+                            Our Prices
+                        </h1>
                     </div>
-                    <div className="bg-[#FFE6C6] flex rounded-2xl mx-12 px-12 pt-16 pb-12 gap-12 max-lg:gap-8 max-lg:flex-col max-sm:mx-4 max-sm:px-8">
-                        <div className="w-1/3 h-fit flex flex-col items-center bg-white rounded-xl text-center shadow-lg px-8 py-8 max-lg:w-full">
-                            <img className="h-[250px] object-cover" src="./img/banner.png" />
-                            <div className="flex flex-col items-center">
-                                <h1 className="text-2xl text-orange-600 font-bold">Protein Buffet</h1>
-                                <p>Choice Meats & Vegetables - No Seafood</p>
+                    <div className="w-full bg-[#FFB24F] flex justify-center">
+                        <div className="w-full max-w-[1440px] relative">
+                            
+                            <div className="w-full flex justify-center absolute top-[-70px]">
+                                <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">
+                                    Our Prices
+                                </h1>
                             </div>
-                            <div className="flex flex-col items-center py-2">
-                                <p className="font-bold">Mon-Fri (Before 7PM)</p>
-                                <p>Adult: $14.90</p>
-                                <p>Kid (12 - 18): $9.90</p>
+
+                            <div className="bg-[#FFE6C6] flex rounded-2xl mx-12 px-12 pt-16 pb-12 gap-12 max-lg:gap-8 max-lg:flex-col max-sm:mx-4 max-sm:px-8">
+
+                            {/* Card 1 */}
+                            <div className="w-1/3 flex flex-col bg-white rounded-xl text-center shadow-lg px-8 py-8 max-lg:w-full">
+                                <div className="h-full flex flex-col justify-between items-center">
+                                <img className="h-[250px] object-cover" src="./img/banner.png" />
+                                <div className="flex flex-col items-center">
+                                    <h1 className="text-2xl text-orange-600 font-bold">Protein Buffet</h1>
+                                    <p>Choice Meats & Vegetables - No Seafood</p>
+                                </div>
+                                <div className="flex flex-col items-center py-2">
+                                    <p className="font-bold">Mon-Fri (Before 7PM)</p>
+                                    <p>Adult: $14.90</p>
+                                    <p>Kid (12 - 18): $9.90</p>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <p className="font-bold">Peak (After 7PM, Weekends & PH)</p>
+                                    <p>Adult: $16.90</p>
+                                    <p>Kid (12 - 18): $11.90</p>
+                                </div>
+                                </div>
                             </div>
-                            <div className="flex flex-col items-center">
-                                <p className="font-bold">Peak (After 7PM, Weekends & PH)</p>
-                                <p>Adult: $16.90</p>
-                                <p>Kid (12 - 18): $11.90</p>
+
+                            {/* Card 2 */}
+                            <div className="w-1/3 flex flex-col bg-white rounded-xl text-center shadow-lg px-8 py-8 max-lg:w-full">
+                                <div className="h-full flex flex-col items-center">
+                                    <img className="h-[250px] object-cover" src="./img/banner.png" />
+                                    <div className="flex flex-col items-center">
+                                        <h1 className="text-2xl text-orange-600 font-bold">Seafood Buffet</h1>
+                                        <p>Variety Selection of Meats, Vegetables, Carbs and Even More</p>
+                                    </div>
+                                    <div className="flex flex-col items-center py-2">
+                                        <p>Adult: $19.90</p>
+                                    </div>
+                                    <div className="flex flex-col items-center">
+                                        <p>Kid: $14.90</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Card 3 */}
+                            <div className="w-1/3 flex flex-col bg-white rounded-xl text-center shadow-lg px-8 py-8 max-lg:w-full">
+                                <div className="h-full flex flex-col items-center">
+                                <img className="h-[250px] object-cover" src="./img/banner.png" />
+                                <div className="flex flex-col items-center">
+                                    <h1 className="text-2xl text-orange-600 font-bold">Kid Friendly Dining</h1>
+                                    <p>Kids under 12 eat for FREE!</p>
+                                </div>
+                                <div className="flex flex-col items-center py-2">
+                                    Perfect for families, birthday parties, and large groups.
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    Discounts applied automatically for all buffet options.
+                                </div>
                             </div>
                         </div>
-                        <div className="w-1/3 h-fit flex flex-col items-center bg-white rounded-2xl text-center shadow-lg px-8 py-8 max-lg:w-full">
-                            <img className="h-[250px] object-cover" src="./img/banner.png" />
-                            <div className="flex flex-col items-center">
-                                <h1 className="text-2xl text-orange-600 font-bold">Protein Buffet</h1>
-                                <p>Choice Meats & Vegetables - No Seafood</p>
-                            </div>
-                            <div className="flex flex-col items-center py-2">
-                                <p className="font-bold">Mon-Fri (Before 7PM)</p>
-                                <p>Adult: $14.90</p>
-                                <p>Kid (12 - 18): $9.90</p>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <p className="font-bold">Peak (After 7PM, Weekends & PH)</p>
-                                <p>Adult: $16.90</p>
-                                <p>Kid (12 - 18): $11.90</p>
-                            </div>
-                        </div>
-                        <div className="w-1/3 h-fit flex flex-col items-center bg-white rounded-2xl text-center shadow-lg px-8 py-8 max-lg:w-full">
-                            <img className="h-[250px] object-cover" src="./img/banner.png" />
-                            <div className="flex flex-col items-center">
-                                <h1 className="text-2xl text-orange-600 font-bold">Protein Buffet</h1>
-                                <p>Choice Meats & Vegetables - No Seafood</p>
-                            </div>
-                            <div className="flex flex-col items-center py-2">
-                                <p className="font-bold">Mon-Fri (Before 7PM)</p>
-                                <p>Adult: $14.90</p>
-                                <p>Kid (12 - 18): $9.90</p>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <p className="font-bold">Peak (After 7PM, Weekends & PH)</p>
-                                <p>Adult: $16.90</p>
-                                <p>Kid (12 - 18): $11.90</p>
+
                             </div>
                         </div>
                     </div>
