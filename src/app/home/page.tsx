@@ -169,17 +169,14 @@ function Home() {
             Starting from $9.90 ONLY
           </p>
           <div className="flex gap-8 max-lg:justify-center z-10">
-            <Button
-              className="bg-[#FFB24F] hover:bg-orange-400 ease-in-out duration-400 hover:cursor-pointer shadow-lg"
-              size="lg"
-            >
-              Menu
+            <Button className="bg-[#FFB24F] shadow-lg" size="lg">
+              <a href="./newMenu">View Menu</a>
             </Button>
             <Button
-              className="bg-white hover:border-orange-400 hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out hover:text-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg"
+              className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg"
               size="lg"
             >
-              Delivery
+              <a href="https://familymookata.eposqr.com/">Delivery</a>
             </Button>
           </div>
           {/* Desktop: Static Badges */}
@@ -382,12 +379,12 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8 max-sm:px-0">
-        <div className="flex items-center py-16 gap-8">
+      <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8">
+        <div className="flex items-center py-16 gap-8 max-lg:flex-col">
           <div className="flex flex-col gap-2 max-sm:items-center">
             <h1 className="text-5xl font-bold italic">Become A Member</h1>
             <p className="text-xl font-bold italic">
-              Join our mookata family today, It&apos;s completely FREE!
+              Join our mookata family today, It's completely FREE!
             </p>
             <ul className="flex flex-col list-disc py-8 gap-4 list-none">
               <li>
@@ -397,7 +394,7 @@ function Home() {
                   </div>
                   <div>
                     <p className="font-bold text-xl">Lifetime Free</p>
-                    You have nothing to lose, It&apos;s FREE!
+                    You have nothing to lose, it's FREE!
                   </div>
                 </div>
               </li>
@@ -450,10 +447,7 @@ function Home() {
               </li>
             </ul>
           </div>
-          <img
-            className="w-1/2 h-[300px] rounded-xl object-cover"
-            src="./img/loyalty_card.png"
-          />
+          <img className="w-1/2 h-full rounded-xl" src="./img/qr.png" />
         </div>
       </div>
       <svg
@@ -511,8 +505,8 @@ function Home() {
                       <p>Kid (12 - 18): $11.90</p>
                     </div>
                   </div>
-                  <Button className="bg-orange-500 hover:bg-orange-600 hover:cursor-pointer duration-300 ease-in-out mt-4">
-                    View Menu
+                  <Button className="bg-orange-500 mt-4">
+                    <a href="./newMenu">View Menu</a>
                   </Button>
                 </div>
 
@@ -539,8 +533,8 @@ function Home() {
                       <p>Kid: $14.90</p>
                     </div>
                   </div>
-                  <Button className="bg-orange-500 hover:bg-orange-600 hover:cursor-pointer duration-300 ease-in-out mt-4">
-                    View Menu
+                  <Button className="bg-orange-500 mt-4">
+                    <a href="./newMenu">View Menu</a>
                   </Button>
                 </div>
 
@@ -564,8 +558,8 @@ function Home() {
                       Discounts applied automatically for all buffet options.
                     </div>
                   </div>
-                  <Button className="bg-orange-500 hover:bg-orange-600 hover:cursor-pointer ease-in-out duration-300 mt-4">
-                    View Menu
+                  <Button className="bg-orange-500 mt-4">
+                    <a href="./newMenu">View Menu</a>
                   </Button>
                 </div>
               </div>
