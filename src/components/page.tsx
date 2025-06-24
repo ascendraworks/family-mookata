@@ -173,7 +173,7 @@ function Home() {
               className="bg-[#FFB24F] shadow-lg hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out"
               size="lg"
             >
-              <a href="./newMenu">View Menu</a>
+              <a href="/menu">View Menu</a>
             </Button>
             <Button
               className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg  hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out hover:border-orange-400 hover:text-white"
@@ -483,7 +483,7 @@ function Home() {
                   </div>
 
                   <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
-                    <a href="./newMenu">View Menu</a>
+                    <a href="/menu">View Menu</a>
                   </Button>
                 </div>
 
@@ -505,7 +505,7 @@ function Home() {
                   </div>
 
                   <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
-                    <a href="./newMenu">View Menu</a>
+                    <a href="/menu">View Menu</a>
                   </Button>
                 </div>
 
@@ -525,7 +525,7 @@ function Home() {
                   </div>
 
                   <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
-                    <a href="./newLocations">Find a Location</a>
+                    <a href="/locations">Find a Location</a>
                   </Button>
                 </div>
               </div>

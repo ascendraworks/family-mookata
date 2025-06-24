@@ -1,173 +1,122 @@
-import React from 'react';
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { UtensilsCrossed, BookOpenText, Smile, Lightbulb, Heart, Briefcase, PiggyBank } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "About Family Mookata - Our Story & Values | Singapore",
-    description: "Learn about Family Mookata, our commitment to providing affordable, delicious Thai BBQ steamboat, and our passion for family dining experiences in Singapore.",
-    keywords: ["about family mookata", "mookata story", "singapore restaurant", "thai bbq values", "affordable thai food", "family friendly restaurant singapore"],
-    alternates: {
-      canonical: '/about',
-    },
-    openGraph: {
-      title: "Our Story - Family Mookata Singapore",
-      description: "Discover the passion behind Family Mookata and our dedication to serving authentic Thai BBQ.",
-      url: '/about',
-      images: [
-        {
-          url: '/img/og-about.png',
-          width: 1200,
-          height: 630,
-          alt: 'The Family Mookata team or restaurant ambiance',
-        },
-      ],
-    },
-    twitter: {
-      title: "Learn About Family Mookata - Our Commitment to You",
-      description: "More than just food, it's about family and authentic Thai Mookata experiences.",
-      images: ['/img/twitter-about.png'],
-    },
-  };
-}
+export default function About() {
+    return (
+        <div className="bg-white flex flex-col w-full text-gray-800">
+            <section className="w-full h-[500px] relative">
+                <img className="w-full h-full object-cover" src="./img/seafoodbuffet/seafood-buffet-1.jpg" />
+                <div className="w-full h-full bg-black opacity-60 absolute top-0"></div>
+                <div className="flex flex-col gap-4 absolute top-1/3 left-24 text-white max-md:left-8 max-md:top-1/4">
+                    <h1 className="text-8xl font-bold italic">Our Story</h1>
+                    <p className="text-3xl italic">Fresh Ingredients. Warm Atmosphere. Lasting Memories.</p>
+                </div>
+            </section>
+            <section className="flex justify-end items-center relative">
+                <div className="bg-[#ffb24f] absolute rounded-t-xl p-6 top-[-118px] left-16 max-md:p-3 max-md:rounded-t-lg max-md:top-[-82px] max-md:left-8">
+                    <h2 className="text-3xl font-bold italic max-md:text-xl">OUR MISSION</h2>
+                </div>
+                <img className="w-1/2 h-[500px] object-cover rounded-r-2xl absolute left-0 max-md:w-3/5 max-md:h-[300px]" src="./img/cheese.png" />
+                <div className="w-1/2 h-full flex flex-col bg-[#ffb24f] py-12 gap-4 text-7xl overflow-hidden max-md:w-2/5 max-md:text-4xl max-md:py-4">
+                    <h3 className="font-bold italic text-nowrap">OUR MISSION OUR MISSION</h3>
+                    <h3 className="font-bold italic text-nowrap text-white">OUR MISSION OUR MISSION</h3>
+                    <h3 className="font-bold italic text-nowrap">OUR MISSION OUR MISSION</h3>
+                    <h3 className="font-bold italic text-nowrap text-white">OUR MISSION OUR MISSION</h3>
+                </div>
+            </section>
+            <section className="flex my-16 mx-24 gap-16 max-lg:flex-col max-sm:mx-8">
 
-export default function AboutPage() {
-  return (
-    <div className="bg-[#FFF7ED] text-[#333333] py-8 md:py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Left column: image + closing paras */}
+                <div className="w-2/5 flex flex-col gap-8 max-lg:w-full">
+                    <img className="w-full h-full rounded-xl object-cover shadow-xl" src="./img/chopstick/chopstick-4.jpg" />
 
-        {/* Hero Section - Static */}
-        <section className="text-center mb-12 md:mb-20">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#FF8C00] mb-4">
-            Discover Family Mookata
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-            Your go-to destination for authentic Thai Mookata, where flavor meets family and affordability.
-          </p>
-        </section>
+                    <p className="text-xl leading-relaxed max-sm:text-base">
+                        <span className="font-semibold">Affordable pricing, premium experience.</span> Our regulars call us <span className="font-bold text-orange-600">Singapore’s best-value mookata</span> — top-quality food, without the premium price tag.
+                    </p>
 
-        {/* General About Section */}
-        <section id="general-about" className="mb-12 md:mb-20">
-          <Card className="bg-white shadow-xl overflow-hidden border-2 border-orange-200">
-            <div className="md:flex">
-              <div className="md:w-1/2 relative min-h-[300px] md:h-[450px] bg-orange-50 flex items-center justify-center overflow-hidden rounded-l-lg md:rounded-l-none md:rounded-r-lg">
-                <Image
-                  src="/img/about.png"
-                  alt="Family enjoying Mookata"
-                  layout="fill"
-                  objectFit="contain"
-                  className="p-4"
-                />
-              </div>
-              <div className="md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
-                <CardHeader className="p-0 mb-4">
-                  <div className="flex items-center mb-3">
-                    <UtensilsCrossed className="h-10 w-10 text-[#FFA500] mr-3" />
-                    <CardTitle className="text-3xl font-bold text-[#FF8C00]">More Than Just a Meal</CardTitle>
-                  </div>
-                  <CardDescription className="text-gray-500 text-md">
-                    Experience the heart of Thai culinary tradition.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-0 text-gray-700 space-y-4 text-md md:text-lg">
-                  <p>
-                    At Family Mookata, we bring Thai BBQ and steamboat culture to Singapore in the most delicious, affordable way possible. We take pride in marinating our meats and preparing our signature chili in-house, ensuring fresh, bold flavors with no MSG or preservatives. Combined with fresh seafood and rich, handmade broths, it’s perfect for both family dinners and late-night cravings.
-                  </p>
-                  <p>
-                    We keep it affordable so you can keep coming back. That’s why many regulars say we’re the best-value mookata in Singapore—without sacrificing taste or quality. Family Mookata is more than just a meal — it’s a place where everyone can come together without worrying about the bill. We believe in resilience, love, and the simple joy of sharing food.
-                  </p>
-                </CardContent>
-              </div>
-            </div>
-          </Card>
-        </section>
+                    <p className="text-xl leading-relaxed max-sm:text-base">
+                        <span className="font-semibold">More than a meal,</span> Family Mookata is where <span className="font-semibold">families gather</span>, <span className="font-semibold">friends reconnect</span>, and great conversations happen over a sizzling grill.
+                    </p>
+                </div>
 
-        {/* History Section */}
-        <section id="history" className="mb-12 md:mb-20">
-          <div className="text-center mb-10">
-            <BookOpenText className="h-12 w-12 text-[#FFA500] mx-auto mb-3" />
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#FF8C00]">Our Journey</h2>
-            <p className="text-md text-gray-500 mt-2">The story of Family Mookata, built on resilience and love for food.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch">
-            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col">
-              <CardHeader className="text-center">
-                <Briefcase className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
-                <CardTitle className="text-xl text-[#FF8C00] font-semibold">A Challenging Start</CardTitle>
-              </CardHeader>
-              <CardContent className="text-gray-600 space-y-3 text-sm flex-grow">
-                <p>
-                  In 2020, COVID-19 brought widespread job losses, affecting our founder. With a large family to support, the high cost of dining out became a pressing concern.
-                </p>
-              </CardContent>
-            </Card>
+                {/* Right column: image + intro paras */}
+                <div className="w-3/5 flex flex-col gap-8 max-lg:w-full max-lg:flex-col-reverse">
+                    <p className="text-3xl font-bold leading-snug max-sm:text-2xl">
+                        Bringing Authentic Thai BBQ & Steamboat to Singapore — <span className="text-orange-600">Fresh, Bold, Always Affordable.</span>
+                    </p>
 
-            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col mt-0 md:mt-4 lg:mt-0">
-              <CardHeader className="text-center">
-                <Lightbulb className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
-                <CardTitle className="text-xl text-[#FF8C00] font-semibold">The Idea Ignites</CardTitle>
-              </CardHeader>
-              <CardContent className="text-gray-600 space-y-3 text-sm flex-grow">
-                <p>
-                  This challenge, coupled with a deep love for family meals and gatherings, sparked the vision for Family Mookata – a place for affordable, joyful dining.
-                </p>
-              </CardContent>
-            </Card>
+                    <p className="text-xl leading-relaxed max-sm:text-base">
+                        <span className="font-semibold">Every cut of meat is marinated in-house.</span> Our <span className="font-semibold">signature chili</span> is prepared fresh daily. No shortcuts. <span className="italic">No MSG. No preservatives.</span> Just <span className="font-semibold">bold, honest flavors</span> that keep you coming back.
+                    </p>
 
-            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col">
-              <CardHeader className="text-center">
-                <PiggyBank className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
-                <CardTitle className="text-xl text-[#FF8C00] font-semibold">Our Unique Offer</CardTitle>
-              </CardHeader>
-              <CardContent className="text-gray-600 space-y-3 text-sm flex-grow">
-                <p>
-                  Driven by passion and accessibility, we launched <em>Singapore’s FIRST CHEAPEST Mookata buffet</em>, designed for everyone to enjoy without financial worry.
-                </p>
-              </CardContent>
-            </Card>
+                    <p className="text-xl leading-relaxed max-sm:text-base">
+                        From <span className="font-semibold">premium seafood</span> to rich <span className="font-semibold">handmade broths</span>, every ingredient is selected for maximum flavor, every time you dine with us.
+                    </p>
+                    <img className="w-full h-full rounded-xl object-cover shadow-xl" src="./img/group.png" />
+                </div>
 
-            <Card className="bg-white shadow-lg border border-orange-100 flex flex-col mt-0 md:mt-4 lg:mt-0">
-              <CardHeader className="text-center">
-                <Heart className="h-10 w-10 text-[#FF8C00] mx-auto mb-2" />
-                <CardTitle className="text-xl text-[#FF8C00] font-semibold">More Than a Meal</CardTitle>
-              </CardHeader>
-              <CardContent className="text-gray-600 space-y-3 text-sm flex-grow">
-                <p>
-                  Family Mookata is built on resilience, love, and the joy of shared food. It’s a welcoming space for all to gather, connect, and create memories.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+            </section>
 
-        {/* Call to Action */}
-        <section className="relative text-center py-16 md:py-24 bg-white rounded-xl shadow-2xl overflow-hidden border-2 border-amber-500">
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/img/mookata-pattern.svg')", backgroundSize: 'cover' }}></div>
-          <div className="relative z-10">
-            <Smile className="h-16 w-16 text-amber-500 mx-auto mb-6 transform transition-transform hover:scale-110" />
-            <h3 className="text-4xl md:text-5xl font-bold text-orange-600 mb-6">Become Part of Our Family!</h3>
-            <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-10">
-              Discover the authentic taste, joyful atmosphere, and friendly service that makes Family Mookata a place to create lasting memories.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Link href="/locations" passHref>
-                <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform transition-all hover:scale-105 text-lg">
-                  Find a Location
-                </button>
-              </Link>
-              <Link href="/menu" passHref>
-                <button className="bg-white text-orange-600 border-2 border-orange-500 hover:bg-orange-50 font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform transition-all hover:scale-105 text-lg">
-                  Explore Our Menu
-                </button>
-              </Link>
-            </div>
-          </div>
-        </section>
+            <section className="flex items-center relative mt-28">
+                <div className="bg-[#ffb24f] absolute rounded-t-xl p-6 top-[-118px] right-16 max-md:p-3 max-md:rounded-t-lg max-md:top-[-82px] max-md:right-8">
+                    <h2 className="text-3xl font-bold italic max-md:text-xl">OUR STORY</h2>
+                </div>
+                <div className="w-1/2 h-full flex flex-col bg-[#ffb24f] py-12 gap-4 text-7xl overflow-hidden max-md:w-2/5 max-md:text-4xl max-md:py-4">
+                    <h3 className="font-bold italic text-nowrap">OUR STORY OUR STORY</h3>
+                    <h3 className="font-bold italic text-nowrap text-white">OUR STORY OUR STORY</h3>
+                    <h3 className="font-bold italic text-nowrap">OUR STORY OUR STORY</h3>
+                    <h3 className="font-bold italic text-nowrap text-white">OUR STORY OUR STORY</h3>
+                </div>
+                <img className="w-1/2 h-[500px] object-cover rounded-l-2xl absolute right-0 max-md:w-3/5 max-md:h-[300px]" src="./img/yishun.jpg" />
+            </section>
+            <section className="flex flex-col mx-24 mb-20 relative max-sm:mx-8">
+                <div className="flex mt-[100px] pb-16 gap-8 relative">
+                    <div className="min-w-[10px] h-[100px] bg-[#ffb24f] absolute top-[-100px] left-5"></div>
+                    <div className="min-w-[50px] h-[50px] bg-[#ffb24f] rounded-full"></div>
+                    <div className="min-w-[10px] h-full bg-[#ffb24f] absolute left-5"></div>
+                    <div className="flex flex-col gap-4">
+                        <h3 className="text-2xl font-bold italic max-sm:text-xl">A Challenging Start</h3>
+                        <p className="text-2xl italic max-sm:text-xl">In 2020, COVID-19 brought widespread job losses, affecting our founder. With a large family to support, the high cost of dining out became a pressing concern.</p>
+                    </div>
+                </div>
+                <div className="flex pb-16 gap-8 relative">
+                    <div className="min-w-[50px] h-[50px] bg-[#ffb24f] rounded-full"></div>
+                    <div className="min-w-[10px] h-full bg-[#ffb24f] absolute left-5"></div>
+                    <div className="flex flex-col gap-4">
+                        <h3 className="text-2xl font-bold italic max-sm:text-xl">The Idea Ignites</h3>
+                        <p className="text-2xl italic max-sm:text-xl">This challenge, coupled with a deep love for family meals and gatherings, sparked the vision for Family Mookata – a place for affordable, joyful dining.</p>
+                    </div>
+                </div>
+                <div className="flex pb-16 gap-8 relative">
+                    <div className="min-w-[50px] h-[50px] bg-[#ffb24f] rounded-full"></div>
+                    <div className="min-w-[10px] h-full bg-[#ffb24f] absolute left-5"></div>
+                    <div className="flex flex-col gap-4">
+                        <h3 className="text-2xl font-bold italic max-sm:text-xl">Our Unique Offer</h3>
+                        <p className="text-2xl italic max-sm:text-xl">Driven by passion and accessibility, we launched Singapore’s FIRST CHEAPEST Mookata buffet, designed for everyone to enjoy without financial worry.</p>
+                    </div>
+                </div>
+                <div className="flex pb-16 gap-8 relative">
+                    <div className="min-w-[50px] h-[50px] bg-[#ffb24f] rounded-full"></div>
+                    <div className="flex flex-col gap-4">
+                        <h3 className="text-2xl font-bold italic max-sm:text-xl">More Than a Meal</h3>
+                        <p className="text-2xl italic max-sm:text-xl">Family Mookata is built on resilience, love, and the joy of shared food. It’s a welcoming space for all to gather, connect, and create memories.</p>
+                    </div>
+                </div>
+            </section>
+            <section className="w-full bg-[#ffb24f] relative">
+                <div className="bg-black absolute rounded-t-xl p-6 top-[-84px] left-24 max-md:p-3 max-md:rounded-t-lg max-md:top-[-52px] max-md:left-8">
+                    <h2 className="text-3xl text-white font-bold italic max-md:text-xl">JOIN US</h2>
+                </div>
+                <div className="bg-white flex flex-col items-center mx-24 my-12 p-16 gap-4 rounded-xl shadow-xl text-center max-sm:mx-8">
+                    <h2 className="text-4xl font-bold italic max-sm:text-3xl">Become Part of Our Family</h2>
+                    <p className="text-2xl max-sm:text-xl">
+                        Find a Family Mookata outlet near you and start your sizzling experience today.
+                    </p>
+                    <Button className="bg-[#ffb24f] text-xl px-8 py-6 font-bold italic mt-4">
+                        <a href="/locations">View Locations</a>
+                    </Button>
 
-      </div>
-    </div>
-  );
+                </div>
+            </section>
+        </div>
+    );
 }

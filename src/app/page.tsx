@@ -1,6 +1,6 @@
 // src/app/page.tsx
 import type { Metadata } from 'next';
-import HomePageClient from '@/components/pages/HomePageClient'; // Ensure this path is correct
+import Home from '../components/page';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -31,5 +31,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Page() {
-  return <HomePageClient />;
+  return <Home />;
 }
