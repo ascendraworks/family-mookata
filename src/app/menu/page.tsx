@@ -129,7 +129,7 @@ function NewMenu() {
       return new Promise<void>((resolve) => {
         const img = new Image();
         img.onload = () => {
-          setLoadedImages((prev) => new Set([...prev, url]));
+          setLoadedImages((prev: Set<string>) => new Set<string>([...prev, url]));
           loadCount++;
           if (loadCount === totalImages) {
             setImagesLoaded(true);
