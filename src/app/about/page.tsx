@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
-export default function newAbout() {
+export default function About() {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -57,11 +57,11 @@ export default function newAbout() {
         }
 
         .flow-right {
-          animation: flowRight 120s linear infinite;
+          animation: flowRight 60s linear infinite;
         }
 
         .flow-left {
-          animation: flowLeft 120s linear infinite;
+          animation: flowLeft 60s linear infinite;
         }
 
         .scrolling-text {
