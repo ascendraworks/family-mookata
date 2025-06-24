@@ -342,7 +342,7 @@ export default function About() {
             Become Part of Our Family
           </h2>
           <p className="text-2xl max-sm:text-xl">
-            Come be a part of our family, we promise you won't regret it.
+            Come be a part of our family, we promise you won&apos;t regret it.
           </p>
           <Button className="bg-[#ffb24f] text-xl px-8 py-6 font-bold italic mt-4 hover:bg-orange-600">
             <a href="https://myprofile.eposdata.com/familymookata/register">Join Us</a>
