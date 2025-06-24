@@ -213,10 +213,11 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <img
-                    className="max-lg:w-2/3 max-lg:py-12"
-                    src="/img/hero-mookata.png"
-                />
+                <div className="w-1/2 max-lg:w-2/3 max-lg:py-12">
+                    <img className="brightness-120"
+                        src="/img/hero.png"
+                    />
+                </div>
             </div>
             <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8 max-sm:px-0">
                 <div className="flex flex-col py-16 gap-8">
@@ -378,45 +379,45 @@ function Home() {
             <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8">
             <div className="flex items-center justify-between py-16 gap-16 max-lg:flex-col max-lg:items-center max-sm:mx-4">
 
-{/* Left: Membership content */}
-<div className="w-3/5 flex flex-col gap-8">
-  <div className="flex flex-col gap-2">
-    <h1 className="text-5xl font-bold italic">Become A Member</h1>
-    <p className="text-xl font-bold italic">
-      Join our mookata family — it’s completely free. Start earning rewards from your first visit.
-    </p>
-  </div>
+            {/* Left: Membership content */}
+            <div className="w-full flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+                <h1 className="text-5xl font-bold italic">Become A Member</h1>
+                <p className="text-xl font-bold italic">
+                Join our mookata family — it’s completely free. Start earning rewards from your first visit.
+                </p>
+            </div>
 
-  <ul className="flex flex-col gap-6">
-    {[
-      { number: 1, title: "Lifetime Free", desc: "No fees. No strings attached. Membership is free — always." },
-      { number: 2, title: "Points", desc: "Earn points on every visit. Points expire only after 1 year of inactivity." },
-      { number: 3, title: "How Does This Point System Work?", desc: "Every $1 spent = 1 point. 1 point = $0.01 cashback. Use your points anytime on your next visit." },
-      { number: 4, title: "Birthday Rewards", desc: "Enjoy 5% off during your birthday month." },
-      { number: 5, title: "Freebies", desc: "Redeem a free cheese dip every time you dine with us." },
-    ].map((item) => (
-      <li key={item.number} className="flex items-center gap-4">
-        <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white text-xl font-bold">
-          {item.number}
-        </div>
-        <div>
-          <p className="font-bold text-xl">{item.title}</p>
-          <p>{item.desc}</p>
-        </div>
-      </li>
-    ))}
-  </ul>
-</div>
+            <ul className="flex flex-col gap-6">
+                {[
+                { number: 1, title: "Lifetime Free", desc: "No fees. No strings attached. Membership is free — always." },
+                { number: 2, title: "Points", desc: "Earn points on every visit. Points expire only after 1 year of inactivity." },
+                { number: 3, title: "How Does This Point System Work?", desc: "Every $1 spent = 1 point. 1 point = $0.01 cashback. Use your points anytime on your next visit." },
+                { number: 4, title: "Birthday Rewards", desc: "Enjoy 5% off during your birthday month." },
+                { number: 5, title: "Freebies", desc: "Redeem a free cheese dip every time you dine with us." },
+                ].map((item) => (
+                <li key={item.number} className="flex items-center gap-4">
+                    <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white text-xl font-bold">
+                    {item.number}
+                    </div>
+                    <div>
+                    <p className="font-bold text-xl">{item.title}</p>
+                    <p>{item.desc}</p>
+                    </div>
+                </li>
+                ))}
+            </ul>
+            </div>
 
-{/* Right: QR Code */}
-<div className="w-2/5 flex flex-col items-center gap-6">
-  <img className="w-2/3 rounded-xl shadow-xl" src="./img/qr.png" />
-  <p className="text-lg text-center">
-    Scan to sign up instantly and start earning rewards on your next visit.
-  </p>
-</div>
+                {/* Right: QR Code */}
+                <div className="w-full flex flex-col items-center gap-8">
+                <img className="w-2/3 rounded-xl shadow-xl" src="./img/qr.png" />
+                <p className="text-lg text-center font-bold italic">
+                    Scan to sign up instantly and start earning rewards on your next visit.
+                </p>
+                </div>
 
-</div>
+            </div>
 
             </div>
             <svg
@@ -451,7 +452,7 @@ function Home() {
                                 {/* Protein Buffet */}
                                 <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
                                     <div className="flex flex-col items-center gap-4 flex-grow">
-                                        <img className="h-[180px] object-cover mb-2" src="./img/banner.png" />
+                                        <img className="h-[180px] object-cover mb-2 brightness-130" src="./img/protein.png" />
                                         <h1 className="text-3xl text-orange-600 font-bold">Protein Buffet</h1>
                                         <p className="text-gray-500 italic text-sm text-center">Choice Meats & Vegetables – No Seafood</p>
 
@@ -475,7 +476,7 @@ function Home() {
                                 {/* Seafood Buffet */}
                                 <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
                                     <div className="flex flex-col items-center gap-4 flex-grow">
-                                        <img className="h-[180px] object-cover mb-2" src="./img/banner.png" />
+                                        <img className="h-[180px] object-cover mb-2 brightness-130" src="./img/seafood.png" />
                                         <h1 className="text-3xl text-orange-600 font-bold">Seafood Buffet</h1>
                                         <p className="text-gray-500 italic text-sm text-center">Full selection of meats, seafood & vegetables</p>
 
@@ -493,7 +494,7 @@ function Home() {
                                 {/* Family Friendly */}
                                 <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
                                     <div className="flex flex-col items-center gap-4 flex-grow">
-                                        <img className="h-[180px] object-cover mb-2" src="./img/banner.png" />
+                                        <img className="w-full h-[180px] object-cover mb-2 rounded" src="./img/family-friendly.jpeg" />
                                         <h1 className="text-3xl text-orange-600 font-bold">Family Friendly</h1>
                                         <p className="text-gray-500 italic text-sm text-center">
                                             Perfect for birthdays, family gatherings, and group events.

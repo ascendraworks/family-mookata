@@ -111,7 +111,7 @@ function newMenu() {
         </svg>
         <div className="flex flex-col absolute gap-2 top-[40%] left-[5%] max-lg:top-[35%] max-md:top-[30%]">
           <h1 className="text-5xl text-white font-bold italic max-lg:text-4xl">Our Menu</h1>
-          <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">  Meats, seafood, vegetables & more — everything for the perfect grill.</p>
+          <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">Meats, seafood, vegetables & more — everything for the perfect grill.</p>
         </div>
       </div>
 
