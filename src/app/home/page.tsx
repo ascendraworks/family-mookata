@@ -132,8 +132,8 @@ function Home() {
                     <p className="text-4xl pt-4 max-sm:text-xl z-10">Cheapest Mookata in Singapore</p>
                     <p className="text-2xl text-orange-500 font-bold italic py-4 max-sm:text-xl z-10">Starting from $9.90 ONLY</p>
                     <div className="flex gap-8 max-lg:justify-center z-10">
-                        <Button className="bg-[#FFB24F] shadow-lg" size="lg">Menu</Button>
-                        <Button className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg" size="lg">Delivery</Button>
+                        <Button className="bg-[#FFB24F] shadow-lg" size="lg"><a href="./newMenu">View Menu</a></Button>
+                        <Button className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg" size="lg"><a href="https://familymookata.eposqr.com/">Delivery</a></Button>
                     </div>
                     {/* Desktop: Static Badges */}
                     <div className="pt-8 gap-8 max-lg:hidden flex z-10">
@@ -290,8 +290,8 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8 max-sm:px-0">
-                <div className="flex items-center py-16 gap-8">
+            <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8">
+                <div className="flex items-center py-16 gap-8 max-lg:flex-col">
                     <div className="flex flex-col gap-2 max-sm:items-center">
                         <h1 className="text-5xl font-bold italic">Become A Member</h1>
                         <p className="text-xl font-bold italic">Join our mookata family today, It's completely FREE!</p>
@@ -353,7 +353,7 @@ function Home() {
                             </li>
                         </ul>
                     </div>
-                    <img className="w-1/2 h-[300px] rounded-xl object-cover" src="./img/loyalty_card.png" />
+                    <img className="w-1/2 h-full rounded-xl" src="./img/qr.png" />
                 </div>
             </div>
             <svg className="w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 210" fill="none">
@@ -396,7 +396,7 @@ function Home() {
                                         <p>Kid (12 - 18): $11.90</p>
                                     </div>
                                 </div>
-                                <Button className="bg-orange-500 mt-4">View Menu</Button>
+                                <Button className="bg-orange-500 mt-4"><a href="./newMenu">View Menu</a></Button>
                             </div>
 
                             {/* Card 2 */}
@@ -414,7 +414,7 @@ function Home() {
                                         <p>Kid: $14.90</p>
                                     </div>
                                 </div>
-                                <Button className="bg-orange-500 mt-4">View Menu</Button>
+                                <Button className="bg-orange-500 mt-4"><a href="./newMenu">View Menu</a></Button>
                             </div>
 
                             {/* Card 3 */}
@@ -432,7 +432,7 @@ function Home() {
                                     Discounts applied automatically for all buffet options.
                                 </div>
                             </div>
-                            <Button className="bg-orange-500 mt-4">View Menu</Button>
+                            <Button className="bg-orange-500 mt-4"><a href="./newMenu">View Menu</a></Button>
                         </div>
 
                             </div>
