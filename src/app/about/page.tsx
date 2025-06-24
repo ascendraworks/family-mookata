@@ -345,7 +345,7 @@ export default function About() {
             Come be a part of our family, we promise you won&apos;t regret it.
           </p>
           <Button className="bg-[#ffb24f] text-xl px-8 py-6 font-bold italic mt-4 hover:bg-orange-600">
-            <a href="https://myprofile.eposdata.com/familymookata/register">Join Us</a>
+            <a href="https://myprofile.eposdata.com/familymookata/register">Join Our Free Membership</a>
           </Button>
         </div>
       </section>
