@@ -40,7 +40,7 @@ const locations = [
         phone: "8927 2782",
     },
     {
-        name: "Bedok (Closed on Mondays)",
+        name: "Bedok",
         address: "539 Bedok North Street 3, #01-593",
         postalCode: "Singapore 460539",
         imgSrc: "/img/bedok_new.jpg",
@@ -227,51 +227,47 @@ function Home() {
                         </p>
                     </div>
                     <div className="flex flex-col md:flex-row w-full md:h-[340px] gap-6 md:gap-2.5">
-                        {locations.map((location) => (
-                            <div
-                                key={`${location.name}-desktop`}
-                                className="hidden md:flex group relative md:w-[80px] md:h-full rounded-xl
+                    {locations.map((location, index) => (
+                        <div
+                            key={`${location.name}-desktop`}
+                            className="hidden md:flex group relative md:w-[80px] md:h-full rounded-xl
                                     items-end
                                     md:flex-grow md:hover:flex-grow-[7] cursor-pointer
                                     transition-all duration-500 ease-in-out
                                     bg-cover bg-center overflow-hidden shadow-lg"
-                                style={{ backgroundImage: `url(${location.imgSrc})` }}
-                                aria-label={`View details for Family Mookata ${location.name} branch`}
-                            >
-                                {/* Overlay always visible */}
-                                <div
-                                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
-                                        opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"
-                                ></div>
+                            style={{ backgroundImage: `url(${location.imgSrc})` }}
+                            aria-label={`View details for Family Mookata ${location.name} branch`}
+                        >
+                            {/* Overlay always visible */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
+                                        opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"></div>
 
-                                <div className="relative z-10 p-5 w-full">
-                                    {/* Title always visible */}
-                                    <h3
-                                        className="text-white text-2xl font-bold
-                                        opacity-100 translate-y-0
-                                        transition-all duration-400 ease-in-out delay-100"
-                                    >
-                                        {location.name}
-                                    </h3>
-
-                                    {/* Description always visible */}
-                                    <p
-                                        className="text-gray-200 font-bold text-xs mt-1
-                                        opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2"
-                                    >
-                                        {location.description}
-                                    </p>
-
-                                    {/* Timings always visible */}
-                                    <p
-                                        className="text-gray-200 font-bold text-sm mt-1
-                                        opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2"
-                                    >
-                                        {location.timings}
-                                    </p>
-                                </div>
+                            {/* Badge for index 1 */}
+                            {index === 1 && (
+                            <div className="absolute top-0 right-0 bg-red-500 text-white text-sm font-bold px-4 py-2 m-4 rounded shadow-md">
+                                Closed on Mondays
                             </div>
-                        ))}
+                            )}
+
+                            <div className="relative z-10 p-5 w-full">
+                            {/* Title always visible */}
+                            <h3 className="text-white text-2xl font-bold opacity-100 translate-y-0 transition-all duration-400 ease-in-out delay-100">
+                                {location.name}
+                            </h3>
+
+                            {/* Description always visible */}
+                            <p className="text-gray-200 font-bold text-xs mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
+                                {location.description}
+                            </p>
+
+                            {/* Timings always visible */}
+                            <p className="text-gray-200 font-bold text-sm mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
+                                {location.timings}
+                            </p>
+                            </div>
+                        </div>
+                    ))}
+
 
                         {/* Mobile: Framer Motion Stacked Cards */}
                         <div className="md:hidden relative w-full h-[350px] flex items-center justify-center overflow-hidden px-10">
