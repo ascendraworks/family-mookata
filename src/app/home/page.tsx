@@ -43,7 +43,7 @@ const locations = [
     name: "Bedok",
     address: "539 Bedok North Street 3, #01-593",
     postalCode: "Singapore 460539",
-    imgSrc: "/img/bedok.jpg",
+    imgSrc: "/img/bedok_new.jpg",
     description: "Cozy and welcoming, great for families.",
     timings:
       "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm",
@@ -179,7 +179,9 @@ function Home() {
               className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg  hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out hover:border-orange-400 hover:text-white"
               size="lg"
             >
-              <a href="https://familymookata.eposqr.com/">Delivery</a>
+              <a href="https://familymookata.eposqr.com/">
+                Place Delivery Order
+              </a>
             </Button>
           </div>
           {/* Desktop: Static Badges */}
@@ -230,7 +232,7 @@ function Home() {
             </p>
           </div>
           <div className="flex flex-col md:flex-row w-full md:h-[340px] gap-6 md:gap-2.5">
-            {locations.map((location) => (
+            {locations.map((location, index) => (
               <div
                 key={`${location.name}-desktop`}
                 className="hidden md:flex group relative md:w-[80px] md:h-full rounded-xl
@@ -247,29 +249,26 @@ function Home() {
                                         opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"
                 ></div>
 
+                {/* Badge for index 1 */}
+                {index === 1 && (
+                  <div className="absolute top-0 right-0 bg-red-500 text-white text-sm font-bold px-4 py-2 m-4 rounded shadow-md">
+                    Closed on Mondays
+                  </div>
+                )}
+
                 <div className="relative z-10 p-5 w-full">
                   {/* Title always visible */}
-                  <h3
-                    className="text-white text-2xl font-bold
-                                        opacity-100 translate-y-0
-                                        transition-all duration-400 ease-in-out delay-100"
-                  >
+                  <h3 className="text-white text-2xl font-bold opacity-100 translate-y-0 transition-all duration-400 ease-in-out delay-100">
                     {location.name}
                   </h3>
 
                   {/* Description always visible */}
-                  <p
-                    className="text-gray-200 font-bold text-xs mt-1
-                                        opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2"
-                  >
+                  <p className="text-gray-200 font-bold text-xs mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
                     {location.description}
                   </p>
 
                   {/* Timings always visible */}
-                  <p
-                    className="text-gray-200 font-bold text-sm mt-1
-                                        opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2"
-                  >
+                  <p className="text-gray-200 font-bold text-sm mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
                     {location.timings}
                   </p>
                 </div>
@@ -383,74 +382,66 @@ function Home() {
         </div>
       </div>
       <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8">
-        <div className="flex items-center py-16 gap-8 max-lg:flex-col">
-          <div className="flex flex-col gap-2 max-sm:items-center">
-            <h1 className="text-5xl font-bold italic">Become A Member</h1>
-            <p className="text-xl font-bold italic">
-              Join our mookata family today, It&apos;s completely FREE!
-            </p>
-            <ul className="flex flex-col list-disc py-8 gap-4 list-none">
-              <li>
-                <div className="flex items-center gap-4">
-                  <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white font-bold">
-                    1
-                  </div>
-                  <div>
-                    <p className="font-bold text-xl">Lifetime Free</p>
-                    You have nothing to lose, it&apos;s FREE!
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center gap-4">
+        <div className="flex items-center justify-between py-16 gap-16 max-lg:flex-col max-lg:items-center max-sm:mx-4">
+          {/* Left: Membership content */}
+          <div className="w-3/5 flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <h1 className="text-5xl font-bold italic">Become A Member</h1>
+              <p className="text-xl font-bold italic">
+                Join our mookata family — it’s completely free. Start earning
+                rewards from your first visit.
+              </p>
+            </div>
+
+            <ul className="flex flex-col gap-6">
+              {[
+                {
+                  number: 1,
+                  title: "Lifetime Free",
+                  desc: "No fees. No strings attached. Membership is free — always.",
+                },
+                {
+                  number: 2,
+                  title: "Points",
+                  desc: "Earn points on every visit. Points expire only after 1 year of inactivity.",
+                },
+                {
+                  number: 3,
+                  title: "How Does This Point System Work?",
+                  desc: "Every $1 spent = 1 point. 1 point = $0.01 cashback. Use your points anytime on your next visit.",
+                },
+                {
+                  number: 4,
+                  title: "Birthday Rewards",
+                  desc: "Enjoy 5% off during your birthday month.",
+                },
+                {
+                  number: 5,
+                  title: "Freebies",
+                  desc: "Redeem a free cheese dip every time you dine with us.",
+                },
+              ].map((item) => (
+                <li key={item.number} className="flex items-center gap-4">
                   <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white text-xl font-bold">
-                    2
+                    {item.number}
                   </div>
                   <div>
-                    <p className="font-bold text-xl">Points</p>
-                    Points expires after 1 year of inactivity
+                    <p className="font-bold text-xl">{item.title}</p>
+                    <p>{item.desc}</p>
                   </div>
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center gap-4">
-                  <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white text-xl font-bold">
-                    3
-                  </div>
-                  <div>
-                    <p className="font-bold text-xl">
-                      How Does This Point System Works
-                    </p>
-                    For every $1 spent = 1 point. Every 1 point is $0.01, points
-                    can be used on the next next visit for cashback.
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center gap-4">
-                  <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white font-bold">
-                    4
-                  </div>
-                  <div>
-                    <p className="font-bold text-xl">Birthday Rewards</p>
-                    5% off on your birthday month
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center gap-4">
-                  <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white font-bold">
-                    5
-                  </div>
-                  <div>
-                    <p className="font-bold text-xl">Freebies</p>
-                    Free cheese dip redemption on each visit
-                  </div>
-                </div>
-              </li>
+                </li>
+              ))}
             </ul>
           </div>
-          <img className="w-1/2 h-full rounded-xl" src="./img/qr.png" />
+
+          {/* Right: QR Code */}
+          <div className="w-2/5 flex flex-col items-center gap-6">
+            <img className="w-2/3 rounded-xl shadow-xl" src="./img/qr.png" />
+            <p className="text-lg text-center">
+              Scan to sign up instantly and start earning rewards on your next
+              visit.
+            </p>
+          </div>
         </div>
       </div>
       <svg
@@ -480,89 +471,98 @@ function Home() {
                   Our Prices
                 </h1>
               </div>
-
               <div className="bg-[#FFE6C6] flex rounded-2xl mx-12 px-12 pt-16 pb-12 gap-12 max-lg:gap-8 max-lg:flex-col max-sm:mx-4 max-sm:px-8">
-                {/* Card 1 */}
-                <div className="w-1/3 flex flex-col bg-white rounded-xl text-center shadow-lg px-8 py-8 max-lg:w-full">
-                  <div className="h-full flex flex-col justify-between items-center">
+                {/* Protein Buffet */}
+                <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
+                  <div className="flex flex-col items-center gap-4 flex-grow">
                     <img
-                      className="h-[250px] object-cover"
+                      className="h-[180px] object-cover mb-2"
                       src="./img/banner.png"
                     />
-                    <div className="flex flex-col items-center">
-                      <h1 className="text-2xl text-orange-600 font-bold">
-                        Protein Buffet
-                      </h1>
-                      <p>Choice Meats & Vegetables - No Seafood</p>
-                    </div>
-                    <div className="flex flex-col items-center py-2">
-                      <p className="font-bold">Mon-Fri (Before 7PM)</p>
-                      <p>Adult: $14.90</p>
-                      <p>Kid (12 - 18): $9.90</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <p className="font-bold">
-                        Peak (After 7PM, Weekends & PH)
-                      </p>
-                      <p>Adult: $16.90</p>
-                      <p>Kid (12 - 18): $11.90</p>
+                    <h1 className="text-3xl text-orange-600 font-bold">
+                      Protein Buffet
+                    </h1>
+                    <p className="text-gray-500 italic text-sm text-center">
+                      Choice Meats & Vegetables – No Seafood
+                    </p>
+
+                    <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-3 mt-4">
+                      <div>
+                        <p className="font-semibold">Mon–Fri (Before 7PM)</p>
+                        <p>
+                          Adult: <span className="font-bold">$14.90</span> | Kid
+                          (5–12): <span className="font-bold">$9.90</span>
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-semibold">
+                          Peak (After 7PM, Weekends & PH)
+                        </p>
+                        <p>
+                          Adult: <span className="font-bold">$16.90</span> | Kid
+                          (5–12): <span className="font-bold">$11.90</span>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <Button className="bg-orange-500 mt-4 hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+
+                  <Button className="bg-orange-500 mt-6 w-full">
                     <a href="./newMenu">View Menu</a>
                   </Button>
                 </div>
 
-                {/* Card 2 */}
-                <div className="w-1/3 flex flex-col bg-white rounded-xl text-center shadow-lg px-8 py-8 max-lg:w-full">
-                  <div className="h-full flex flex-col items-center">
+                {/* Seafood Buffet */}
+                <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
+                  <div className="flex flex-col items-center gap-4 flex-grow">
                     <img
-                      className="h-[250px] object-cover"
+                      className="h-[180px] object-cover mb-2"
                       src="./img/banner.png"
                     />
-                    <div className="flex flex-col items-center">
-                      <h1 className="text-2xl text-orange-600 font-bold">
-                        Seafood Buffet
-                      </h1>
+                    <h1 className="text-3xl text-orange-600 font-bold">
+                      Seafood Buffet
+                    </h1>
+                    <p className="text-gray-500 italic text-sm text-center">
+                      Full selection of meats, seafood & vegetables
+                    </p>
+
+                    <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-3 mt-4">
                       <p>
-                        Variety Selection of Meats, Vegetables, Carbs and Even
-                        More
+                        Adult: <span className="font-bold">$19.90</span>
+                      </p>
+                      <p>
+                        Kid (5–12): <span className="font-bold">$14.90</span>
                       </p>
                     </div>
-                    <div className="flex flex-col items-center py-2">
-                      <p>Adult: $19.90</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <p>Kid: $14.90</p>
-                    </div>
                   </div>
-                  <Button className="bg-orange-500 mt-4 hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+
+                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
                     <a href="./newMenu">View Menu</a>
                   </Button>
                 </div>
 
-                {/* Card 3 */}
-                <div className="w-1/3 flex flex-col bg-white rounded-xl text-center shadow-lg px-8 py-8 max-lg:w-full">
-                  <div className="h-full flex flex-col items-center">
+                {/* Family Friendly */}
+                <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
+                  <div className="flex flex-col items-center gap-4 flex-grow">
                     <img
-                      className="h-[250px] object-cover"
+                      className="h-[180px] object-cover mb-2"
                       src="./img/banner.png"
                     />
-                    <div className="flex flex-col items-center">
-                      <h1 className="text-2xl text-orange-600 font-bold">
-                        Kid Friendly Dining
-                      </h1>
-                      <p>Kids under 12 eat for FREE!</p>
-                    </div>
-                    <div className="flex flex-col items-center py-2">
-                      Perfect for families, birthday parties, and large groups.
-                    </div>
-                    <div className="flex flex-col items-center">
-                      Discounts applied automatically for all buffet options.
+                    <h1 className="text-3xl text-orange-600 font-bold">
+                      Family Friendly
+                    </h1>
+                    <p className="text-gray-500 italic text-sm text-center">
+                      Perfect for birthdays, family gatherings, and group
+                      events.
+                    </p>
+
+                    <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-2 mt-4 text-center">
+                      <p>Kids 5–12 enjoy special kid pricing.</p>
+                      <p className="font-bold">Kids under 5 dine free.</p>
                     </div>
                   </div>
-                  <Button className="bg-orange-500 mt-4 hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
-                    <a href="./newMenu">View Menu</a>
+
+                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                    <a href="./newLocations">Find a Location</a>
                   </Button>
                 </div>
               </div>

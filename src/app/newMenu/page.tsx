@@ -12,7 +12,7 @@ import {
 const menuData = {
   meats: {
     title: "Meat Delight",
-    description: "Premium pork, beef, and chicken cuts",
+    description: "Savor our premium cuts — tender pork, juicy chicken, and flavorful beef, all marinated in-house for maximum taste.",
     items: [
       // Pork
       { name: "Black Pepper Pork", image: "/img/menu/black_pepper_pork.jpeg" },
@@ -29,7 +29,7 @@ const menuData = {
   },
   seafood: {
     title: "Seafood Delight",
-    description: "Fresh from the ocean",
+    description: "Fresh, succulent seafood — from prawns to scallops, crab to squid — handpicked daily for the perfect grill experience.",
     items: [
       { name: "Abalone", image: "/img/menu/abalone.jpeg" },
       { name: "Blue Crayfish", image: "/img/menu/blue_crayfish.jpeg" },
@@ -51,7 +51,7 @@ const menuData = {
   },
   otherFood: {
     title: "Other Food Delight",
-    description: "Fresh and healthy choices",
+    description: "A variety of sides and snacks — from cheese tofu to fish balls, quail eggs, and more — perfect for pairing with your grill.",
     items: [
       { name: "Curry Ball", image: "/img/menu/cheese_ball.jpeg" },
       { name: "Cheese Tofu", image: "/img/menu/cheese_tofu.jpeg" },
@@ -68,7 +68,7 @@ const menuData = {
   },
   vegetables: {
     title: "Vegetable Delight",
-    description: "Fresh and healthy choices",
+    description: "Crisp greens, mushrooms, and fresh vegetables — the perfect balance to complete your mookata feast.",
     items: [
       { name: "Bok Choy", image: "/img/menu/bok_choy.jpeg" },
       { name: "Broccoli", image: "/img/menu/broccoli.jpeg" },
@@ -83,7 +83,7 @@ const menuData = {
   },
   carbs: {
     title: "Carbo Delight",
-    description: "Fresh and healthy choices",
+    description: "Fill up with comforting carbs — noodles, and vermicelli to soak up every drop of flavor from the grill and broth.",
     items: [
       { name: "Glass Noodles", image: "/img/menu/vermicelli.jpeg" },
       { name: "Maggi", image: "/img/menu/maggi.jpeg" },
@@ -111,7 +111,7 @@ function newMenu() {
         </svg>
         <div className="flex flex-col absolute gap-2 top-[40%] left-[5%] max-lg:top-[35%] max-md:top-[30%]">
           <h1 className="text-5xl text-white font-bold italic max-lg:text-4xl">Our Menu</h1>
-          <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">Premium meats & fresh seafood</p>
+          <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">  Meats, seafood, vegetables & more — everything for the perfect grill.</p>
         </div>
       </div>
 
