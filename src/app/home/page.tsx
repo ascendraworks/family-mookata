@@ -368,22 +368,23 @@ function Home() {
                             {/* Card 1 */}
                             <div className="w-1/3 flex flex-col bg-white rounded-xl text-center shadow-lg px-8 py-8 max-lg:w-full">
                                 <div className="h-full flex flex-col justify-between items-center">
-                                <img className="h-[250px] object-cover" src="./img/banner.png" />
-                                <div className="flex flex-col items-center">
-                                    <h1 className="text-2xl text-orange-600 font-bold">Protein Buffet</h1>
-                                    <p>Choice Meats & Vegetables - No Seafood</p>
+                                    <img className="h-[250px] object-cover" src="./img/banner.png" />
+                                    <div className="flex flex-col items-center">
+                                        <h1 className="text-2xl text-orange-600 font-bold">Protein Buffet</h1>
+                                        <p>Choice Meats & Vegetables - No Seafood</p>
+                                    </div>
+                                    <div className="flex flex-col items-center py-2">
+                                        <p className="font-bold">Mon-Fri (Before 7PM)</p>
+                                        <p>Adult: $14.90</p>
+                                        <p>Kid (12 - 18): $9.90</p>
+                                    </div>
+                                    <div className="flex flex-col items-center">
+                                        <p className="font-bold">Peak (After 7PM, Weekends & PH)</p>
+                                        <p>Adult: $16.90</p>
+                                        <p>Kid (12 - 18): $11.90</p>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col items-center py-2">
-                                    <p className="font-bold">Mon-Fri (Before 7PM)</p>
-                                    <p>Adult: $14.90</p>
-                                    <p>Kid (12 - 18): $9.90</p>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <p className="font-bold">Peak (After 7PM, Weekends & PH)</p>
-                                    <p>Adult: $16.90</p>
-                                    <p>Kid (12 - 18): $11.90</p>
-                                </div>
-                                </div>
+                                <Button className="bg-orange-500 mt-4">View Menu</Button>
                             </div>
 
                             {/* Card 2 */}
@@ -401,6 +402,7 @@ function Home() {
                                         <p>Kid: $14.90</p>
                                     </div>
                                 </div>
+                                <Button className="bg-orange-500 mt-4">View Menu</Button>
                             </div>
 
                             {/* Card 3 */}
@@ -418,6 +420,7 @@ function Home() {
                                     Discounts applied automatically for all buffet options.
                                 </div>
                             </div>
+                            <Button className="bg-orange-500 mt-4">View Menu</Button>
                         </div>
 
                             </div>

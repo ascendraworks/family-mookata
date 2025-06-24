@@ -11,7 +11,7 @@ import {
 
 const menuData = {
   meats: {
-    title: "Meats",
+    title: "Meat Delight",
     description: "Premium pork, beef, and chicken cuts",
     items: [
       // Pork
@@ -32,13 +32,12 @@ const menuData = {
       { name: "Egg", image: "/img/menu/egg.jpeg" },
       { name: "Hotdog", image: "/img/menu/hotdog.jpeg" },
       { name: "Luncheon Meat", image: "/img/menu/luncheon_meat.jpeg" },
-      { name: "Maggi", image: "/img/menu/maggi.jpeg" },
       { name: "Meatball", image: "/img/menu/meatball.jpeg" },
       { name: "Quail Egg", image: "/img/menu/quail_egg.jpeg" },
     ],
   },
   seafood: {
-    title: "Seafood",
+    title: "Seafood Delight",
     description: "Fresh from the ocean",
     items: [
       { name: "Abalone", image: "/img/menu/abalone.jpeg" },
@@ -64,7 +63,7 @@ const menuData = {
     ],
   },
   vegetables: {
-    title: "Vegetables",
+    title: "Vegetable Delight",
     description: "Fresh and healthy choices",
     items: [
       { name: "Bok Choy", image: "/img/menu/bok_choy.jpeg" },
@@ -79,6 +78,14 @@ const menuData = {
       { name: "Vermicelli", image: "/img/menu/vermicelli.jpeg" },
     ],
   },
+  carbs: {
+    title: "Carbo Delight",
+    description: "Fresh and healthy choices",
+    items: [
+      { name: "Vermicelli", image: "/img/menu/vermicelli.jpeg" },
+      { name: "Maggi", image: "/img/menu/maggi.jpeg" },
+    ],
+  }
 };
 
 function newMenu() {
@@ -133,7 +140,7 @@ function newMenu() {
           {/* Item Cards */}
           <div className="w-full grid grid-cols-3 py-8 px-12 gap-8">
             {menuData[selectedCategory].items.map((item, i) => (
-                <Card key={i} className="bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
+                <Card key={i} className="h-fit bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
                     <CardHeader className="px-4 pt-4">
                         <img
                         src={item.image}
@@ -163,7 +170,7 @@ function newMenu() {
             <AccordionContent className="px-8">
               <div className="grid grid-cols-2 gap-8 px-4 py-8">
                 {items.map((item, i) => (
-                   <Card key={i} className="bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
+                   <Card key={i} className="h-fit bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
                     <CardHeader className="px-4 pt-4">
                         <img
                         src={item.image}
