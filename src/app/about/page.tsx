@@ -87,7 +87,7 @@ export default function About() {
           src="./img/seafoodbuffet/seafood-buffet-1.jpg"
         />
         <div className="w-full h-full bg-black opacity-60 absolute top-0"></div>
-        <div className="flex flex-col gap-4 absolute top-1/3 left-24 text-white max-md:left-8 max-md:top-1/4 fade-on-scroll">
+        <div className="flex flex-col gap-4 absolute top-1/3 left-24 text-white max-md:left-8 max-sm:top-1/6 max-md:top-1/4 fade-on-scroll">
           <h1 className="text-8xl font-bold italic">Our Story</h1>
           <p className="text-3xl italic">
             Fresh Ingredients. Warm Atmosphere. Lasting Memories.
