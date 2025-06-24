@@ -4,69 +4,69 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
-    Star,
-    MapPin,
-    Clock,
-    ChevronLeft,
-    ChevronRight,
-    ExternalLink,
+  Star,
+  MapPin,
+  Clock,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    // CarouselNext,
-    // CarouselPrevious,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  // CarouselNext,
+  // CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 
 const locations = [
-    {
-        name: "Yishun",
-        address: "6 Yishun Industrial Street 1 Northview Bizhub",
-        postalCode: "Singapore 768090",
-        imgSrc: "/img/yishun.jpg",
-        description: "Vibrant atmosphere, perfect for gatherings.",
-        timings:
-            "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm",
-        phone: "8927 2782",
-    },
-    {
-        name: "Bedok",
-        address: "539 Bedok North Street 3, #01-593",
-        postalCode: "Singapore 460539",
-        imgSrc: "/img/bedok_new.jpg",
-        description: "Cozy and welcoming, great for families.",
-        timings:
-            "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm",
-        phone: "8188 4738",
-    },
-    {
-        name: "Ang Mo Kio",
-        address: "Blk 215 Ang Mo Kio Ave 1, #01-877",
-        postalCode: "Singapore 560215",
-        imgSrc: "/img/amk.jpg",
-        description: "Modern setup, ideal for a night out.",
-        timings:
-            "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm",
-        phone: "8927 2782",
-    },
+  {
+    name: "Yishun",
+    address: "6 Yishun Industrial Street 1 Northview Bizhub",
+    postalCode: "Singapore 768090",
+    imgSrc: "/img/yishun.jpg",
+    description: "Vibrant atmosphere, perfect for gatherings.",
+    timings:
+      "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm",
+    phone: "8927 2782",
+  },
+  {
+    name: "Bedok",
+    address: "539 Bedok North Street 3, #01-593",
+    postalCode: "Singapore 460539",
+    imgSrc: "/img/bedok_new.jpg",
+    description: "Cozy and welcoming, great for families.",
+    timings:
+      "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm",
+    phone: "8188 4738",
+  },
+  {
+    name: "Ang Mo Kio",
+    address: "Blk 215 Ang Mo Kio Ave 1, #01-877",
+    postalCode: "Singapore 560215",
+    imgSrc: "/img/amk.jpg",
+    description: "Modern setup, ideal for a night out.",
+    timings:
+      "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm",
+    phone: "8927 2782",
+  },
 ];
 
 const reviews = [
-    {
-        name: "Sheila Cheong",
-        avatar: "./img/sheila-face.png",
-        image: "./img/sheila.jpg",
-        text: `Had an amazing time at Family Mookata Yishun! The outdoor seating was perfect for the late noon weather, breezy and relaxing, making it a great spot for family bonding. We loved the variety of fresh ingredients, especially their new Tiger prawns, which were sweet and juicy!
+  {
+    name: "Sheila Cheong",
+    avatar: "./img/sheila-face.png",
+    image: "./img/sheila.jpg",
+    text: `Had an amazing time at Family Mookata Yishun! The outdoor seating was perfect for the late noon weather, breezy and relaxing, making it a great spot for family bonding. We loved the variety of fresh ingredients, especially their new Tiger prawns, which were sweet and juicy!
 
 The meats were well-marinated, and the soup became so flavorful as we grilled. My girl had so much fun helping to cook, and it was such a wonderful experience for the whole family. The staff was friendly, and the service was quick. Definitely a go-to place for delicious and affordable mookata.
 
@@ -86,12 +86,12 @@ Atmosphere: 5
 
 Recommended dishes
 Garlic Pork, Scallop, Mala Pork Slice, Thai Marinated Pork Slice`,
-    },
-    {
-        name: "Alex Ho",
-        avatar: "./img/alex-ho-avatar.png",
-        image: "./img/cheese.png",
-        text: `Mookat buffet for 14.9 ? Wow, this is something rare in Singapore. The protein buffet is so worth it with plenty of meat and chicken marinades to choose from. The heart shape cheese dipping sauce is so cute. Will come back again for sure
+  },
+  {
+    name: "Alex Ho",
+    avatar: "./img/alex-ho-avatar.png",
+    image: "./img/cheese.png",
+    text: `Mookat buffet for 14.9 ? Wow, this is something rare in Singapore. The protein buffet is so worth it with plenty of meat and chicken marinades to choose from. The heart shape cheese dipping sauce is so cute. Will come back again for sure
 
 Meal type
 Dinner
@@ -110,93 +110,98 @@ Garlic Pork, Mala Pork Slice, Black Pepper Chicken Thigh, Cheese Dipä, Thai Mar
 
 Wait time
 Up to 10 min`,
-    },
-    {
-        name: "Eddie Neo",
-        avatar: "./img/eddie-neo-avatar.png",
-        image: "./img/eddie-neo.webp",
-        text: `Value for money mookata 👍
+  },
+  {
+    name: "Eddie Neo",
+    avatar: "./img/eddie-neo-avatar.png",
+    image: "./img/eddie-neo.webp",
+    text: `Value for money mookata 👍
 
 Adult $19.90 (seafood) $14.90 (protein)
 Buffet price. Super good marinated meat.
 Jiak ba ba rest of day no need eat already. Special highlight the pork ball also not bad. I had 3 servings. Chilli homemade! Green chili got kick!`,
-    },
-    {
-        name: "Tan ANGELA",
-        avatar: "./img/tan-angela-avatar.png",
-        image: "./img/tan-angela.webp",
-        text: `Super worthy and yummy. Suitable for family and friends. Variety of ingredients for grilling and boiling. Seafood or protein buffet are available to choose. They have activity now for iPhone giveaway by collecting the loyalty cards for each visit. Highly recommended`,
-    },
+  },
+  {
+    name: "Tan ANGELA",
+    avatar: "./img/tan-angela-avatar.png",
+    image: "./img/tan-angela.webp",
+    text: `Super worthy and yummy. Suitable for family and friends. Variety of ingredients for grilling and boiling. Seafood or protein buffet are available to choose. They have activity now for iPhone giveaway by collecting the loyalty cards for each visit. Highly recommended`,
+  },
 ];
 
 const badgeSet = () => (
-    <>
-        <div className="flex items-center gap-4 min-w-max flex-shrink-0">
-            <Star className="h-8 w-8 text-[#FFB24F]" />
-            <div className="text-xl font-bold">3.9K+ Reviews</div>
-        </div>
-        <div className="flex items-center gap-4 min-w-max flex-shrink-0">
-            <MapPin className="h-8 w-8 text-[#FFB24F]" />
-            <div className="text-xl font-bold">3 Locations</div>
-        </div>
-        <div className="flex items-center gap-4 min-w-max flex-shrink-0">
-            <Clock className="h-8 w-8 text-[#FFB24F]" />
-            <div className="text-xl font-bold">1PM – 11PM</div>
-        </div>
-    </>
+  <>
+    <div className="flex items-center gap-4 min-w-max flex-shrink-0">
+      <Star className="h-8 w-8 text-[#FFB24F]" />
+      <div className="text-xl font-bold">3.9K+ Reviews</div>
+    </div>
+    <div className="flex items-center gap-4 min-w-max flex-shrink-0">
+      <MapPin className="h-8 w-8 text-[#FFB24F]" />
+      <div className="text-xl font-bold">3 Locations</div>
+    </div>
+    <div className="flex items-center gap-4 min-w-max flex-shrink-0">
+      <Clock className="h-8 w-8 text-[#FFB24F]" />
+      <div className="text-xl font-bold">1PM – 11PM</div>
+    </div>
+  </>
 );
 
 function Home() {
-    const [activeCardIndex, setActiveCardIndex] = useState(0);
-    const handleCardTap = (index: number) => {
-        setActiveCardIndex(index);
-    };
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const handleCardTap = (index: number) => {
+    setActiveCardIndex(index);
+  };
 
-    return (
-        <div className="w-full flex flex-col items-center">
-            <div className="w-full max-w-[1440px] flex justify-between items-center py-4 px-12 overflow-hidden max-lg:flex-col max-sm:px-0">
-                <div className="flex flex-col max-lg:text-center relative">
-                    <div className="w-full h-full flex justify-center items-center absolute z-0 max-lg:hidden">
-                        <div className="h-[400px] w-[400px] bg-orange-100 rounded-full blur-xl"></div>
-                    </div>
-                    <h1 className="text-7xl font-bold italic max-sm:text-4xl z-10">
-                        Family Mookata
-                    </h1>
-                    <p className="text-4xl pt-4 max-sm:text-xl z-10">
-                        Cheapest Mookata in Singapore
-                    </p>
-                    <p className="text-2xl text-orange-500 font-bold italic py-4 max-sm:text-xl z-10">
-                        Starting from $9.90 ONLY
-                    </p>
-                    <div className="flex gap-8 max-lg:justify-center z-10">
-                        <Button className="bg-[#FFB24F] shadow-lg" size="lg">
-                            <a href="./newMenu">View Menu</a>
-                        </Button>
-                        <Button
-                            className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg"
-                            size="lg"
-                        >
-                            <a href="https://familymookata.eposqr.com/">Place Delivery Order</a>
-                        </Button>
-                    </div>
-                    {/* Desktop: Static Badges */}
-                    <div className="pt-8 gap-8 max-lg:hidden flex z-10">
-                        <div className="flex items-center gap-4">
-                            <Star className="h-8 w-8 text-[#FFB24F]" />
-                            <div className="text-xl font-bold">3.9K+ Reviews</div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <MapPin className="h-8 w-8 text-[#FFB24F]" />
-                            <div className="text-xl font-bold">3 Locations</div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <Clock className="h-8 w-8 text-[#FFB24F]" />
-                            <div className="text-xl font-bold">1PM – 11PM</div>
-                        </div>
-                    </div>
+  return (
+    <div className="w-full flex flex-col items-center">
+      <div className="w-full max-w-[1440px] flex justify-between items-center py-4 px-12 overflow-hidden max-lg:flex-col max-sm:px-0">
+        <div className="flex flex-col max-lg:text-center relative">
+          <div className="w-full h-full flex justify-center items-center absolute z-0 max-lg:hidden">
+            <div className="h-[400px] w-[400px] bg-orange-100 rounded-full blur-xl"></div>
+          </div>
+          <h1 className="text-7xl font-bold italic max-sm:text-4xl z-10">
+            Family Mookata
+          </h1>
+          <p className="text-4xl pt-4 max-sm:text-xl z-10">
+            Cheapest Mookata in Singapore
+          </p>
+          <p className="text-2xl text-orange-500 font-bold italic py-4 max-sm:text-xl z-10">
+            Starting from $9.90 ONLY
+          </p>
+          <div className="flex gap-8 max-lg:justify-center z-10">
+            <Button
+              className="bg-[#FFB24F] shadow-lg hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out"
+              size="lg"
+            >
+              <a href="./newMenu">View Menu</a>
+            </Button>
+            <Button
+              className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg  hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out hover:border-orange-400 hover:text-white"
+              size="lg"
+            >
+              <a href="https://familymookata.eposqr.com/">
+                Place Delivery Order
+              </a>
+            </Button>
+          </div>
+          {/* Desktop: Static Badges */}
+          <div className="pt-8 gap-8 max-lg:hidden flex z-10">
+            <div className="flex items-center gap-4">
+              <Star className="h-8 w-8 text-[#FFB24F]" />
+              <div className="text-xl font-bold">3.9K+ Reviews</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <MapPin className="h-8 w-8 text-[#FFB24F]" />
+              <div className="text-xl font-bold">3 Locations</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <Clock className="h-8 w-8 text-[#FFB24F]" />
+              <div className="text-xl font-bold">1PM – 11PM</div>
+            </div>
+          </div>
 
-                    {/* Mobile ticker */}
-                    <style jsx global>{`
+          {/* Mobile ticker */}
+          <style jsx global>{`
             @keyframes scroll-loop {
               0% {
                 transform: translateX(0);
@@ -236,55 +241,56 @@ function Home() {
                                     md:flex-grow md:hover:flex-grow-[7] cursor-pointer
                                     transition-all duration-500 ease-in-out
                                     bg-cover bg-center overflow-hidden shadow-lg"
-                            style={{ backgroundImage: `url(${location.imgSrc})` }}
-                            aria-label={`View details for Family Mookata ${location.name} branch`}
-                        >
-                            {/* Overlay always visible */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
-                                        opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"></div>
+                style={{ backgroundImage: `url(${location.imgSrc})` }}
+                aria-label={`View details for Family Mookata ${location.name} branch`}
+              >
+                {/* Overlay always visible */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
+                                        opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"
+                ></div>
 
-                            {/* Badge for index 1 */}
-                            {index === 1 && (
-                            <div className="absolute top-0 right-0 bg-red-500 text-white text-sm font-bold px-4 py-2 m-4 rounded shadow-md">
-                                Closed on Mondays
-                            </div>
-                            )}
+                {/* Badge for index 1 */}
+                {index === 1 && (
+                  <div className="absolute top-0 right-0 bg-red-500 text-white text-sm font-bold px-4 py-2 m-4 rounded shadow-md">
+                    Closed on Mondays
+                  </div>
+                )}
 
-                            <div className="relative z-10 p-5 w-full">
-                            {/* Title always visible */}
-                            <h3 className="text-white text-2xl font-bold opacity-100 translate-y-0 transition-all duration-400 ease-in-out delay-100">
-                                {location.name}
-                            </h3>
+                <div className="relative z-10 p-5 w-full">
+                  {/* Title always visible */}
+                  <h3 className="text-white text-2xl font-bold opacity-100 translate-y-0 transition-all duration-400 ease-in-out delay-100">
+                    {location.name}
+                  </h3>
 
-                            {/* Description always visible */}
-                            <p className="text-gray-200 font-bold text-xs mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
-                                {location.description}
-                            </p>
+                  {/* Description always visible */}
+                  <p className="text-gray-200 font-bold text-xs mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
+                    {location.description}
+                  </p>
 
-                            {/* Timings always visible */}
-                            <p className="text-gray-200 font-bold text-sm mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
-                                {location.timings}
-                            </p>
-                            </div>
-                        </div>
-                    ))}
+                  {/* Timings always visible */}
+                  <p className="text-gray-200 font-bold text-sm mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
+                    {location.timings}
+                  </p>
+                </div>
+              </div>
+            ))}
 
+            {/* Mobile: Framer Motion Stacked Cards */}
+            <div className="md:hidden relative w-full h-[350px] flex items-center justify-center overflow-hidden px-10">
+              <AnimatePresence initial={false}>
+                {locations.map((location, index) => {
+                  const isActive = index === activeCardIndex;
+                  const positionInStack =
+                    (locations.length - 1 - index + activeCardIndex) %
+                    locations.length;
 
-                        {/* Mobile: Framer Motion Stacked Cards */}
-                        <div className="md:hidden relative w-full h-[350px] flex items-center justify-center overflow-hidden px-10">
-                            <AnimatePresence initial={false}>
-                                {locations.map((location, index) => {
-                                    const isActive = index === activeCardIndex;
-                                    const positionInStack =
-                                        (locations.length - 1 - index + activeCardIndex) %
-                                        locations.length;
-
-                                    const scale = isActive
-                                        ? 1
-                                        : Math.max(1 - positionInStack * 0.05, 0.8);
-                                    const yOffset = isActive ? 0 : positionInStack * 10;
-                                    const xOffset = isActive ? 0 : (index - activeCardIndex) * 5;
-                                    const rotation = isActive ? 0 : (index - activeCardIndex) * 2;
+                  const scale = isActive
+                    ? 1
+                    : Math.max(1 - positionInStack * 0.05, 0.8);
+                  const yOffset = isActive ? 0 : positionInStack * 10;
+                  const xOffset = isActive ? 0 : (index - activeCardIndex) * 5;
+                  const rotation = isActive ? 0 : (index - activeCardIndex) * 2;
 
                                     return (
                                         <motion.div
@@ -456,22 +462,30 @@ function Home() {
                                         <h1 className="text-3xl text-orange-600 font-bold">Protein Buffet</h1>
                                         <p className="text-gray-500 italic text-sm text-center">Choice Meats & Vegetables – No Seafood</p>
 
-                                        <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-3 mt-4">
-                                            <div>
-                                                <p className="font-semibold">Mon–Fri (Before 7PM)</p>
-                                                <p>Adult: <span className="font-bold">$14.90</span> | Kid (5–12): <span className="font-bold">$9.90</span></p>
-                                            </div>
-                                            <div>
-                                                <p className="font-semibold">Peak (After 7PM, Weekends & PH)</p>
-                                                <p>Adult: <span className="font-bold">$16.90</span> | Kid (5–12): <span className="font-bold">$11.90</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-3 mt-4">
+                      <div>
+                        <p className="font-semibold">Mon–Fri (Before 7PM)</p>
+                        <p>
+                          Adult: <span className="font-bold">$14.90</span> | Kid
+                          (5–12): <span className="font-bold">$9.90</span>
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-semibold">
+                          Peak (After 7PM, Weekends & PH)
+                        </p>
+                        <p>
+                          Adult: <span className="font-bold">$16.90</span> | Kid
+                          (5–12): <span className="font-bold">$11.90</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
 
-                                    <Button className="bg-orange-500 mt-6 w-full">
-                                        <a href="./newMenu">View Menu</a>
-                                    </Button>
-                                </div>
+                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                    <a href="./newMenu">View Menu</a>
+                  </Button>
+                </div>
 
                                 {/* Seafood Buffet */}
                                 <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
@@ -480,16 +494,20 @@ function Home() {
                                         <h1 className="text-3xl text-orange-600 font-bold">Seafood Buffet</h1>
                                         <p className="text-gray-500 italic text-sm text-center">Full selection of meats, seafood & vegetables</p>
 
-                                        <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-3 mt-4">
-                                            <p>Adult: <span className="font-bold">$19.90</span></p>
-                                            <p>Kid (5–12): <span className="font-bold">$14.90</span></p>
-                                        </div>
-                                    </div>
+                    <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-3 mt-4">
+                      <p>
+                        Adult: <span className="font-bold">$19.90</span>
+                      </p>
+                      <p>
+                        Kid (5–12): <span className="font-bold">$14.90</span>
+                      </p>
+                    </div>
+                  </div>
 
-                                    <Button className="bg-orange-500 mt-6 w-full">
-                                        <a href="./newMenu">View Menu</a>
-                                    </Button>
-                                </div>
+                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                    <a href="./newMenu">View Menu</a>
+                  </Button>
+                </div>
 
                                 {/* Family Friendly */}
                                 <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
@@ -500,137 +518,134 @@ function Home() {
                                             Perfect for birthdays, family gatherings, and group events.
                                         </p>
 
-                                        <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-2 mt-4 text-center">
-                                            <p>Kids 5–12 enjoy special kid pricing.</p>
-                                            <p className="font-bold">Kids under 5 dine free.</p>
-                                        </div>
-                                    </div>
-
-                                    <Button className="bg-orange-500 mt-6 w-full">
-                                        <a href="./newLocations">Find a Location</a>
-                                    </Button>
-                                </div>
-
-                            </div>
-
-
-                        </div>
+                    <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-2 mt-4 text-center">
+                      <p>Kids 5–12 enjoy special kid pricing.</p>
+                      <p className="font-bold">Kids under 5 dine free.</p>
                     </div>
-                </div>
-            </div>
-            <svg
-                className="w-full rotate-180"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1440 210"
-                fill="none"
-            >
-                <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M1440 30.303L1380 54.2626C1320 78.2222 1200 126.141 1080 108.172C960 90.202 840 6.34335 720 0.353455C600 -5.63644 480 66.2424 360 84.2121C240 102.182 120 66.2424 60 48.2727L0 30.303V210H60C120 210 240 210 360 210C480 210 600 210 720 210C840 210 960 210 1080 210C1200 210 1320 210 1380 210H1440V30.303Z"
-                    fill="#FFB24F"
-                />
-            </svg>
-            <div className="w-full max-w-[1440px] flex flex-col pl-12 py-16 gap-8 max-sm:pl-0">
-                <div className="flex flex-col gap-2 max-sm:items-center">
-                    <h1 className="text-5xl font-bold italic">Our Reviews</h1>
-                    <div className="flex gap-6">
-                        <p className="text-xl font-bold italic">3.9K+ Google Reviews</p>
-                        <div className="flex items-center gap-3">
-                            <p className="text-xl font-bold italic">4.9</p>
-                            <Star className="h-6 w-6 text-[#FFB24F] fill-[#FFB24F]" />
-                        </div>
-                    </div>
-                </div>
-                <Carousel opts={{ align: "start" }} className="w-full">
-                    <CarouselContent className="max-sm:mx-4">
-                        {reviews.map((review, index) => (
-                            <CarouselItem key={index} className="basis-1/2 max-sm:basis-full">
-                                <Card className="h-full min-w-1/2 flex-row py-0 gap-0 transition-shadow duration-300 max-lg:flex-col">
-                                    <div className="w-1/2 flex flex-col py-4 gap-4 max-lg:w-full">
-                                        <CardHeader className="flex flex-row items-center px-4 gap-4">
-                                            <img
-                                                className="w-[60px] h-[60px] rounded-full object-cover"
-                                                src={review.avatar}
-                                            />
-                                            <div className="flex flex-col gap-1">
-                                                <CardTitle className="text-md font-semibold">
-                                                    {review.name}
-                                                </CardTitle>
-                                                <div className="flex gap-1">
-                                                    {[...Array(5)].map((_, i) => (
-                                                        <Star
-                                                            key={i}
-                                                            className="h-6 w-6 text-[#FFB24F] fill-[#FFB24F]"
-                                                        />
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent className="flex-grow flex flex-col items-start justify-between px-4 gap-4">
-                                            <p>
-                                                {review.text.length > 200
-                                                    ? review.text.slice(0, 200) + "..."
-                                                    : review.text}
-                                            </p>
+                  </div>
 
-                                            {review.text.length > 120 && (
-                                                <Dialog>
-                                                    <DialogTrigger className="text-orange-600 hover:cursor-pointer font-semibold hover:underline">
-                                                        Read more
-                                                    </DialogTrigger>
-                                                    <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-                                                        <DialogHeader>
-                                                            <DialogTitle className="flex items-center gap-4">
-                                                                <img
-                                                                    className="w-[60px] h-[60px] rounded-full object-cover"
-                                                                    src={review.avatar}
-                                                                />
-                                                                <div className="flex flex-col">
-                                                                    <p className="text-lg font-semibold">
-                                                                        {review.name}
-                                                                    </p>
-                                                                    <div className="flex gap-1">
-                                                                        {[...Array(5)].map((_, i) => (
-                                                                            <Star
-                                                                                key={i}
-                                                                                className="h-5 w-5 text-[#FFB24F] fill-[#FFB24F]"
-                                                                            />
-                                                                        ))}
-                                                                    </div>
-                                                                </div>
-                                                            </DialogTitle>
-                                                        </DialogHeader>
-                                                        <div className="mt-4 px-2 pb-4 text-base whitespace-pre-wrap">
-                                                            {review.text}
-                                                        </div>
-                                                        <div className="mt-4">
-                                                            <img
-                                                                src={review.image}
-                                                                alt="review image"
-                                                                className="w-full h-[300px] object-cover rounded-xl"
-                                                            />
-                                                        </div>
-                                                    </DialogContent>
-                                                </Dialog>
-                                            )}
-                                        </CardContent>
-                                    </div>
-
-                                    <div className="w-1/2 aspect-square p-4 max-lg:w-full max-lg:max-h-[300px]">
-                                        <img
-                                            className="w-full h-full rounded-xl object-cover"
-                                            src={review.image}
-                                        />
-                                    </div>
-                                </Card>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                </Carousel>
+                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                    <a href="./newLocations">Find a Location</a>
+                  </Button>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    );
+      </div>
+      <svg
+        className="w-full rotate-180"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 210"
+        fill="none"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M1440 30.303L1380 54.2626C1320 78.2222 1200 126.141 1080 108.172C960 90.202 840 6.34335 720 0.353455C600 -5.63644 480 66.2424 360 84.2121C240 102.182 120 66.2424 60 48.2727L0 30.303V210H60C120 210 240 210 360 210C480 210 600 210 720 210C840 210 960 210 1080 210C1200 210 1320 210 1380 210H1440V30.303Z"
+          fill="#FFB24F"
+        />
+      </svg>
+      <div className="w-full max-w-[1440px] flex flex-col pl-12 py-16 gap-8 max-sm:pl-0">
+        <div className="flex flex-col gap-2 max-sm:items-center">
+          <h1 className="text-5xl font-bold italic">Our Reviews</h1>
+          <div className="flex gap-6">
+            <p className="text-xl font-bold italic">3.9K+ Google Reviews</p>
+            <div className="flex items-center gap-3">
+              <p className="text-xl font-bold italic">4.9</p>
+              <Star className="h-6 w-6 text-[#FFB24F] fill-[#FFB24F]" />
+            </div>
+          </div>
+        </div>
+        <Carousel opts={{ align: "start" }} className="w-full">
+          <CarouselContent className="max-sm:mx-4">
+            {reviews.map((review, index) => (
+              <CarouselItem key={index} className="basis-1/2 max-sm:basis-full">
+                <Card className="h-full min-w-1/2 flex-row py-0 gap-0 transition-shadow duration-300 max-lg:flex-col">
+                  <div className="w-1/2 flex flex-col py-4 gap-4 max-lg:w-full">
+                    <CardHeader className="flex flex-row items-center px-4 gap-4">
+                      <img
+                        className="w-[60px] h-[60px] rounded-full object-cover"
+                        src={review.avatar}
+                      />
+                      <div className="flex flex-col gap-1">
+                        <CardTitle className="text-md font-semibold">
+                          {review.name}
+                        </CardTitle>
+                        <div className="flex gap-1">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className="h-6 w-6 text-[#FFB24F] fill-[#FFB24F]"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="flex-grow flex flex-col items-start justify-between px-4 gap-4">
+                      <p>
+                        {review.text.length > 200
+                          ? review.text.slice(0, 200) + "..."
+                          : review.text}
+                      </p>
+
+                      {review.text.length > 120 && (
+                        <Dialog>
+                          <DialogTrigger className="text-orange-600 duration-400 ease-in-out hover:cursor-pointer font-semibold hover:underline">
+                            Read more
+                          </DialogTrigger>
+                          <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle className="flex items-center gap-4">
+                                <img
+                                  className="w-[60px] h-[60px] rounded-full object-cover"
+                                  src={review.avatar}
+                                />
+                                <div className="flex flex-col">
+                                  <p className="text-lg font-semibold">
+                                    {review.name}
+                                  </p>
+                                  <div className="flex gap-1">
+                                    {[...Array(5)].map((_, i) => (
+                                      <Star
+                                        key={i}
+                                        className="h-5 w-5 text-[#FFB24F] fill-[#FFB24F]"
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              </DialogTitle>
+                            </DialogHeader>
+                            <div className="mt-4 px-2 pb-4 text-base whitespace-pre-wrap">
+                              {review.text}
+                            </div>
+                            <div className="mt-4">
+                              <img
+                                src={review.image}
+                                alt="review image"
+                                className="w-full h-[300px] object-cover rounded-xl"
+                              />
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      )}
+                    </CardContent>
+                  </div>
+
+                  <div className="w-1/2 aspect-square p-4 max-lg:w-full max-lg:max-h-[300px]">
+                    <img
+                      className="w-full h-full rounded-xl object-cover"
+                      src={review.image}
+                    />
+                  </div>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
+    </div>
+  );
 }
 
 export default Home;
