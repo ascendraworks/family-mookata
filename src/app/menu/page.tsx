@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Accordion,
@@ -12,7 +12,8 @@ import {
 const menuData = {
   meats: {
     title: "Meat Delight",
-    description: "Savor our premium cuts — tender pork, juicy chicken, and flavorful beef, all marinated in-house for maximum taste.",
+    description:
+      "Savor our premium cuts — tender pork, juicy chicken, and flavorful beef, all marinated in-house for maximum taste.",
     items: [
       // Pork
       { name: "Black Pepper Pork", image: "/img/menu/black_pepper_pork.jpeg" },
@@ -22,14 +23,18 @@ const menuData = {
 
       // Chicken
       { name: "Cajun Chicken", image: "/img/menu/cajun_chicken.jpeg" },
-      { name: "Honey Tomato Chicken", image: "/img/menu/honey_tomato_chicken.jpeg" },
+      {
+        name: "Honey Tomato Chicken",
+        image: "/img/menu/honey_tomato_chicken.jpeg",
+      },
       { name: "Mala Chicken", image: "/img/menu/mala_chicken.jpeg" },
       { name: "Tom Yum Chicken", image: "/img/menu/tom_yum_chicken.jpeg" },
     ],
   },
   seafood: {
     title: "Seafood Delight",
-    description: "Fresh, succulent seafood — from prawns to scallops, crab to squid — handpicked daily for the perfect grill experience.",
+    description:
+      "Fresh, succulent seafood — from prawns to scallops, crab to squid — handpicked daily for the perfect grill experience.",
     items: [
       { name: "Abalone", image: "/img/menu/abalone.jpeg" },
       { name: "Blue Crayfish", image: "/img/menu/blue_crayfish.jpeg" },
@@ -51,7 +56,8 @@ const menuData = {
   },
   otherFood: {
     title: "Other Food Delight",
-    description: "A variety of sides and snacks — from cheese tofu to fish balls, quail eggs, and more — perfect for pairing with your grill.",
+    description:
+      "A variety of sides and snacks — from cheese tofu to fish balls, quail eggs, and more — perfect for pairing with your grill.",
     items: [
       { name: "Curry Ball", image: "/img/menu/cheese_ball.jpeg" },
       { name: "Cheese Tofu", image: "/img/menu/cheese_tofu.jpeg" },
@@ -68,7 +74,8 @@ const menuData = {
   },
   vegetables: {
     title: "Vegetable Delight",
-    description: "Crisp greens, mushrooms, and fresh vegetables — the perfect balance to complete your mookata feast.",
+    description:
+      "Crisp greens, mushrooms, and fresh vegetables — the perfect balance to complete your mookata feast.",
     items: [
       { name: "Bok Choy", image: "/img/menu/bok_choy.jpeg" },
       { name: "Broccoli", image: "/img/menu/broccoli.jpeg" },
@@ -83,22 +90,100 @@ const menuData = {
   },
   carbs: {
     title: "Carbo Delight",
-    description: "Fill up with comforting carbs — noodles, and vermicelli to soak up every drop of flavor from the grill and broth.",
+    description:
+      "Fill up with comforting carbs — noodles, and vermicelli to soak up every drop of flavor from the grill and broth.",
     items: [
       { name: "Glass Noodles", image: "/img/menu/vermicelli.jpeg" },
       { name: "Maggi", image: "/img/menu/maggi.jpeg" },
     ],
-  }
+  },
 };
 
-function Menu() {
-  const [selectedCategory, setSelectedCategory] = useState<"meats" | "seafood" | "vegetables">("meats");
+function newMenu() {
+  const [selectedCategory, setSelectedCategory] = useState<
+    "meats" | "seafood" | "vegetables"
+  >("meats");
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+
+  // Get all image URLs from menu data
+  const getAllImageUrls = () => {
+    const urls = [];
+    Object.values(menuData).forEach((category) => {
+      category.items.forEach((item) => {
+        urls.push(item.image);
+      });
+    });
+    // Add the banner image
+    urls.push("./img/protein.png");
+    return urls;
+  };
+
+  // Preload images
+  useEffect(() => {
+    const imageUrls = getAllImageUrls();
+    let loadCount = 0;
+    const totalImages = imageUrls.length;
+
+    const preloadImage = (url: string) => {
+      return new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          setLoadedImages((prev) => new Set([...prev, url]));
+          loadCount++;
+          if (loadCount === totalImages) {
+            setImagesLoaded(true);
+          }
+          resolve();
+        };
+        img.onerror = () => {
+          // Still count failed images as "loaded" to prevent hanging
+          loadCount++;
+          if (loadCount === totalImages) {
+            setImagesLoaded(true);
+          }
+          resolve();
+        };
+        img.src = url;
+      });
+    };
+
+    // Preload all images
+    Promise.all(imageUrls.map(preloadImage)).then(() => {
+      setImagesLoaded(true);
+    });
+  }, []);
+
+  // Show loading state while images are preloading
+  if (!imagesLoaded) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin mx-auto mb-4"></div>
+          <h2 className="text-2xl font-bold text-orange-800 mb-2">
+            Loading Menu
+          </h2>
+          <p className="text-orange-600">
+            Preparing our delicious offerings...
+          </p>
+          <div className="mt-4 text-sm text-orange-500">
+            {loadedImages.size} / {getAllImageUrls().length} images loaded
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col">
       {/* Banner */}
       <div className="relative">
-        <svg className="w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 311" fill="none">
+        <svg
+          className="w-full"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 311"
+          fill="none"
+        >
           <defs>
             <clipPath id="clip-shape">
               <path d="M0 0L1440 133.189V258.941L0 311V0Z" />
@@ -106,12 +191,22 @@ function Menu() {
           </defs>
           <g clipPath="url(#clip-shape)">
             <path d="M0 0L1440 133.189V258.941L0 311V0Z" fill="#FFB24F" />
-            <image className="w-2/3 absolute right-0" href="./img/protein.png" x="50%" y="-70%" />
+            <image
+              className="w-2/3 absolute right-0"
+              href="./img/protein.png"
+              x="50%"
+              y="-70%"
+            />
           </g>
         </svg>
         <div className="flex flex-col absolute gap-2 top-[40%] left-[5%] max-lg:top-[35%] max-md:top-[30%]">
-          <h1 className="text-5xl text-white font-bold italic max-lg:text-4xl">Our Menu</h1>
-          <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">Meats, seafood, vegetables & more — <br></br>everything for the perfect grill.</p>
+          <h1 className="text-5xl text-white font-bold italic max-lg:text-4xl">
+            Our Menu
+          </h1>
+          <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">
+            Meats, seafood, vegetables & more — <br></br>everything for the
+            perfect grill.
+          </p>
         </div>
       </div>
 
@@ -119,8 +214,12 @@ function Menu() {
       <div className="h-full max-md:hidden">
         {/* Title Section */}
         <div className="flex flex-col border-b-2 border-[#FFB24F] px-12 pt-12 pb-8 gap-2">
-          <h1 className="text-5xl font-bold italic">{menuData[selectedCategory].title}</h1>
-          <p className="text-xl italic">{menuData[selectedCategory].description}</p>
+          <h1 className="text-5xl font-bold italic">
+            {menuData[selectedCategory].title}
+          </h1>
+          <p className="text-xl italic">
+            {menuData[selectedCategory].description}
+          </p>
         </div>
 
         {/* Sidebar + Cards */}
@@ -131,8 +230,10 @@ function Menu() {
               <button
                 key={key}
                 onClick={() => setSelectedCategory(key as any)}
-                className={`text-2xl max-lg:text-lg text-left hover:text-orange-500 transition-colors ${
-                  selectedCategory === key ? "font-bold text-orange-500 italic" : ""
+                className={`text-2xl max-lg:text-lg text-left hover:cursor-pointer duration-300 ease-in-out hover:text-orange-500 transition-colors ${
+                  selectedCategory === key
+                    ? "font-bold text-orange-500 italic"
+                    : ""
                 }`}
               >
                 {menuData[key as keyof typeof menuData].title}
@@ -143,20 +244,24 @@ function Menu() {
           {/* Item Cards */}
           <div className="w-full grid grid-cols-3 py-8 px-12 gap-8">
             {menuData[selectedCategory].items.map((item, i) => (
-              <Card key={i} className="h-full flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden">
-                
+              <Card
+                key={i}
+                className="h-full flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden"
+              >
                 <CardHeader className="px-4 pt-4">
                   <img
                     src={item.image}
                     alt={item.name}
                     className="w-full rounded-lg"
+                    loading="eager"
                   />
                 </CardHeader>
 
                 <CardContent className="flex flex-col flex-grow justify-between pt-4 pb-6">
-                  <p className="text-xl font-bold text-center max-lg:text-base">{item.name}</p>
+                  <p className="text-xl font-bold text-center max-lg:text-base">
+                    {item.name}
+                  </p>
                 </CardContent>
-                
               </Card>
             ))}
           </div>
@@ -165,37 +270,45 @@ function Menu() {
 
       {/* Mobile View (Accordion) */}
       <Accordion className="md:hidden" type="single" collapsible>
-        {Object.entries(menuData).map(([key, { title, description, items }]) => (
-          <AccordionItem key={key} className="border-[#FFB24F]" value={key}>
-            <AccordionTrigger className="items-center px-8">
-              <div className="flex flex-col px-12 pt-12 pb-8 gap-2">
-                <h1 className="text-5xl font-bold italic">{title}</h1>
-                <p className="text-xl italic">{description}</p>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="px-8">
-              <div className="grid grid-cols-2 gap-8 px-4 py-8">
-                {items.map((item, i) => (
-                   <Card key={i} className="h-fit bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
-                    <CardHeader className="px-4 pt-4">
+        {Object.entries(menuData).map(
+          ([key, { title, description, items }]) => (
+            <AccordionItem key={key} className="border-[#FFB24F]" value={key}>
+              <AccordionTrigger className="items-center px-8">
+                <div className="flex flex-col px-12 pt-12 pb-8 gap-2">
+                  <h1 className="text-5xl font-bold italic">{title}</h1>
+                  <p className="text-xl italic">{description}</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-8">
+                <div className="grid grid-cols-2 gap-8 px-4 py-8">
+                  {items.map((item, i) => (
+                    <Card
+                      key={i}
+                      className="h-fit bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0"
+                    >
+                      <CardHeader className="px-4 pt-4">
                         <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full rounded-lg"
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full rounded-lg"
+                          loading="eager"
                         />
-                    </CardHeader>
-                    <CardContent className="flex justify-center pt-4 pb-6">
-                        <p className="text-xl font-bold text-center">{item.name}</p>
-                    </CardContent>
-                 </Card>
-                ))}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
+                      </CardHeader>
+                      <CardContent className="flex justify-center pt-4 pb-6">
+                        <p className="text-xl font-bold text-center">
+                          {item.name}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          )
+        )}
       </Accordion>
     </div>
   );
 }
 
-export default Menu;
+export default newMenu;
