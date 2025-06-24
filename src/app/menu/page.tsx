@@ -79,17 +79,17 @@ const menuData = {
       { name: "Broccoli", image: "/img/menu/broccoli.jpeg" },
       { name: "Chinese Cabbage", image: "/img/menu/chinese_cabbage.jpeg" },
       { name: "Corn", image: "/img/menu/corn.jpeg" },
-      { name: "Golden Mushroom", image: "/img/menu/golden_mushroom.jpeg" },
       { name: "Kang Kong", image: "/img/menu/kangkong.jpeg" },
     ],
   },
   mushrooms: {
     title: "Mushroom Delight",
-    description: "text",
+    description: "Earthy, juicy, and packed with umami.",
     items: [
       { name: "King Mushroom", image: "/img/menu/king_mushroom.jpeg" },
       { name: "Oyster Mushroom", image: "/img/menu/oyster_mushroom.jpeg" },
       { name: "Shinmeji Mushroom", image: "/img/menu/shinmeji_mushroom.jpeg" },
+      { name: "Golden Mushroom", image: "/img/menu/golden_mushroom.jpeg" },
     ]
   },
   carbs: {
