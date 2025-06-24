@@ -506,7 +506,7 @@ function Home() {
                     </div>
                   </div>
 
-                  <Button className="bg-orange-500 mt-6 w-full">
+                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
                     <a href="./newMenu">View Menu</a>
                   </Button>
                 </div>
