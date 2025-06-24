@@ -25,11 +25,11 @@ export default function newAbout() {
         }
 
         .flow-right {
-          animation: flowRight 60s linear infinite;
+          animation: flowRight 120s linear infinite;
         }
 
         .flow-left {
-          animation: flowLeft 60s linear infinite;
+          animation: flowLeft 120s linear infinite;
         }
 
         .scrolling-text {
@@ -44,7 +44,7 @@ export default function newAbout() {
           src="./img/seafoodbuffet/seafood-buffet-1.jpg"
         />
         <div className="w-full h-full bg-black opacity-60 absolute top-0"></div>
-        <div className="flex flex-col gap-4 absolute top-1/3 left-24 text-white max-md:left-8 max-md:top-1/4">
+        <div className="flex flex-col gap-4 absolute top-1/3 left-24 text-white max-md:left-8 max-md:top-1/4 max-sm:top-1/6">
           <h1 className="text-8xl font-bold italic">Our Story</h1>
           <p className="text-3xl italic">
             Fresh Ingredients. Warm Atmosphere. Lasting Memories.
