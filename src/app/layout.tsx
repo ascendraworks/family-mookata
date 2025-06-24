@@ -36,7 +36,11 @@ export const metadata: Metadata = {
     title: "Family Mookata - Top Thai BBQ Steamboat in Singapore",
     description: "Affordable Mookata for families and friends. Multiple locations.",
   },
+  icons: {
+    icon: "/logo.png",
+  },
 };
+
 
 export default function RootLayout({
   children,

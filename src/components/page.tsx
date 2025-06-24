@@ -531,9 +531,15 @@ function Home() {
           {/* Right: QR Code */}
           <div className="w-full flex flex-col items-center gap-8">
             <img className="w-2/3 rounded-xl shadow-xl" src="./img/qr.png" />
-            <p className="text-lg text-center font-bold italic">
+            <p className="text-lg text-center font-bold italic flex flex-col gap-4">
               Scan to sign up instantly and start earning rewards on your next
               visit.
+              <a
+                className="text-xl text-blue-500 underline"
+                href="https://myprofile.eposdata.com/familymookata/register"
+              >
+                Register Here
+              </a>
             </p>
           </div>
         </motion.div>
@@ -698,7 +704,12 @@ function Home() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col gap-2 max-sm:items-center"
         >
-          <h1 className="text-5xl font-bold italic">Our Reviews</h1>
+          <div className="flex items-center gap-8">
+            <h1 className="text-5xl font-bold italic">Our Reviews</h1>
+            <a href="https://www.google.com/search?sca_esv=019dea2479866187&rlz=1C1GCEA_enSG1156SG1156&sxsrf=AE3TifNdY0iszcteeRG6Gqk33nwGJF6pug:1750755435442&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-EzLYllDvJBG2l2SbT9Cu4ucP0wp5DY8Gwj4tmBi4TXar3j_CMKxuj1BNLcSVfevaLy2qtY4k5GM8q6ewycWnHE-15_U9&q=Family+Mookata+Reviews&sa=X&ved=2ahUKEwiWwcWe2ImOAxXT8DgGHePvNNIQ0bkNegQIJRAE&biw=1920&bih=945&dpr=1">
+              <ExternalLink className="text-blue-500 w-8 h-8" />
+            </a>
+          </div>
           <div className="flex gap-6">
             <p className="text-xl font-bold italic">3.9K+ Google Reviews</p>
             <div className="flex items-center gap-3">

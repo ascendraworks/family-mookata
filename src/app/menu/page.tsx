@@ -15,18 +15,12 @@ const menuData = {
     description:
       "Savor our premium cuts — tender pork, juicy chicken, and flavorful beef, all marinated in-house for maximum taste.",
     items: [
-      // Pork
       { name: "Black Pepper Pork", image: "/img/menu/black_pepper_pork.jpeg" },
       { name: "Garlic Pork", image: "/img/menu/garlic_pork.jpeg" },
       { name: "Pork Belly", image: "/img/menu/pork_belly.jpeg" },
       { name: "Thai Pork", image: "/img/menu/thai_pork.jpeg" },
-
-      // Chicken
       { name: "Cajun Chicken", image: "/img/menu/cajun_chicken.jpeg" },
-      {
-        name: "Honey Tomato Chicken",
-        image: "/img/menu/honey_tomato_chicken.jpeg",
-      },
+      { name: "Honey Tomato Chicken", image: "/img/menu/honey_tomato_chicken.jpeg" },
       { name: "Mala Chicken", image: "/img/menu/mala_chicken.jpeg" },
       { name: "Tom Yum Chicken", image: "/img/menu/tom_yum_chicken.jpeg" },
     ],
@@ -99,73 +93,58 @@ const menuData = {
   },
 };
 
-function newMenu() {
-  const [selectedCategory, setSelectedCategory] = useState<
-    "meats" | "seafood" | "vegetables"
-  >("meats");
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+// Strict typing
+type Category = keyof typeof menuData;
 
-  // Get all image URLs from menu data
-  const getAllImageUrls = () => {
-    const urls = [];
+function NewMenu() {
+  const [selectedCategory, setSelectedCategory] = useState<Category>("meats");
+  const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set<string>());
+
+  const getAllImageUrls = (): string[] => {
+    const urls: string[] = [];
     Object.values(menuData).forEach((category) => {
       category.items.forEach((item) => {
         urls.push(item.image);
       });
     });
-    // Add the banner image
     urls.push("./img/protein.png");
     return urls;
   };
 
-  // Preload images
   useEffect(() => {
     const imageUrls = getAllImageUrls();
     let loadCount = 0;
     const totalImages = imageUrls.length;
 
-    const preloadImage = (url: string) => {
-      return new Promise<void>((resolve, reject) => {
+    const preloadImage = (url: string): Promise<void> => {
+      return new Promise<void>((resolve) => {
         const img = new Image();
         img.onload = () => {
-          setLoadedImages((prev) => new Set([...prev, url]));
+          setLoadedImages((prev: Set<string>) => new Set([...prev, url]));
           loadCount++;
-          if (loadCount === totalImages) {
-            setImagesLoaded(true);
-          }
+          if (loadCount === totalImages) setImagesLoaded(true);
           resolve();
         };
         img.onerror = () => {
-          // Still count failed images as "loaded" to prevent hanging
           loadCount++;
-          if (loadCount === totalImages) {
-            setImagesLoaded(true);
-          }
+          if (loadCount === totalImages) setImagesLoaded(true);
           resolve();
         };
         img.src = url;
       });
     };
 
-    // Preload all images
-    Promise.all(imageUrls.map(preloadImage)).then(() => {
-      setImagesLoaded(true);
-    });
+    Promise.all(imageUrls.map(preloadImage)).then(() => setImagesLoaded(true));
   }, []);
 
-  // Show loading state while images are preloading
   if (!imagesLoaded) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin mx-auto mb-4"></div>
-          <h2 className="text-2xl font-bold text-orange-800 mb-2">
-            Loading Menu
-          </h2>
-          <p className="text-orange-600">
-            Preparing our delicious offerings...
-          </p>
+          <h2 className="text-2xl font-bold text-orange-800 mb-2">Loading Menu</h2>
+          <p className="text-orange-600">Preparing our delicious offerings...</p>
           <div className="mt-4 text-sm text-orange-500">
             {loadedImages.size} / {getAllImageUrls().length} images loaded
           </div>
@@ -176,14 +155,8 @@ function newMenu() {
 
   return (
     <div className="flex flex-col">
-      {/* Banner */}
       <div className="relative">
-        <svg
-          className="w-full"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 311"
-          fill="none"
-        >
+        <svg className="w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 311" fill="none">
           <defs>
             <clipPath id="clip-shape">
               <path d="M0 0L1440 133.189V258.941L0 311V0Z" />
@@ -191,76 +164,46 @@ function newMenu() {
           </defs>
           <g clipPath="url(#clip-shape)">
             <path d="M0 0L1440 133.189V258.941L0 311V0Z" fill="#FFB24F" />
-            <image
-              className="w-2/3 absolute right-0"
-              href="./img/protein.png"
-              x="50%"
-              y="-70%"
-            />
+            <image className="w-2/3 absolute right-0" href="./img/protein.png" x="50%" y="-70%" />
           </g>
         </svg>
         <div className="flex flex-col absolute gap-2 top-[40%] left-[5%] max-lg:top-[35%] max-md:top-[30%]">
-          <h1 className="text-5xl text-white font-bold italic max-lg:text-4xl">
-            Our Menu
-          </h1>
+          <h1 className="text-5xl text-white font-bold italic max-lg:text-4xl">Our Menu</h1>
           <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">
-            Meats, seafood, vegetables & more — <br></br>everything for the
-            perfect grill.
+            Meats, seafood, vegetables & more — <br /> everything for the perfect grill.
           </p>
         </div>
       </div>
 
-      {/* Desktop View */}
       <div className="h-full max-md:hidden">
-        {/* Title Section */}
         <div className="flex flex-col border-b-2 border-[#FFB24F] px-12 pt-12 pb-8 gap-2">
-          <h1 className="text-5xl font-bold italic">
-            {menuData[selectedCategory].title}
-          </h1>
-          <p className="text-xl italic">
-            {menuData[selectedCategory].description}
-          </p>
+          <h1 className="text-5xl font-bold italic">{menuData[selectedCategory].title}</h1>
+          <p className="text-xl italic">{menuData[selectedCategory].description}</p>
         </div>
 
-        {/* Sidebar + Cards */}
         <div className="flex w-full">
-          {/* Sidebar */}
           <div className="w-fit flex flex-col border-r-2 border-[#FFB24F] px-12 py-8 gap-8 max-md:hidden">
             {Object.keys(menuData).map((key) => (
               <button
                 key={key}
-                onClick={() => setSelectedCategory(key as any)}
+                onClick={() => setSelectedCategory(key as Category)}
                 className={`text-2xl max-lg:text-lg text-left hover:cursor-pointer duration-300 ease-in-out hover:text-orange-500 transition-colors ${
-                  selectedCategory === key
-                    ? "font-bold text-orange-500 italic"
-                    : ""
+                  selectedCategory === key ? "font-bold text-orange-500 italic" : ""
                 }`}
               >
-                {menuData[key as keyof typeof menuData].title}
+                {menuData[key as Category].title}
               </button>
             ))}
           </div>
 
-          {/* Item Cards */}
           <div className="w-full grid grid-cols-3 py-8 px-12 gap-8">
             {menuData[selectedCategory].items.map((item, i) => (
-              <Card
-                key={i}
-                className="h-full flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden"
-              >
+              <Card key={i} className="h-full flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden">
                 <CardHeader className="px-4 pt-4">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full rounded-lg"
-                    loading="eager"
-                  />
+                  <img src={item.image} alt={item.name} className="w-full rounded-lg" loading="eager" />
                 </CardHeader>
-
                 <CardContent className="flex flex-col flex-grow justify-between pt-4 pb-6">
-                  <p className="text-xl font-bold text-center max-lg:text-base">
-                    {item.name}
-                  </p>
+                  <p className="text-xl font-bold text-center max-lg:text-base">{item.name}</p>
                 </CardContent>
               </Card>
             ))}
@@ -268,47 +211,34 @@ function newMenu() {
         </div>
       </div>
 
-      {/* Mobile View (Accordion) */}
       <Accordion className="md:hidden" type="single" collapsible>
-        {Object.entries(menuData).map(
-          ([key, { title, description, items }]) => (
-            <AccordionItem key={key} className="border-[#FFB24F]" value={key}>
-              <AccordionTrigger className="items-center px-8">
-                <div className="flex flex-col px-12 pt-12 pb-8 gap-2">
-                  <h1 className="text-5xl font-bold italic">{title}</h1>
-                  <p className="text-xl italic">{description}</p>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="px-8">
-                <div className="grid grid-cols-2 gap-8 px-4 py-8">
-                  {items.map((item, i) => (
-                    <Card
-                      key={i}
-                      className="h-fit bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0"
-                    >
-                      <CardHeader className="px-4 pt-4">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-full rounded-lg"
-                          loading="eager"
-                        />
-                      </CardHeader>
-                      <CardContent className="flex justify-center pt-4 pb-6">
-                        <p className="text-xl font-bold text-center">
-                          {item.name}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          )
-        )}
+        {Object.entries(menuData).map(([key, { title, description, items }]) => (
+          <AccordionItem key={key} className="border-[#FFB24F]" value={key}>
+            <AccordionTrigger className="items-center px-8">
+              <div className="flex flex-col px-12 pt-12 pb-8 gap-2">
+                <h1 className="text-5xl font-bold italic">{title}</h1>
+                <p className="text-xl italic">{description}</p>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-8">
+              <div className="grid grid-cols-2 gap-8 px-4 py-8">
+                {items.map((item, i) => (
+                  <Card key={i} className="h-fit bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
+                    <CardHeader className="px-4 pt-4">
+                      <img src={item.image} alt={item.name} className="w-full rounded-lg" loading="eager" />
+                    </CardHeader>
+                    <CardContent className="flex justify-center pt-4 pb-6">
+                      <p className="text-xl font-bold text-center">{item.name}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
       </Accordion>
     </div>
   );
 }
 
-export default newMenu;
+export default NewMenu;
