@@ -99,7 +99,7 @@ const menuData = {
   },
 };
 
-function newMenu() {
+function NewMenu() {
   const [selectedCategory, setSelectedCategory] = useState<
     "meats" | "seafood" | "vegetables"
   >("meats");
@@ -126,7 +126,7 @@ function newMenu() {
     const totalImages = imageUrls.length;
 
     const preloadImage = (url: string) => {
-      return new Promise<void>((resolve, reject) => {
+      return new Promise<void>((resolve) => {
         const img = new Image();
         img.onload = () => {
           setLoadedImages((prev) => new Set([...prev, url]));
@@ -311,4 +311,4 @@ function newMenu() {
   );
 }
 
-export default newMenu;
+export default NewMenu;

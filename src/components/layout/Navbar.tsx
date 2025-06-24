@@ -11,6 +11,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 function Navbar() {
   const pathname = usePathname();
@@ -26,25 +27,26 @@ function Navbar() {
   return (
     <div className="flex justify-between z-0 max-md:px-4 max-md:py-2">
       <div className="w-full flex justify-between items-center px-16 max-md:hidden">
-        <a href="/">
+        <Link href="/">
           <Image src="/img/logo.png" alt="Family Mookata Logo" width={100} height={100} />
-        </a>
+        </Link>
+
         <div className="flex gap-12 text-lg overflow-hidden">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className={`${pathname === link.href ? "text-[#ffb24f] font-bold italic" : "hover:text-[#ffb24f] duration-300"}`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
 
-      <a href="/">
+      <Link href="/">
         <Image className="md:hidden" src="/img/logo.png" alt="Family Mookata Logo" width={70} height={70} />
-      </a>
+      </Link>
 
       <Sheet>
         <SheetTrigger className="md:hidden">
