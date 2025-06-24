@@ -264,13 +264,13 @@ export default function NewLocations() {
                 </CardHeader>
                 <CardContent className="h-full flex flex-col gap-4 justify-between">
                   <div className="flex items-center gap-4">
-                    <Flag className="h-8 min-w-8" />
+                    <Flag className="min-h-8 min-w-8" />
                     <p>
                       {location.address}, {location.postalCode}
                     </p>
                   </div>
                   <div className="flex items-center gap-4">
-                    <Clock className="h-8 w-8" />
+                    <Clock className="min-h-8 min-w-8" />
                     <p>{location.operatingHours || "1PM - 11PM"}</p>
                   </div>
                   <div className="flex items-center gap-4">
