@@ -1,12 +1,12 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: "class",
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -19,7 +19,22 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+        sans: [
+          "var(--font-sans)",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "Noto Sans",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+        ],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -57,18 +72,19 @@ const config: Config = {
         },
         // Custom colors from your design
         orange: {
-          '50': '#fff7ed', // Background color
-          '100': '#ffedd5',
-          '200': '#fed7aa',
-          '300': '#fdbb74',
-          '400': '#fb923c', // A splash color
-          '500': '#f97316', // Main orange for buttons, accents
-          '600': '#ea580c', // Darker orange for hover
+          "50": "#fff7ed", // Background color
+          "100": "#ffedd5",
+          "200": "#fed7aa",
+          "300": "#fdbb74",
+          "400": "#fb923c", // A splash color
+          "500": "#f97316", // Main orange for buttons, accents
+          "600": "#ea580c", // Darker orange for hover
         },
-        amber: { // For gradients and highlights
-          '400': '#fbbf24',
-          '500': '#f59e0b',
-        }
+        amber: {
+          // For gradients and highlights
+          "400": "#fbbf24",
+          "500": "#f59e0b",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -92,9 +108,30 @@ const config: Config = {
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
-    require("@tailwindcss/line-clamp"), // Added line-clamp plugin
+    function ({
+      addUtilities,
+    }: {
+      addUtilities: (
+        utilities: Record<
+          string,
+          Record<string, string | Record<string, string>>
+        >,
+        variants?: string[]
+      ) => void;
+    }) {
+      const newUtilities = {
+        ".hover-btn": {
+          "transition-timing-function": "ease-in-out",
+          "transition-duration": "400ms",
+          "&:hover": {
+            "background-color": "#fb923c !important",
+            cursor: "pointer",
+          },
+        },
+      };
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    },
   ],
-}
+};
 
 export default config;

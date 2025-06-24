@@ -169,11 +169,14 @@ function Home() {
             Starting from $9.90 ONLY
           </p>
           <div className="flex gap-8 max-lg:justify-center z-10">
-            <Button className="bg-[#FFB24F] shadow-lg" size="lg">
+            <Button
+              className="bg-[#FFB24F] shadow-lg hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out"
+              size="lg"
+            >
               <a href="./newMenu">View Menu</a>
             </Button>
             <Button
-              className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg"
+              className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg  hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out hover:border-orange-400 hover:text-white"
               size="lg"
             >
               <a href="https://familymookata.eposqr.com/">Delivery</a>
@@ -384,7 +387,7 @@ function Home() {
           <div className="flex flex-col gap-2 max-sm:items-center">
             <h1 className="text-5xl font-bold italic">Become A Member</h1>
             <p className="text-xl font-bold italic">
-              Join our mookata family today, It's completely FREE!
+              Join our mookata family today, It&apos;s completely FREE!
             </p>
             <ul className="flex flex-col list-disc py-8 gap-4 list-none">
               <li>
@@ -394,7 +397,7 @@ function Home() {
                   </div>
                   <div>
                     <p className="font-bold text-xl">Lifetime Free</p>
-                    You have nothing to lose, it's FREE!
+                    You have nothing to lose, it&apos;s FREE!
                   </div>
                 </div>
               </li>
@@ -505,7 +508,7 @@ function Home() {
                       <p>Kid (12 - 18): $11.90</p>
                     </div>
                   </div>
-                  <Button className="bg-orange-500 mt-4">
+                  <Button className="bg-orange-500 mt-4 hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
                     <a href="./newMenu">View Menu</a>
                   </Button>
                 </div>
@@ -533,7 +536,7 @@ function Home() {
                       <p>Kid: $14.90</p>
                     </div>
                   </div>
-                  <Button className="bg-orange-500 mt-4">
+                  <Button className="bg-orange-500 mt-4 hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
                     <a href="./newMenu">View Menu</a>
                   </Button>
                 </div>
@@ -558,7 +561,7 @@ function Home() {
                       Discounts applied automatically for all buffet options.
                     </div>
                   </div>
-                  <Button className="bg-orange-500 mt-4">
+                  <Button className="bg-orange-500 mt-4 hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
                     <a href="./newMenu">View Menu</a>
                   </Button>
                 </div>
@@ -625,7 +628,7 @@ function Home() {
 
                       {review.text.length > 120 && (
                         <Dialog>
-                          <DialogTrigger className="text-orange-600 hover:cursor-pointer font-semibold hover:underline">
+                          <DialogTrigger className="text-orange-600 duration-400 ease-in-out hover:cursor-pointer font-semibold hover:underline">
                             Read more
                           </DialogTrigger>
                           <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
