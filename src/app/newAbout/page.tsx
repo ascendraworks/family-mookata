@@ -25,11 +25,11 @@ export default function newAbout() {
         }
 
         .flow-right {
-          animation: flowRight 30s linear infinite;
+          animation: flowRight 60s linear infinite;
         }
 
         .flow-left {
-          animation: flowLeft 30s linear infinite;
+          animation: flowLeft 60s linear infinite;
         }
 
         .scrolling-text {
