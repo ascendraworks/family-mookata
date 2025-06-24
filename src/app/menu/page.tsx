@@ -81,10 +81,16 @@ const menuData = {
       { name: "Corn", image: "/img/menu/corn.jpeg" },
       { name: "Golden Mushroom", image: "/img/menu/golden_mushroom.jpeg" },
       { name: "Kang Kong", image: "/img/menu/kangkong.jpeg" },
+    ],
+  },
+  mushrooms: {
+    title: "Mushroom Delight",
+    description: "text",
+    items: [
       { name: "King Mushroom", image: "/img/menu/king_mushroom.jpeg" },
       { name: "Oyster Mushroom", image: "/img/menu/oyster_mushroom.jpeg" },
       { name: "Shinmeji Mushroom", image: "/img/menu/shinmeji_mushroom.jpeg" },
-    ],
+    ]
   },
   carbs: {
     title: "Carbo Delight",

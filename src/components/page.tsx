@@ -460,7 +460,7 @@ function Home() {
           </motion.div>
         </div>
       </div>
-      <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8">
+      <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8 max-sm:px-4">
         <motion.div
           ref={membershipRef}
           initial={{ opacity: 0 }}

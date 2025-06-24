@@ -342,11 +342,10 @@ export default function About() {
             Become Part of Our Family
           </h2>
           <p className="text-2xl max-sm:text-xl">
-            Find a Family Mookata outlet near you and start your sizzling
-            experience today.
+            Come be a part of our family, we promise you won't regret it.
           </p>
-          <Button className="bg-[#ffb24f] text-xl px-8 py-6 font-bold italic mt-4">
-            <a href="/locations">View Locations</a>
+          <Button className="bg-[#ffb24f] text-xl px-8 py-6 font-bold italic mt-4 hover:bg-orange-600">
+            <a href="https://myprofile.eposdata.com/familymookata/register">Join Us</a>
           </Button>
         </div>
       </section>
