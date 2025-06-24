@@ -22,9 +22,9 @@ import {
 } from "@/components/ui/dialog";
 
 const locations = [
-    { name: "Yishun", address: "6 Yishun Industrial Street 1 Northview Bizhub", postalCode: "Singapore 768090", imgSrc: "/img/yishun.jpg", description: "Vibrant atmosphere, perfect for gatherings.", phone: "8927 2782" },
-    { name: "Bedok", address: "539 Bedok North Street 3, #01-593", postalCode: "Singapore 460539", imgSrc: "/img/bedok.jpg", description: "Cozy and welcoming, great for families.", phone: "8188 4738" },
-    { name: "Ang Mo Kio", address: "Blk 215 Ang Mo Kio Ave 1, #01-877", postalCode: "Singapore 560215", imgSrc: "/img/amk.jpg", description: "Modern setup, ideal for a night out.", phone: "8927 2782" },
+    { name: "Yishun", address: "6 Yishun Industrial Street 1 Northview Bizhub", postalCode: "Singapore 768090", imgSrc: "/img/yishun.jpg", description: "Vibrant atmosphere, perfect for gatherings.", timings: "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm", phone: "8927 2782" },
+    { name: "Bedok", address: "539 Bedok North Street 3, #01-593", postalCode: "Singapore 460539", imgSrc: "/img/bedok.jpg", description: "Cozy and welcoming, great for families.", timings: "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm", phone: "8188 4738" },
+    { name: "Ang Mo Kio", address: "Blk 215 Ang Mo Kio Ave 1, #01-877", postalCode: "Singapore 560215", imgSrc: "/img/amk.jpg", description: "Modern setup, ideal for a night out.", timings: "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm", phone: "8927 2782" },
 ];
 
 const reviews = [
@@ -176,7 +176,7 @@ function Home() {
                         <p className="text-xl font-bold italic">Find A Family Mookata Near You</p>
                     </div>
                     <div className="flex flex-col md:flex-row w-full md:h-[340px] gap-6 md:gap-2.5">
-                        {locations.map((location) => (
+                    {locations.map((location) => (
                         <div
                             key={`${location.name}-desktop`}
                             className="hidden md:flex group relative md:w-[80px] md:h-full rounded-xl
@@ -187,25 +187,36 @@ function Home() {
                             style={{ backgroundImage: `url(${location.imgSrc})` }}
                             aria-label={`View details for Family Mookata ${location.name} branch`}
                         >
+                            {/* Overlay always visible */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
-                                        opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded-[30px] pointer-events-none"></div>
+                                        opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"></div>
+
                             <div className="relative z-10 p-5 w-full">
-                            <h3
-                                className="text-white text-2xl font-bold
-                                        opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0
+                            {/* Title always visible */}
+                            <h3 className="text-white text-2xl font-bold
+                                        opacity-100 translate-y-0
                                         transition-all duration-400 ease-in-out delay-100"
                             >
                                 {location.name}
                             </h3>
+
+                            {/* Description always visible */}
                             <p className="text-gray-200 text-sm mt-1
-                                        opacity-0 group-hover:opacity-100
-                                        transition-opacity duration-400 ease-in-out delay-200 line-clamp-2"
+                                        opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2"
                             >
                                 {location.description}
+                            </p>
+
+                            {/* Timings always visible */}
+                            <p className="text-gray-200 text-sm mt-1
+                                        opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2"
+                            >
+                                {location.timings}
                             </p>
                             </div>
                         </div>
                         ))}
+
                         {/* Mobile: Framer Motion Stacked Cards */}
                         <div className="md:hidden relative w-full h-[350px] flex items-center justify-center overflow-hidden px-10">
                         <AnimatePresence initial={false}>
@@ -243,6 +254,7 @@ function Home() {
                                     {isActive && (
                                     <>
                                         <p className="text-xs text-gray-600 mb-2 line-clamp-2">{location.description}</p>
+                                        <p className="text-xs text-gray-600 mb-2 line-clamp-2">{location.timings}</p>
                                         <a
                                         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.address + ", " + location.postalCode)}`}
                                         target="_blank"
