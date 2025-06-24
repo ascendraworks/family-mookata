@@ -75,18 +75,17 @@ const menuData = {
       { name: "Chinese Cabbage", image: "/img/menu/chinese_cabbage.jpeg" },
       { name: "Corn", image: "/img/menu/corn.jpeg" },
       { name: "Golden Mushroom", image: "/img/menu/golden_mushroom.jpeg" },
-      { name: "Kangkong", image: "/img/menu/kangkong.jpeg" },
+      { name: "Kang Kong", image: "/img/menu/kangkong.jpeg" },
       { name: "King Mushroom", image: "/img/menu/king_mushroom.jpeg" },
       { name: "Oyster Mushroom", image: "/img/menu/oyster_mushroom.jpeg" },
       { name: "Shinmeji Mushroom", image: "/img/menu/shinmeji_mushroom.jpeg" },
-      { name: "Vermicelli", image: "/img/menu/vermicelli.jpeg" },
     ],
   },
   carbs: {
     title: "Carbo Delight",
     description: "Fresh and healthy choices",
     items: [
-      { name: "Vermicelli", image: "/img/menu/vermicelli.jpeg" },
+      { name: "Glass Noodles", image: "/img/menu/vermicelli.jpeg" },
       { name: "Maggi", image: "/img/menu/maggi.jpeg" },
     ],
   }
