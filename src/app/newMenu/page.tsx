@@ -106,17 +106,17 @@ function newMenu() {
           </defs>
           <g clipPath="url(#clip-shape)">
             <path d="M0 0L1440 133.189V258.941L0 311V0Z" fill="#FFB24F" />
-            <image className="absolute right-0" href="./img/banner.png" x="45%" y="-90%" />
+            <image className="w-2/3 absolute right-0" href="./img/protein.png" x="50%" y="-70%" />
           </g>
         </svg>
         <div className="flex flex-col absolute gap-2 top-[40%] left-[5%] max-lg:top-[35%] max-md:top-[30%]">
           <h1 className="text-5xl text-white font-bold italic max-lg:text-4xl">Our Menu</h1>
-          <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">Meats, seafood, vegetables & more — everything for the perfect grill.</p>
+          <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">Meats, seafood, vegetables & more — <br></br>everything for the perfect grill.</p>
         </div>
       </div>
 
       {/* Desktop View */}
-      <div className="max-md:hidden">
+      <div className="h-full max-md:hidden">
         {/* Title Section */}
         <div className="flex flex-col border-b-2 border-[#FFB24F] px-12 pt-12 pb-8 gap-2">
           <h1 className="text-5xl font-bold italic">{menuData[selectedCategory].title}</h1>
@@ -143,18 +143,21 @@ function newMenu() {
           {/* Item Cards */}
           <div className="w-full grid grid-cols-3 py-8 px-12 gap-8">
             {menuData[selectedCategory].items.map((item, i) => (
-                <Card key={i} className="h-fit bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
-                    <CardHeader className="px-4 pt-4">
-                        <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full rounded-lg"
-                        />
-                    </CardHeader>
-                    <CardContent className="flex justify-center pt-4 pb-6">
-                    <p className="text-xl font-bold text-center max-lg:text-base">{item.name}</p>
-                    </CardContent>
-                </Card>
+              <Card key={i} className="h-full flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden">
+                
+                <CardHeader className="px-4 pt-4">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full rounded-lg"
+                  />
+                </CardHeader>
+
+                <CardContent className="flex flex-col flex-grow justify-between pt-4 pb-6">
+                  <p className="text-xl font-bold text-center max-lg:text-base">{item.name}</p>
+                </CardContent>
+                
+              </Card>
             ))}
           </div>
         </div>
