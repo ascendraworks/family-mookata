@@ -193,6 +193,23 @@ export default function Locations() {
         </div>
 
         <div className="w-full flex justify-center relative">
+          <div className="bg-orange-500 absolute left-1/2 transform -translate-x-1/2 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white px-3 sm:px-4 md:px-5 lg:px-6 py-1.5 sm:py-2 md:py-3 rounded-lg">
+            North
+          </div>
+
+          <div className="bg-orange-500 absolute bottom-[5%] left-1/2 transform -translate-x-1/2 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white px-3 sm:px-4 md:px-5 lg:px-6 py-1.5 sm:py-2 md:py-3 rounded-lg">
+            South
+          </div>
+
+          <div className="bg-orange-500 absolute top-1/2 left-[8%] sm:left-[10%] transform -translate-y-1/2 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white px-3 sm:px-4 md:px-5 lg:px-6 py-1.5 sm:py-2 md:py-3 rounded-lg">
+            West
+          </div>
+
+          <div className="bg-orange-500 absolute top-1/2 right-[8%] sm:right-[10%] transform -translate-y-1/2 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-white px-3 sm:px-4 md:px-5 lg:px-6 py-1.5 sm:py-2 md:py-3 rounded-lg">
+            East
+          </div>
+
+
           <Image
             src="/img/new-map.png"
             alt="Map"

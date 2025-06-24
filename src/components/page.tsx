@@ -39,7 +39,7 @@ const locations = [
     name: "Yishun",
     address: "6 Yishun Industrial Street 1 Northview Bizhub",
     postalCode: "Singapore 768090",
-    imgSrc: "/img/yishun.jpg",
+    imgSrc: "/img/yishun.jpeg",
     description: "Vibrant atmosphere, perfect for gatherings.",
     timings:
       "Last Order: 9.30pm, Fridge Close: 10pm, Fire Off: 10.30pm, Coffeeshop Close: 11pm",
@@ -164,7 +164,6 @@ function Home() {
 
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], [0, -100]);
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
 
   const isLocationsInView = useInView(locationsRef, {
     once: true,
@@ -188,7 +187,7 @@ function Home() {
     <div className="w-full flex flex-col items-center">
       <motion.div
         ref={heroRef}
-        style={{ y: heroY, opacity: heroOpacity }}
+        style={{ y: heroY, opacity: 100 }}
         className="w-full max-w-[1440px] flex justify-between items-center py-4 px-12 overflow-hidden max-lg:flex-col max-sm:px-0"
       >
         <div className="flex flex-col max-lg:text-center relative">
@@ -342,12 +341,12 @@ function Home() {
                   </h3>
 
                   {/* Description always visible */}
-                  <p className="text-gray-200 font-bold text-xs mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
+                  <p className="text-gray-200 text-xs mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
                     {location.description}
                   </p>
 
                   {/* Timings always visible */}
-                  <p className="text-gray-200 font-bold text-sm mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
+                  <p className="text-gray-200 text-sm mt-1 opacity-100 transition-opacity duration-400 ease-in-out delay-200 line-clamp-2">
                     {location.timings}
                   </p>
                 </div>
@@ -402,6 +401,12 @@ function Home() {
                         />
                       </div>
                       <div className="p-3 flex-grow flex flex-col justify-between">
+                        {/* Badge for index 1 */}
+                        {index === 1 && (
+                          <div className="absolute top-0 right-0 bg-red-500 text-white text-sm font-bold px-4 py-2 m-4 rounded shadow-md">
+                            Closed on Mondays
+                          </div>
+                        )}
                         <h3 className="text-md font-semibold text-gray-800 mb-1 truncate">
                           {location.name}
                         </h3>
@@ -604,7 +609,7 @@ function Home() {
                       </div>
                       <div>
                         <p className="font-semibold">
-                          Peak (After 7PM, Weekends & PH)
+                          Peak (After 7PM, Weekends All Day & PH All Day)
                         </p>
                         <p>
                           Adult: <span className="font-bold">$16.90</span> | Kid

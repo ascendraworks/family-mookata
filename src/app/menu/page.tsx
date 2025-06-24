@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Accordion,
@@ -81,16 +81,10 @@ const menuData = {
       { name: "Corn", image: "/img/menu/corn.jpeg" },
       { name: "Golden Mushroom", image: "/img/menu/golden_mushroom.jpeg" },
       { name: "Kang Kong", image: "/img/menu/kangkong.jpeg" },
-    ],
-  },
-  mushrooms: {
-    title: "Mushroom Delight",
-    description: "text",
-    items: [
       { name: "King Mushroom", image: "/img/menu/king_mushroom.jpeg" },
       { name: "Oyster Mushroom", image: "/img/menu/oyster_mushroom.jpeg" },
       { name: "Shinmeji Mushroom", image: "/img/menu/shinmeji_mushroom.jpeg" },
-    ]
+    ],
   },
   carbs: {
     title: "Carbo Delight",
@@ -108,66 +102,6 @@ type Category = keyof typeof menuData;
 
 function NewMenu() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("meats");
-  const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(
-    new Set<string>()
-  );
-
-  const getAllImageUrls = (): string[] => {
-    const urls: string[] = [];
-    Object.values(menuData).forEach((category) => {
-      category.items.forEach((item) => {
-        urls.push(item.image);
-      });
-    });
-    urls.push("./img/protein.png");
-    return urls;
-  };
-
-  useEffect(() => {
-    const imageUrls = getAllImageUrls();
-    let loadCount = 0;
-    const totalImages = imageUrls.length;
-
-    const preloadImage = (url: string): Promise<void> => {
-      return new Promise<void>((resolve) => {
-        const img = new Image();
-        img.onload = () => {
-          setLoadedImages((prev: Set<string>) => new Set([...prev, url]));
-          loadCount++;
-          if (loadCount === totalImages) setImagesLoaded(true);
-          resolve();
-        };
-        img.onerror = () => {
-          loadCount++;
-          if (loadCount === totalImages) setImagesLoaded(true);
-          resolve();
-        };
-        img.src = url;
-      });
-    };
-
-    Promise.all(imageUrls.map(preloadImage)).then(() => setImagesLoaded(true));
-  }, []);
-
-  if (!imagesLoaded) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin mx-auto mb-4"></div>
-          <h2 className="text-2xl font-bold text-orange-800 mb-2">
-            Loading Menu
-          </h2>
-          <p className="text-orange-600">
-            Preparing our delicious offerings...
-          </p>
-          <div className="mt-4 text-sm text-orange-500">
-            {loadedImages.size} / {getAllImageUrls().length} images loaded
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="flex flex-col">
