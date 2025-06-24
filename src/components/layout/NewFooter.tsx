@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Phone, Instagram, Facebook } from "lucide-react";
 import SocialLinksModal from "./SocialLinksModal";
@@ -16,7 +16,10 @@ const socialPlatforms = [
     branches: [
       { name: "Yishun", href: "https://www.facebook.com/familymookata/" },
       { name: "Bedok", href: "https://www.facebook.com/FMBedok/" },
-      { name: "Ang Mo Kio", href: "https://www.facebook.com/people/Family-Mookata-Amk/61568832784561/?_rdr/" },
+      {
+        name: "Ang Mo Kio",
+        href: "https://www.facebook.com/people/Family-Mookata-Amk/61568832784561/?_rdr/",
+      },
     ],
   },
   {
@@ -24,9 +27,18 @@ const socialPlatforms = [
     icon: Instagram,
     ariaLabel: "Family Mookata on Instagram",
     branches: [
-      { name: "Yishun", href: "https://www.instagram.com/family_mookata_yishun/?hl=en" },
-      { name: "Bedok", href: "https://www.instagram.com/familymookatabedok/?locale=sl&hl=af" },
-      { name: "Ang Mo Kio", href: "https://www.instagram.com/family_mookata_amk/?hl=en" },
+      {
+        name: "Yishun",
+        href: "https://www.instagram.com/family_mookata_yishun/?hl=en",
+      },
+      {
+        name: "Bedok",
+        href: "https://www.instagram.com/familymookatabedok/?locale=sl&hl=af",
+      },
+      {
+        name: "Ang Mo Kio",
+        href: "https://www.instagram.com/family_mookata_amk/?hl=en",
+      },
     ],
   },
   {
@@ -44,9 +56,11 @@ const socialPlatforms = [
 
 function NewFooter() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPlatform, setSelectedPlatform] = useState<typeof socialPlatforms[0] | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<
+    (typeof socialPlatforms)[0] | null
+  >(null);
 
-  const openModal = (platform: typeof socialPlatforms[0]) => {
+  const openModal = (platform: (typeof socialPlatforms)[0]) => {
     setSelectedPlatform(platform);
     setIsModalOpen(true);
   };
@@ -61,12 +75,13 @@ function NewFooter() {
       <div className="flex flex-col gap-2">
         <h1 className="text-5xl font-bold italic">Family Mookata</h1>
         <p className="text-xl">
-          Cheapest Mookata Buffet in Singapore starting from <span className="text-orange-500 font-bold italic">ONLY</span> $9.90
+          Cheapest Mookata Buffet in Singapore starting from{" "}
+          <span className="text-orange-500 font-bold italic">ONLY</span> $9.90
         </p>
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <Phone />
           <div>
             <p>{mainContactNumber} (AMK & Yishun)</p>
@@ -82,7 +97,13 @@ function NewFooter() {
             className="flex gap-4 items-center hover:text-orange-200 transition-colors"
           >
             {platform.isSvg ? (
-              <Image src={platform.icon as string} alt={platform.platform} width={24} height={24} className="invert" />
+              <Image
+                src={platform.icon as string}
+                alt={platform.platform}
+                width={24}
+                height={24}
+                className="invert"
+              />
             ) : (
               <platform.icon size={24} />
             )}
