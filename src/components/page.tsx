@@ -557,13 +557,7 @@ function Home() {
           fill="#FFB24F"
         />
       </svg>
-      <motion.div
-        ref={pricesRef}
-        initial={{ opacity: 0, y: 100 }}
-        animate={isPricesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
-        transition={{ duration: 0.8 }}
-        className="w-full bg-[#FFB24F] flex justify-center"
-      >
+      <div className="w-full bg-[#FFB24F] flex justify-center">
         <div className="w-full max-w-[1440px] relative">
           <div className="w-full flex justify-center absolute top-[-70px]">
             <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">
@@ -572,12 +566,20 @@ function Home() {
           </div>
           <div className="w-full bg-[#FFB24F] flex justify-center">
             <div className="w-full max-w-[1440px] relative">
-              <div className="w-full flex justify-center absolute top-[-70px]">
+              <div className="w-full flex justify-center absolute top-[-70px] z-10">
                 <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">
                   Our Prices
                 </h1>
               </div>
-              <div className="bg-[#FFE6C6] flex rounded-2xl mx-12 px-12 pt-16 pb-12 gap-12 max-lg:gap-8 max-lg:flex-col max-sm:mx-4 max-sm:px-8">
+              <motion.div
+                ref={pricesRef}
+                initial={{ opacity: 0, y: 100 }}
+                animate={
+                  isPricesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }
+                }
+                transition={{ duration: 0.8 }}
+                className="bg-[#FFE6C6] flex rounded-2xl mx-12 px-12 pt-16 pb-12 gap-12 max-lg:gap-8 max-lg:flex-col max-sm:mx-4 max-sm:px-8"
+              >
                 {/* Protein Buffet */}
                 <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
                   <div className="flex flex-col items-center gap-4 flex-grow">
@@ -671,11 +673,11 @@ function Home() {
                     <a href="/locations">Find a Location</a>
                   </Button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
       <svg
         className="w-full rotate-180"
         xmlns="http://www.w3.org/2000/svg"

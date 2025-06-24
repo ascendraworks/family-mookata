@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
@@ -134,7 +135,10 @@ export default function Locations() {
             </p>
           </div>
 
-          <form
+          <motion.form
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             onSubmit={handleSearch}
             className="bg-[#FFB24F] w-1/2 flex items-center rounded-lg mt-3 p-3 pr-6 gap-4 max-sm:w-full"
           >
@@ -167,7 +171,8 @@ export default function Locations() {
             >
               <Search className="h-6 w-6" />
             </Button>
-          </form>
+          </motion.form>
+
           <Button
             type="button"
             onClick={() => {
@@ -230,7 +235,13 @@ export default function Locations() {
         </div>
 
         <div className="flex flex-col items-center pt-8">
-          <div className="flex flex-col items-center gap-2 px-8">
+          <motion.div
+            key={selectedLocation ? selectedLocation.id : "all-locations"}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="flex flex-col items-center gap-2 px-8"
+          >
             <h1 className="text-3xl font-bold italic">
               {selectedLocation
                 ? `Directions to ${selectedLocation.postalCode}`
@@ -240,7 +251,7 @@ export default function Locations() {
               Dine with us wherever you are — here&apos;s where to find Family
               Mookata.
             </p>
-          </div>
+          </motion.div>
 
           <div
             ref={outletSectionRef}
@@ -255,38 +266,52 @@ export default function Locations() {
               : selectedLocation
               ? [selectedLocation]
               : []
-            ).map((location) => (
-              <Card key={location.id} className="w-1/3 max-md:w-full">
-                <CardHeader>
-                  <CardTitle className="text-xl font-semibold">
-                    {location.name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="h-full flex flex-col gap-4 justify-between">
-                  <div className="flex items-center gap-4">
-                    <Flag className="min-h-8 min-w-8" />
-                    <p>
-                      {location.address}, {location.postalCode}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Clock className="min-h-8 min-w-8" />
-                    <p>{location.operatingHours || "1PM - 11PM"}</p>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Phone className="h-8 w-8" />
-                    <p>{location.phone || "+65 8927 2782"}</p>
-                  </div>
-                  <a
-                    href={googleMapsUrl(location, searchTerm)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 bg-[#FFB24F] hover:cursor-pointer hover:bg-orange-400 ease-in-out duration-300 font-bold text-white px-4 py-3 rounded-md text-center"
-                  >
-                    Directions
-                  </a>
-                </CardContent>
-              </Card>
+            ).map((location, index) => (
+              <motion.div
+                key={`${location.id}-${
+                  showAllLocationDetails ? "all" : "selected"
+                }`}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                  ease: "easeOut",
+                }}
+                className="w-1/3 max-md:w-full"
+              >
+                <Card className="h-full hover:shadow-xl transition-shadow duration-300">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold">
+                      {location.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="h-full flex flex-col gap-4 justify-between">
+                    <div className="flex items-center gap-4">
+                      <Flag className="min-h-8 min-w-8" />
+                      <p>
+                        {location.address}, {location.postalCode}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <Clock className="min-h-8 min-w-8" />
+                      <p>{location.operatingHours || "1PM - 11PM"}</p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <Phone className="h-8 w-8" />
+                      <p>{location.phone || "+65 8927 2782"}</p>
+                    </div>
+                    <a
+                      href={googleMapsUrl(location, searchTerm)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 bg-[#FFB24F] hover:cursor-pointer hover:bg-orange-400 ease-in-out duration-300 font-bold text-white px-4 py-3 rounded-md text-center"
+                    >
+                      Directions
+                    </a>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>

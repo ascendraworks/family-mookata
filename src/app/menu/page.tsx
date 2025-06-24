@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { motion } from "framer-motion";
 
 const menuData = {
   meats: {
@@ -20,7 +21,10 @@ const menuData = {
       { name: "Pork Belly", image: "/img/menu/pork_belly.jpeg" },
       { name: "Thai Pork", image: "/img/menu/thai_pork.jpeg" },
       { name: "Cajun Chicken", image: "/img/menu/cajun_chicken.jpeg" },
-      { name: "Honey Tomato Chicken", image: "/img/menu/honey_tomato_chicken.jpeg" },
+      {
+        name: "Honey Tomato Chicken",
+        image: "/img/menu/honey_tomato_chicken.jpeg",
+      },
       { name: "Mala Chicken", image: "/img/menu/mala_chicken.jpeg" },
       { name: "Tom Yum Chicken", image: "/img/menu/tom_yum_chicken.jpeg" },
     ],
@@ -99,7 +103,9 @@ type Category = keyof typeof menuData;
 function NewMenu() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("meats");
   const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set<string>());
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(
+    new Set<string>()
+  );
 
   const getAllImageUrls = (): string[] => {
     const urls: string[] = [];
@@ -143,8 +149,12 @@ function NewMenu() {
       <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin mx-auto mb-4"></div>
-          <h2 className="text-2xl font-bold text-orange-800 mb-2">Loading Menu</h2>
-          <p className="text-orange-600">Preparing our delicious offerings...</p>
+          <h2 className="text-2xl font-bold text-orange-800 mb-2">
+            Loading Menu
+          </h2>
+          <p className="text-orange-600">
+            Preparing our delicious offerings...
+          </p>
           <div className="mt-4 text-sm text-orange-500">
             {loadedImages.size} / {getAllImageUrls().length} images loaded
           </div>
@@ -156,7 +166,12 @@ function NewMenu() {
   return (
     <div className="flex flex-col">
       <div className="relative">
-        <svg className="w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 311" fill="none">
+        <svg
+          className="w-full"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 311"
+          fill="none"
+        >
           <defs>
             <clipPath id="clip-shape">
               <path d="M0 0L1440 133.189V258.941L0 311V0Z" />
@@ -164,22 +179,40 @@ function NewMenu() {
           </defs>
           <g clipPath="url(#clip-shape)">
             <path d="M0 0L1440 133.189V258.941L0 311V0Z" fill="#FFB24F" />
-            <image className="w-2/3 absolute right-0" href="./img/protein.png" x="50%" y="-70%" />
+            <image
+              className="w-2/3 absolute right-0"
+              href="./img/protein.png"
+              x="50%"
+              y="-70%"
+            />
           </g>
         </svg>
         <div className="flex flex-col absolute gap-2 top-[40%] left-[5%] max-lg:top-[35%] max-md:top-[30%]">
-          <h1 className="text-5xl text-white font-bold italic max-lg:text-4xl">Our Menu</h1>
+          <h1 className="text-5xl text-white font-bold italic max-lg:text-4xl">
+            Our Menu
+          </h1>
           <p className="text-xl text-white italic max-lg:text-lg max-md:text-base">
-            Meats, seafood, vegetables & more — <br /> everything for the perfect grill.
+            Meats, seafood, vegetables & more — <br /> everything for the
+            perfect grill.
           </p>
         </div>
       </div>
 
       <div className="h-full max-md:hidden">
-        <div className="flex flex-col border-b-2 border-[#FFB24F] px-12 pt-12 pb-8 gap-2">
-          <h1 className="text-5xl font-bold italic">{menuData[selectedCategory].title}</h1>
-          <p className="text-xl italic">{menuData[selectedCategory].description}</p>
-        </div>
+        <motion.div
+          key={selectedCategory}
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="flex flex-col border-b-2 border-[#FFB24F] px-12 pt-12 pb-8 gap-2"
+        >
+          <h1 className="text-5xl font-bold italic">
+            {menuData[selectedCategory].title}
+          </h1>
+          <p className="text-xl italic">
+            {menuData[selectedCategory].description}
+          </p>
+        </motion.div>
 
         <div className="flex w-full">
           <div className="w-fit flex flex-col border-r-2 border-[#FFB24F] px-12 py-8 gap-8 max-md:hidden">
@@ -188,7 +221,9 @@ function NewMenu() {
                 key={key}
                 onClick={() => setSelectedCategory(key as Category)}
                 className={`text-2xl max-lg:text-lg text-left hover:cursor-pointer duration-300 ease-in-out hover:text-orange-500 transition-colors ${
-                  selectedCategory === key ? "font-bold text-orange-500 italic" : ""
+                  selectedCategory === key
+                    ? "font-bold text-orange-500 italic"
+                    : ""
                 }`}
               >
                 {menuData[key as Category].title}
@@ -198,44 +233,82 @@ function NewMenu() {
 
           <div className="w-full grid grid-cols-3 py-8 px-12 gap-8">
             {menuData[selectedCategory].items.map((item, i) => (
-              <Card key={i} className="h-full flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden">
-                <CardHeader className="px-4 pt-4">
-                  <img src={item.image} alt={item.name} className="w-full rounded-lg" loading="eager" />
-                </CardHeader>
-                <CardContent className="flex flex-col flex-grow justify-between pt-4 pb-6">
-                  <p className="text-xl font-bold text-center max-lg:text-base">{item.name}</p>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={`${selectedCategory}-${i}`}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: i * 0.1,
+                  ease: "easeOut",
+                }}
+              >
+                <Card className="h-full flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <CardHeader className="px-4 pt-4">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full rounded-lg"
+                      loading="eager"
+                    />
+                  </CardHeader>
+                  <CardContent className="flex flex-col flex-grow justify-between pt-4 pb-6">
+                    <p className="text-xl font-bold text-center max-lg:text-base">
+                      {item.name}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
 
       <Accordion className="md:hidden" type="single" collapsible>
-        {Object.entries(menuData).map(([key, { title, description, items }]) => (
-          <AccordionItem key={key} className="border-[#FFB24F]" value={key}>
-            <AccordionTrigger className="items-center px-8">
-              <div className="flex flex-col px-12 pt-12 pb-8 gap-2">
-                <h1 className="text-5xl font-bold italic">{title}</h1>
-                <p className="text-xl italic">{description}</p>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="px-8">
-              <div className="grid grid-cols-2 gap-8 px-4 py-8">
-                {items.map((item, i) => (
-                  <Card key={i} className="h-fit bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0">
-                    <CardHeader className="px-4 pt-4">
-                      <img src={item.image} alt={item.name} className="w-full rounded-lg" loading="eager" />
-                    </CardHeader>
-                    <CardContent className="flex justify-center pt-4 pb-6">
-                      <p className="text-xl font-bold text-center">{item.name}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
+        {Object.entries(menuData).map(
+          ([key, { title, description, items }]) => (
+            <AccordionItem key={key} className="border-[#FFB24F]" value={key}>
+              <AccordionTrigger className="items-center px-8">
+                <div className="flex flex-col px-12 pt-12 pb-8 gap-2">
+                  <h1 className="text-5xl font-bold italic">{title}</h1>
+                  <p className="text-xl italic">{description}</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-8">
+                <div className="grid grid-cols-2 gap-8 px-4 py-8">
+                  {items.map((item, i) => (
+                    <motion.div
+                      key={`mobile-${key}-${i}`}
+                      initial={{ opacity: 0, x: -40 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: i * 0.08,
+                        ease: "easeOut",
+                      }}
+                    >
+                      <Card className="h-fit bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden py-0 gap-0 hover:shadow-xl transition-shadow duration-300">
+                        <CardHeader className="px-4 pt-4">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full rounded-lg"
+                            loading="eager"
+                          />
+                        </CardHeader>
+                        <CardContent className="flex justify-center pt-4 pb-6">
+                          <p className="text-xl font-bold text-center">
+                            {item.name}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          )
+        )}
       </Accordion>
     </div>
   );
