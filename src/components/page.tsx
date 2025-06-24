@@ -1,6 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,7 +18,6 @@ import {
   ChevronRight,
   ExternalLink,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -148,27 +154,82 @@ const badgeSet = () => (
 
 function Home() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+
+  // For scroll-based animations
+  const heroRef = useRef(null);
+  const locationsRef = useRef(null);
+  const membershipRef = useRef(null);
+  const pricesRef = useRef(null);
+  const reviewsRef = useRef(null);
+
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, -100]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
+
+  const isLocationsInView = useInView(locationsRef, {
+    once: true,
+    margin: "-100px",
+  });
+  const isMembershipInView = useInView(membershipRef, {
+    once: true,
+    margin: "-100px",
+  });
+  const isPricesInView = useInView(pricesRef, { once: true, margin: "-100px" });
+  const isReviewsInView = useInView(reviewsRef, {
+    once: true,
+    margin: "-100px",
+  });
+
   const handleCardTap = (index: number) => {
     setActiveCardIndex(index);
   };
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="w-full max-w-[1440px] flex justify-between items-center py-4 px-12 overflow-hidden max-lg:flex-col max-sm:px-0">
+      <motion.div
+        ref={heroRef}
+        style={{ y: heroY, opacity: heroOpacity }}
+        className="w-full max-w-[1440px] flex justify-between items-center py-4 px-12 overflow-hidden max-lg:flex-col max-sm:px-0"
+      >
         <div className="flex flex-col max-lg:text-center relative">
           <div className="w-full h-full flex justify-center items-center absolute z-0 max-lg:hidden">
-            <div className="h-[400px] w-[400px] bg-orange-100 rounded-full blur-xl"></div>
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="h-[400px] w-[400px] bg-orange-100 rounded-full blur-xl"
+            ></motion.div>
           </div>
-          <h1 className="text-7xl font-bold italic max-sm:text-4xl z-10">
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-7xl font-bold italic max-sm:text-4xl z-10"
+          >
             Family Mookata
-          </h1>
-          <p className="text-4xl pt-4 max-sm:text-xl z-10">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-4xl pt-4 max-sm:text-xl z-10"
+          >
             Cheapest Mookata in Singapore
-          </p>
-          <p className="text-2xl text-orange-500 font-bold italic py-4 max-sm:text-xl z-10">
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-2xl text-orange-500 font-bold italic py-4 max-sm:text-xl z-10"
+          >
             Starting from $9.90 ONLY
-          </p>
-          <div className="flex gap-8 max-lg:justify-center z-10">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex gap-8 max-lg:justify-center z-10"
+          >
             <Button
               className="bg-[#FFB24F] shadow-lg hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out"
               size="lg"
@@ -183,9 +244,14 @@ function Home() {
                 Place Delivery Order
               </a>
             </Button>
-          </div>
+          </motion.div>
           {/* Desktop: Static Badges */}
-          <div className="pt-8 gap-8 max-lg:hidden flex z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="pt-8 gap-8 max-lg:hidden flex z-10"
+          >
             <div className="flex items-center gap-4">
               <Star className="h-8 w-8 text-[#FFB24F]" />
               <div className="text-xl font-bold">3.9K+ Reviews</div>
@@ -198,7 +264,7 @@ function Home() {
               <Clock className="h-8 w-8 text-[#FFB24F]" />
               <div className="text-xl font-bold">1PM – 11PM</div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Mobile ticker */}
           <style jsx global>{`
@@ -211,32 +277,44 @@ function Home() {
               }
             }
           `}</style>
-                    <div className="overflow-hidden w-full max-lg:flex hidden min-h-[64px] mt-8">
-                        <div className="flex w-max animate-[scroll-loop_5s_linear_infinite]">
-                            <div className="flex gap-8 pr-8">{badgeSet()}</div>
-                            <div className="flex gap-8 pr-8">{badgeSet()}</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="w-1/2 max-lg:w-2/3 max-lg:py-12">
-                    <img className="brightness-120"
-                        src="/img/hero.png"
-                    />
-                </div>
+          <div className="overflow-hidden w-full max-lg:flex hidden min-h-[64px] mt-8">
+            <div className="flex w-max animate-[scroll-loop_5s_linear_infinite]">
+              <div className="flex gap-8 pr-8">{badgeSet()}</div>
+              <div className="flex gap-8 pr-8">{badgeSet()}</div>
             </div>
-            <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8 max-sm:px-0">
-                <div className="flex flex-col py-16 gap-8">
-                    <div className="flex flex-col gap-2 max-sm:items-center">
-                        <h1 className="text-5xl font-bold italic">Our Locations</h1>
-                        <p className="text-xl font-bold italic">
-                            Find A Family Mookata Near You
-                        </p>
-                    </div>
-                    <div className="flex flex-col md:flex-row w-full md:h-[340px] gap-6 md:gap-2.5">
-                    {locations.map((location, index) => (
-                        <div
-                            key={`${location.name}-desktop`}
-                            className="hidden md:flex group relative md:w-[80px] md:h-full rounded-xl
+          </div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 100, rotate: 5 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          className="w-1/2 max-lg:w-2/3 max-lg:py-12"
+        >
+          <img className="brightness-120" src="/img/hero.png" />
+        </motion.div>
+      </motion.div>
+      <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8 max-sm:px-0">
+        <div className="flex flex-col py-16 gap-8">
+          <div className="flex flex-col gap-2 max-sm:items-center">
+            <h1 className="text-5xl font-bold italic">Our Locations</h1>
+            <p className="text-xl font-bold italic">
+              Find A Family Mookata Near You
+            </p>
+          </div>
+          <motion.div
+            ref={locationsRef}
+            initial={{ opacity: 0, y: 80 }}
+            animate={
+              isLocationsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }
+            }
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col md:flex-row w-full md:h-[340px] gap-6 md:gap-2.5"
+          >
+            {locations.map((location, index) => (
+              <div
+                key={`${location.name}-desktop`}
+                className="hidden md:flex group relative md:w-[80px] md:h-full rounded-xl
                                     items-end
                                     md:flex-grow md:hover:flex-grow-[7] cursor-pointer
                                     transition-all duration-500 ease-in-out
@@ -292,175 +370,221 @@ function Home() {
                   const xOffset = isActive ? 0 : (index - activeCardIndex) * 5;
                   const rotation = isActive ? 0 : (index - activeCardIndex) * 2;
 
-                                    return (
-                                        <motion.div
-                                            key={`${location.name}-mobile-fm`}
-                                            className="absolute w-[80%] max-w-[280px] h-[300px] bg-white rounded-xl shadow-xl overflow-hidden cursor-pointer flex flex-col"
-                                            initial={{ opacity: 0, y: 50, scale: 0.8 }}
-                                            animate={{
-                                                opacity: 1,
-                                                y: yOffset,
-                                                x: xOffset,
-                                                scale: scale,
-                                                rotate: rotation,
-                                                zIndex: isActive
-                                                    ? locations.length
-                                                    : locations.length - 1 - positionInStack,
-                                            }}
-                                            exit={{ opacity: 0, y: -50, scale: 0.8 }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                            }}
-                                            onTap={() => handleCardTap(index)}
-                                        >
-                                            <div className="relative h-2/3 w-full">
-                                                <Image
-                                                    src={location.imgSrc}
-                                                    alt={`Family Mookata ${location.name} outlet - Thai BBQ & Steamboat`}
-                                                    fill
-                                                    className="object-cover"
-                                                />
-                                            </div>
-                                            <div className="p-3 flex-grow flex flex-col justify-between">
-                                                <h3 className="text-md font-semibold text-gray-800 mb-1 truncate">
-                                                    {location.name}
-                                                </h3>
-                                                {isActive && (
-                                                    <>
-                                                        <p className="text-xs text-gray-600 mb-2 line-clamp-2">
-                                                            {location.description}
-                                                        </p>
-                                                        <p className="text-xs text-gray-600 mb-2 line-clamp-2">
-                                                            {location.timings}
-                                                        </p>
-                                                        <a
-                                                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                                                                location.address + ", " + location.postalCode
-                                                            )}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            onClick={(e) => e.stopPropagation()}
-                                                            className="inline-flex items-center text-xs text-orange-600 hover:text-orange-700 font-semibold self-start"
-                                                        >
-                                                            Get Directions{" "}
-                                                            <ExternalLink className="ml-1 h-3 w-3" />
-                                                        </a>
-                                                    </>
-                                                )}
-                                            </div>
-                                        </motion.div>
-                                    );
-                                })}
-                            </AnimatePresence>
-                            {/* Navigation Buttons for Mobile Stacked Cards */}
-                            <button
-                                onClick={() =>
-                                    setActiveCardIndex(
-                                        (prevIndex) =>
-                                            (prevIndex - 1 + locations.length) % locations.length
-                                    )
-                                }
-                                className="absolute left-0 top-1/2 -translate-y-1/2 z-30 bg-white/80 hover:bg-white text-gray-700 p-2 rounded-full shadow-md focus:outline-none"
-                                aria-label="Previous location"
+                  return (
+                    <motion.div
+                      key={`${location.name}-mobile-fm`}
+                      className="absolute w-[80%] max-w-[280px] h-[300px] bg-white rounded-xl shadow-xl overflow-hidden cursor-pointer flex flex-col"
+                      initial={{ opacity: 0, y: 50, scale: 0.8 }}
+                      animate={{
+                        opacity: 1,
+                        y: yOffset,
+                        x: xOffset,
+                        scale: scale,
+                        rotate: rotation,
+                        zIndex: isActive
+                          ? locations.length
+                          : locations.length - 1 - positionInStack,
+                      }}
+                      exit={{ opacity: 0, y: -50, scale: 0.8 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
+                      onTap={() => handleCardTap(index)}
+                    >
+                      <div className="relative h-2/3 w-full">
+                        <Image
+                          src={location.imgSrc}
+                          alt={`Family Mookata ${location.name} outlet - Thai BBQ & Steamboat`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="p-3 flex-grow flex flex-col justify-between">
+                        <h3 className="text-md font-semibold text-gray-800 mb-1 truncate">
+                          {location.name}
+                        </h3>
+                        {isActive && (
+                          <>
+                            <p className="text-xs text-gray-600 mb-2 line-clamp-2">
+                              {location.description}
+                            </p>
+                            <p className="text-xs text-gray-600 mb-2 line-clamp-2">
+                              {location.timings}
+                            </p>
+                            <a
+                              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                                location.address + ", " + location.postalCode
+                              )}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center text-xs text-orange-600 hover:text-orange-700 font-semibold self-start"
                             >
-                                <ChevronLeft className="h-6 w-6" />
-                            </button>
-                            <button
-                                onClick={() =>
-                                    setActiveCardIndex(
-                                        (prevIndex) => (prevIndex + 1) % locations.length
-                                    )
-                                }
-                                className="absolute right-0 top-1/2 -translate-y-1/2 z-30 bg-white/80 hover:bg-white text-gray-700 p-2 rounded-full shadow-md focus:outline-none"
-                                aria-label="Next location"
-                            >
-                                <ChevronRight className="h-6 w-6" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                              Get Directions{" "}
+                              <ExternalLink className="ml-1 h-3 w-3" />
+                            </a>
+                          </>
+                        )}
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+              {/* Navigation Buttons for Mobile Stacked Cards */}
+              <button
+                onClick={() =>
+                  setActiveCardIndex(
+                    (prevIndex) =>
+                      (prevIndex - 1 + locations.length) % locations.length
+                  )
+                }
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-30 bg-white/80 hover:bg-white text-gray-700 p-2 rounded-full shadow-md focus:outline-none"
+                aria-label="Previous location"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+              <button
+                onClick={() =>
+                  setActiveCardIndex(
+                    (prevIndex) => (prevIndex + 1) % locations.length
+                  )
+                }
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-30 bg-white/80 hover:bg-white text-gray-700 p-2 rounded-full shadow-md focus:outline-none"
+                aria-label="Next location"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
             </div>
-            <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8">
-            <div className="flex items-center justify-between py-16 gap-16 max-lg:flex-col max-lg:items-center max-sm:mx-4">
-
-            {/* Left: Membership content */}
-            <div className="w-full flex flex-col gap-8">
+          </motion.div>
+        </div>
+      </div>
+      <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8">
+        <motion.div
+          ref={membershipRef}
+          initial={{ opacity: 0 }}
+          animate={isMembershipInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center justify-between py-16 gap-16 max-lg:flex-col max-lg:items-center max-sm:mx-4"
+        >
+          {/* Left: Membership content */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={
+              isMembershipInView
+                ? { opacity: 1, x: 0 }
+                : { opacity: 0, x: -100 }
+            }
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-full flex flex-col gap-8"
+          >
             <div className="flex flex-col gap-2">
-                <h1 className="text-5xl font-bold italic">Become A Member</h1>
-                <p className="text-xl font-bold italic">
-                Join our mookata family — it’s completely free. Start earning rewards from your first visit.
-                </p>
+              <h1 className="text-5xl font-bold italic">Become A Member</h1>
+              <p className="text-xl font-bold italic">
+                Join our mookata family — it’s completely free. Start earning
+                rewards from your first visit.
+              </p>
             </div>
 
             <ul className="flex flex-col gap-6">
-                {[
-                { number: 1, title: "Lifetime Free", desc: "No fees. No strings attached. Membership is free — always." },
-                { number: 2, title: "Points", desc: "Earn points on every visit. Points expire only after 1 year of inactivity." },
-                { number: 3, title: "How Does This Point System Work?", desc: "Every $1 spent = 1 point. 1 point = $0.01 cashback. Use your points anytime on your next visit." },
-                { number: 4, title: "Birthday Rewards", desc: "Enjoy 5% off during your birthday month." },
-                { number: 5, title: "Freebies", desc: "Redeem a free cheese dip every time you dine with us." },
-                ].map((item) => (
+              {[
+                {
+                  number: 1,
+                  title: "Lifetime Free",
+                  desc: "No fees. No strings attached. Membership is free — always.",
+                },
+                {
+                  number: 2,
+                  title: "Points",
+                  desc: "Earn points on every visit. Points expire only after 1 year of inactivity.",
+                },
+                {
+                  number: 3,
+                  title: "How Does This Point System Work?",
+                  desc: "Every $1 spent = 1 point. 1 point = $0.01 cashback. Use your points anytime on your next visit.",
+                },
+                {
+                  number: 4,
+                  title: "Birthday Rewards",
+                  desc: "Enjoy 5% off during your birthday month.",
+                },
+                {
+                  number: 5,
+                  title: "Freebies",
+                  desc: "Redeem a free cheese dip every time you dine with us.",
+                },
+              ].map((item) => (
                 <li key={item.number} className="flex items-center gap-4">
-                    <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white text-xl font-bold">
+                  <div className="min-w-12 min-h-12 bg-[#FFB24F] flex justify-center items-center rounded-full text-white text-xl font-bold">
                     {item.number}
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                     <p className="font-bold text-xl">{item.title}</p>
                     <p>{item.desc}</p>
-                    </div>
+                  </div>
                 </li>
-                ))}
+              ))}
             </ul>
-            </div>
+          </motion.div>
 
-                {/* Right: QR Code */}
-                <div className="w-full flex flex-col items-center gap-8">
-                <img className="w-2/3 rounded-xl shadow-xl" src="./img/qr.png" />
-                <p className="text-lg text-center font-bold italic">
-                    Scan to sign up instantly and start earning rewards on your next visit.
-                </p>
-                </div>
-
-            </div>
-
-            </div>
-            <svg
-                className="w-full"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1440 210"
-                fill="none"
-            >
-                <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M1440 30.303L1380 54.2626C1320 78.2222 1200 126.141 1080 108.172C960 90.202 840 6.34335 720 0.353455C600 -5.63644 480 66.2424 360 84.2121C240 102.182 120 66.2424 60 48.2727L0 30.303V210H60C120 210 240 210 360 210C480 210 600 210 720 210C840 210 960 210 1080 210C1200 210 1320 210 1380 210H1440V30.303Z"
-                    fill="#FFB24F"
-                />
-            </svg>
-            <div className="w-full bg-[#FFB24F] flex justify-center">
-                <div className="w-full max-w-[1440px] relative">
-                    <div className="w-full flex justify-center absolute top-[-70px]">
-                        <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">
-                            Our Prices
-                        </h1>
-                    </div>
-                    <div className="w-full bg-[#FFB24F] flex justify-center">
-                        <div className="w-full max-w-[1440px] relative">
-                            <div className="w-full flex justify-center absolute top-[-70px]">
-                                <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">
-                                    Our Prices
-                                </h1>
-                            </div>
-                            <div className="bg-[#FFE6C6] flex rounded-2xl mx-12 px-12 pt-16 pb-12 gap-12 max-lg:gap-8 max-lg:flex-col max-sm:mx-4 max-sm:px-8">
-
-                                {/* Protein Buffet */}
-                                <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
-                                    <div className="flex flex-col items-center gap-4 flex-grow">
-                                        <img className="h-[180px] object-cover mb-2 brightness-130" src="./img/protein.png" />
-                                        <h1 className="text-3xl text-orange-600 font-bold">Protein Buffet</h1>
-                                        <p className="text-gray-500 italic text-sm text-center">Choice Meats & Vegetables – No Seafood</p>
+          {/* Right: QR Code */}
+          <div className="w-full flex flex-col items-center gap-8">
+            <img className="w-2/3 rounded-xl shadow-xl" src="./img/qr.png" />
+            <p className="text-lg text-center font-bold italic">
+              Scan to sign up instantly and start earning rewards on your next
+              visit.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+      <svg
+        className="w-full"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 210"
+        fill="none"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M1440 30.303L1380 54.2626C1320 78.2222 1200 126.141 1080 108.172C960 90.202 840 6.34335 720 0.353455C600 -5.63644 480 66.2424 360 84.2121C240 102.182 120 66.2424 60 48.2727L0 30.303V210H60C120 210 240 210 360 210C480 210 600 210 720 210C840 210 960 210 1080 210C1200 210 1320 210 1380 210H1440V30.303Z"
+          fill="#FFB24F"
+        />
+      </svg>
+      <motion.div
+        ref={pricesRef}
+        initial={{ opacity: 0, y: 100 }}
+        animate={isPricesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+        transition={{ duration: 0.8 }}
+        className="w-full bg-[#FFB24F] flex justify-center"
+      >
+        <div className="w-full max-w-[1440px] relative">
+          <div className="w-full flex justify-center absolute top-[-70px]">
+            <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">
+              Our Prices
+            </h1>
+          </div>
+          <div className="w-full bg-[#FFB24F] flex justify-center">
+            <div className="w-full max-w-[1440px] relative">
+              <div className="w-full flex justify-center absolute top-[-70px]">
+                <h1 className="bg-white rounded-2xl text-5xl text-[#FFB24F] font-bold italic px-12 py-8 shadow-lg">
+                  Our Prices
+                </h1>
+              </div>
+              <div className="bg-[#FFE6C6] flex rounded-2xl mx-12 px-12 pt-16 pb-12 gap-12 max-lg:gap-8 max-lg:flex-col max-sm:mx-4 max-sm:px-8">
+                {/* Protein Buffet */}
+                <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
+                  <div className="flex flex-col items-center gap-4 flex-grow">
+                    <img
+                      className="h-[180px] object-cover mb-2 brightness-130"
+                      src="./img/protein.png"
+                    />
+                    <h1 className="text-3xl text-orange-600 font-bold">
+                      Protein Buffet
+                    </h1>
+                    <p className="text-gray-500 italic text-sm text-center">
+                      Choice Meats & Vegetables – No Seafood
+                    </p>
 
                     <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-3 mt-4">
                       <div>
@@ -487,12 +611,19 @@ function Home() {
                   </Button>
                 </div>
 
-                                {/* Seafood Buffet */}
-                                <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
-                                    <div className="flex flex-col items-center gap-4 flex-grow">
-                                        <img className="h-[180px] object-cover mb-2 brightness-130" src="./img/seafood.png" />
-                                        <h1 className="text-3xl text-orange-600 font-bold">Seafood Buffet</h1>
-                                        <p className="text-gray-500 italic text-sm text-center">Full selection of meats, seafood & vegetables</p>
+                {/* Seafood Buffet */}
+                <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
+                  <div className="flex flex-col items-center gap-4 flex-grow">
+                    <img
+                      className="h-[180px] object-cover mb-2 brightness-130"
+                      src="./img/seafood.png"
+                    />
+                    <h1 className="text-3xl text-orange-600 font-bold">
+                      Seafood Buffet
+                    </h1>
+                    <p className="text-gray-500 italic text-sm text-center">
+                      Full selection of meats, seafood & vegetables
+                    </p>
 
                     <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-3 mt-4">
                       <p>
@@ -509,14 +640,20 @@ function Home() {
                   </Button>
                 </div>
 
-                                {/* Family Friendly */}
-                                <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
-                                    <div className="flex flex-col items-center gap-4 flex-grow">
-                                        <img className="w-full h-[180px] object-cover mb-2 rounded" src="./img/family-friendly.jpeg" />
-                                        <h1 className="text-3xl text-orange-600 font-bold">Family Friendly</h1>
-                                        <p className="text-gray-500 italic text-sm text-center">
-                                            Perfect for birthdays, family gatherings, and group events.
-                                        </p>
+                {/* Family Friendly */}
+                <div className="w-1/3 flex flex-col bg-white rounded-xl shadow-lg px-8 py-8 max-lg:w-full">
+                  <div className="flex flex-col items-center gap-4 flex-grow">
+                    <img
+                      className="w-full h-[180px] object-cover mb-2 rounded"
+                      src="./img/family-friendly.jpeg"
+                    />
+                    <h1 className="text-3xl text-orange-600 font-bold">
+                      Family Friendly
+                    </h1>
+                    <p className="text-gray-500 italic text-sm text-center">
+                      Perfect for birthdays, family gatherings, and group
+                      events.
+                    </p>
 
                     <div className="w-full bg-[#FFF7ED] rounded-lg py-4 px-6 flex flex-col gap-2 mt-4 text-center">
                       <p>Kids 5–12 enjoy special kid pricing.</p>
@@ -532,7 +669,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       <svg
         className="w-full rotate-180"
         xmlns="http://www.w3.org/2000/svg"
@@ -546,8 +683,21 @@ function Home() {
           fill="#FFB24F"
         />
       </svg>
-      <div className="w-full max-w-[1440px] flex flex-col pl-12 py-16 gap-8 max-sm:pl-0">
-        <div className="flex flex-col gap-2 max-sm:items-center">
+      <motion.div
+        ref={reviewsRef}
+        initial={{ opacity: 0, y: 80 }}
+        animate={isReviewsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-[1440px] flex flex-col pl-12 py-16 gap-8 max-sm:pl-0"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={
+            isReviewsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+          }
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-col gap-2 max-sm:items-center"
+        >
           <h1 className="text-5xl font-bold italic">Our Reviews</h1>
           <div className="flex gap-6">
             <p className="text-xl font-bold italic">3.9K+ Google Reviews</p>
@@ -556,7 +706,7 @@ function Home() {
               <Star className="h-6 w-6 text-[#FFB24F] fill-[#FFB24F]" />
             </div>
           </div>
-        </div>
+        </motion.div>
         <Carousel opts={{ align: "start" }} className="w-full">
           <CarouselContent className="max-sm:mx-4">
             {reviews.map((review, index) => (
@@ -643,7 +793,7 @@ function Home() {
             ))}
           </CarouselContent>
         </Carousel>
-      </div>
+      </motion.div>
     </div>
   );
 }
