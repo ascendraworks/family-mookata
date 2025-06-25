@@ -71,7 +71,7 @@ function Footer() {
   };
 
   return (
-    <div className="h-1/3 w-full flex justify-between bg-[#FFB24F] px-12 py-8 max-sm:flex-col max-sm:gap-8 text-white">
+    <div className="relative h-1/3 w-full flex justify-between bg-[#FFB24F] px-12 py-8 max-sm:flex-col max-sm:gap-8 text-white">
       <div className="flex flex-col gap-2">
         <h1 className="text-5xl font-bold italic">Family Mookata</h1>
         <p className="text-xl">
@@ -122,6 +122,18 @@ function Footer() {
           isPlatformIconSvg={selectedPlatform.isSvg}
         />
       )}
+
+      <div className="absolute bottom-2 right-4 text-sm text-white/70">
+      <a
+        href="https://wa.me/6587670797?text=Hi%2C%20I%20saw%20your%20work%20%E2%80%94%20can%20you%20tell%20me%20more%20about%20your%20web%20design%20services%3F"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-white"
+      >
+        Made by Ascendra
+      </a>
+
+      </div>
     </div>
   );
 }
