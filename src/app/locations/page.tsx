@@ -193,12 +193,8 @@ export default function Locations() {
         </div>
 
         <div className="w-full flex justify-center relative">
-
-          <img className="absolute w-[10%] right-1/4" src="/img/compass.png" alt="Compass Legend" />
-
-
           <Image
-            src="/img/new-map.png"
+            src="/singapore.svg"
             alt="Map"
             width={1200}
             height={600}
@@ -211,8 +207,8 @@ export default function Locations() {
               style={{ top: loc.mapY, left: loc.mapX }}
             >
               <Popover>
-                <PopoverTrigger className="bg-[#FFB24F] hover:bg-orange-400 hover:cursor-pointer ease-in-out duration-400 rounded-full cursor-pointer p-2">
-                  <MapPinIcon className="h-4 w-4 text-white sm:h-5 sm:w-5" />
+                <PopoverTrigger className="bg-white hover:bg-gray-100 hover:cursor-pointer ease-in-out duration-400 rounded-full cursor-pointer p-2">
+                  <MapPinIcon className="h-4 w-4 text-orange-400 sm:h-2 sm:w-2" />
                 </PopoverTrigger>
                 <PopoverContent className="flex flex-col gap-2">
                   <h3 className="text-sm sm:text-base font-semibold text-gray-800">
