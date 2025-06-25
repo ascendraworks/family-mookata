@@ -57,7 +57,7 @@ const menuData = {
     description:
       "A variety of sides and snacks — from cheese tofu to fish balls, quail eggs, and more — perfect for pairing with your grill.",
     items: [
-      { name: "Curry Ball", image: "/img/menu/cheese_ball.jpeg" },
+      { name: "Curry Fishball", image: "/img/menu/cheese_ball.jpeg" },
       { name: "Cheese Tofu", image: "/img/menu/cheese_tofu.jpeg" },
       { name: "Egg", image: "/img/menu/egg.jpeg" },
       { name: "Hotdog", image: "/img/menu/hotdog.jpeg" },
@@ -66,9 +66,19 @@ const menuData = {
       { name: "Quail Egg", image: "/img/menu/quail_egg.jpeg" },
       { name: "Fish Filament", image: "/img/menu/fish_filament.jpeg" },
       { name: "Fishroe Ball", image: "/img/menu/fishroe_ball.jpeg" },
-      { name: "Crab Ball", image: "/img/menu/crab_ball.jpeg" },
+      { name: "Lobster Ball", image: "/img/menu/crab_ball.jpeg" },
       { name: "Crab Stick", image: "/img/menu/crab_stick.jpeg" },
     ],
+  },
+  mushrooms: {
+    title: "Mushroom Delight",
+    description: "Earthy, juicy, and packed with umami.",
+    items: [
+      { name: "King Mushroom", image: "/img/menu/king_mushroom.jpeg" },
+      { name: "Oyster Mushroom", image: "/img/menu/oyster_mushroom.jpeg" },
+      { name: "Shinmeji Mushroom", image: "/img/menu/shinmeji_mushroom.jpeg" },
+      { name: "Enoki Mushroom", image: "/img/menu/golden_mushroom.jpeg" },
+    ]
   },
   vegetables: {
     title: "Vegetable Delight",
@@ -79,11 +89,7 @@ const menuData = {
       { name: "Broccoli", image: "/img/menu/broccoli.jpeg" },
       { name: "Chinese Cabbage", image: "/img/menu/chinese_cabbage.jpeg" },
       { name: "Corn", image: "/img/menu/corn.jpeg" },
-      { name: "Golden Mushroom", image: "/img/menu/golden_mushroom.jpeg" },
       { name: "Kang Kong", image: "/img/menu/kangkong.jpeg" },
-      { name: "King Mushroom", image: "/img/menu/king_mushroom.jpeg" },
-      { name: "Oyster Mushroom", image: "/img/menu/oyster_mushroom.jpeg" },
-      { name: "Shinmeji Mushroom", image: "/img/menu/shinmeji_mushroom.jpeg" },
     ],
   },
   carbs: {

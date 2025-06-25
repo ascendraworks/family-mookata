@@ -196,7 +196,7 @@ function Home() {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="h-[400px] w-[400px] bg-orange-100 rounded-full blur-xl"
+              className="h-[90%] w-[90%] bg-orange-100 rounded-full blur-xl"
             ></motion.div>
           </div>
           <motion.h1
@@ -288,10 +288,64 @@ function Home() {
           initial={{ opacity: 0, x: 100, rotate: 5 }}
           animate={{ opacity: 1, x: 0, rotate: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-          className="w-1/2 max-lg:w-2/3 max-lg:py-12"
+          className="relative w-1/2 z-20 max-lg:w-2/3 max-lg:py-12"
         >
-          <img className="brightness-120" src="/img/hero.png" />
+          <img
+            className="relative w-2/3 z-10 brightness-110 saturate-170 mx-auto max-lg:w-full"
+            src="/img/seafood.png"
+          />
+
+          {/* Chili: slide down entrance, no fade */}
+          <motion.div
+            initial={{ y: -200 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 2, ease: "easeOut", delay: 1 }}
+            className="absolute w-1/4 left-0 top-[-30%] mx-auto max-lg:left-[-40%] max-lg:top-0 max-lg:w-[35%]"
+          >
+            <motion.img
+              src="/img/chili-hero.png"
+              className="w-full rotate-20 max-lg:rotate-[-10deg]"
+              animate={{ x: [0, 10, 0, -10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            />
+          </motion.div>
+
+          {/* Crayfish: slide in from right entrance, no fade */}
+          <motion.div
+            initial={{ x: 200 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 2, ease: "easeOut", delay: 1 }}
+            className="absolute w-[45%] right-[-30%] top-[-10%] mx-auto max-lg:right-[-55%] max-lg:top-0 max-lg:w-[55%]"
+          >
+            <motion.img
+              src="/img/crayfish-hero.png"
+              className="w-full rotate-20 brightness-110 saturate-170"
+              animate={{ x: [0, -8, 0, 8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            />
+          </motion.div>
+
+          {/* Meat hero slides in */}
+          <motion.img
+            src="/img/meat-hero.png"
+            className="absolute w-[55%] z-0 brightness-110 saturate-130 rotate-20 right-[-15%] bottom-[-10%] mx-auto max-lg:w-[80%] max-lg:right-[-40%] max-lg:bottom-[-5%]"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
+          />
+
+          {/* Steam Overlay */}
+          <div className="absolute z-30 inset-0 flex justify-center items-center pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 0.6, scale: 4 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute w-12 h-12 rounded-full border-8 border-white blur-xs"
+            />
+          </div>
         </motion.div>
+
+
       </motion.div>
       <div className="w-full max-w-[1440px] flex flex-col px-12 gap-8 max-sm:px-0">
         <div className="flex flex-col py-16 gap-8">
@@ -517,7 +571,7 @@ function Home() {
                 {
                   number: 5,
                   title: "Freebies",
-                  desc: "Redeem a free cheese dip every time you dine with us.",
+                  desc: "Free flow cheese dip for every visit.",
                 },
               ].map((item) => (
                 <li key={item.number} className="flex items-center gap-4">
@@ -609,7 +663,7 @@ function Home() {
                       </div>
                       <div>
                         <p className="font-semibold">
-                          Peak (After 7PM, Weekends All Day & PH All Day)
+                          Peak (After 7PM, All Day on Weekends & Public Holidays)
                         </p>
                         <p>
                           Adult: <span className="font-bold">$16.90</span> | Kid

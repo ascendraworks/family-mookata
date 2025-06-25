@@ -25,7 +25,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="flex justify-between z-0 max-md:px-4 max-md:py-2">
+    <div className="flex justify-between relative z-0 max-md:px-4 max-md:py-2">
       <div className="w-full flex justify-between items-center px-16 max-md:hidden">
         <Link href="/">
           <Image src="/img/logo.png" alt="Family Mookata Logo" width={100} height={100} />

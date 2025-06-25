@@ -27,24 +27,6 @@ export default function About() {
   return (
     <div className="bg-white flex flex-col w-full text-gray-800">
       <style jsx>{`
-        @keyframes flowRight {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(0%);
-          }
-        }
-
-        @keyframes flowLeft {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -268,7 +250,7 @@ export default function About() {
         </div>
         <img
           className="w-1/2 h-[500px] object-cover rounded-l-2xl absolute right-0 max-md:w-3/5 max-md:h-[300px]"
-          src="./img/yishun.jpg"
+          src="./img/yishun.jpeg"
         />
       </section>
 
