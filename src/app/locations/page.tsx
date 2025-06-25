@@ -208,7 +208,7 @@ export default function Locations() {
             >
               <Popover>
                 <PopoverTrigger className="bg-white hover:bg-gray-100 hover:cursor-pointer ease-in-out duration-400 rounded-full cursor-pointer p-2">
-                  <MapPinIcon className="h-4 w-4 text-orange-400 sm:h-2 sm:w-2" />
+                  <MapPinIcon className="h-4 w-4 text-orange-400 sm:h-5 sm:w-5" />
                 </PopoverTrigger>
                 <PopoverContent className="flex flex-col gap-2">
                   <h3 className="text-sm sm:text-base font-semibold text-gray-800">
