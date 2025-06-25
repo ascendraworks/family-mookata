@@ -295,6 +295,11 @@ function Home() {
             src="/img/seafood.png"
           />
 
+          <img
+            className="absolute w-[120%] h-[120%] top-[-10%] z-0 mx-auto max-lg:w-full max-lg:rotate-25 max-lg:w-[125%] max-lg:h-[125%]"
+            src="/img/paint-hero.png"
+          />  
+
           {/* Chili: slide down entrance, no fade */}
           <motion.div
             initial={{ y: -200 }}
