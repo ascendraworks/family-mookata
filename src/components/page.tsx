@@ -339,15 +339,37 @@ function Home() {
             transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
           />
 
-          {/* Steam Overlay */}
-          <div className="absolute z-30 inset-0 flex justify-center items-center pointer-events-none">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 0.6, scale: 4 }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-12 h-12 rounded-full border-8 border-white blur-xs"
-            />
-          </div>
+  {/* Steam Overlay */}
+<div className="absolute z-30 inset-0 flex justify-center items-center pointer-events-none">
+  
+  {[...Array(4)].map((_, i) => (
+    <motion.img
+      key={i}
+      src="/img/smoke-hero.png"
+      className="absolute contrast-500"
+      initial={{ scale: 0, x: 0, y: 0, opacity: 0 }}
+      animate={{ 
+        scale: 3 + i, 
+        x: [0, (i % 2 === 0 ? 40 : -40)], 
+        y: [0, (i % 2 === 0 ? -40 : 40)], 
+        opacity: [0, 0.4, 0] 
+      }}
+      transition={{
+        duration: 3 + i,
+        repeat: Infinity,
+        ease: "easeOut",
+        delay: i * 0.6,
+      }}
+      style={{
+        width: "150px",
+        height: "150px",
+      }}
+    />
+  ))}
+
+</div>
+
+
         </motion.div>
 
 
