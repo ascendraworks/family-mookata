@@ -16,17 +16,17 @@ const menuData = {
     description:
       "Savor our premium cuts — tender pork, juicy chicken, and flavorful beef, all marinated in-house for maximum taste.",
     items: [
-      { name: "Black Pepper Pork", image: "/img/menu/black_pepper_pork.jpeg" },
-      { name: "Garlic Pork", image: "/img/menu/garlic_pork.jpeg" },
+      { name: "Black Pepper Pork", image: "/img/menu/blackpepper_pork.jpg" },
+      { name: "Garlic Pork", image: "/img/menu/garlic_pork.jpg" },
       { name: "Pork Belly", image: "/img/menu/pork_belly.jpeg" },
-      { name: "Thai Pork", image: "/img/menu/thai_pork.jpeg" },
-      { name: "Cajun Chicken", image: "/img/menu/cajun_chicken.jpeg" },
+      { name: "Thai Pork", image: "/img/menu/thai_pork.jpg" },
+      { name: "Cajun Chicken", image: "/img/menu/cajun_chicken.jpg" },
       {
         name: "Honey Tomato Chicken",
-        image: "/img/menu/honey_tomato_chicken.jpeg",
+        image: "/img/menu/honeytomato_chicken.jpg",
       },
-      { name: "Mala Chicken", image: "/img/menu/mala_chicken.jpeg" },
-      { name: "Tom Yum Chicken", image: "/img/menu/tom_yum_chicken.jpeg" },
+      { name: "Mala Chicken", image: "/img/menu/mala_chicken.jpg" },
+      { name: "Tom Yum Chicken", image: "/img/menu/tomyum_chicken.jpg" },
     ],
   },
   seafood: {
@@ -99,6 +99,7 @@ const menuData = {
     items: [
       { name: "Glass Noodles", image: "/img/menu/vermicelli.jpeg" },
       { name: "Maggi", image: "/img/menu/maggi.jpeg" },
+      { name: "Rice", image: "/img/menu/rice.jpg" },
     ],
   },
 };
@@ -226,7 +227,7 @@ function NewMenu() {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full rounded-lg"
+                      className="w-full max-h-[170px] rounded-lg object-cover"
                       loading="eager"
                     />
                   </CardHeader>
@@ -270,7 +271,7 @@ function NewMenu() {
                           <img
                             src={item.image}
                             alt={item.name}
-                            className="w-full rounded-lg"
+                            className="w-full max-h-[170px] rounded-lg object-cover"
                             loading="eager"
                           />
                         </CardHeader>
