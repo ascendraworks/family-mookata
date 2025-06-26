@@ -111,7 +111,7 @@ function NewMenu() {
 
   return (
     <div className="flex flex-col">
-      <div className="relative">
+      <div className="relative max-sm:hidden">
         <svg
           className="w-full"
           xmlns="http://www.w3.org/2000/svg"
@@ -143,6 +143,38 @@ function NewMenu() {
           </p>
         </div>
       </div>
+
+      <div className="relative sm:hidden">
+        <svg
+          className="w-full"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 393 463"
+          fill="none"
+        >
+          <defs>
+            <clipPath id="clip-shape-mobile">
+              <path d="M0 0L393 60.7213V357.428L0 463V0Z" />
+            </clipPath>
+          </defs>
+          <g clipPath="url(#clip-shape-mobile)">
+            <path d="M0 0L393 60.7213V357.428L0 463V0Z" fill="#FFB24F" />
+            <image
+              href="./img/protein.png"
+              x="20%"
+              y="40%"
+              className="w-[120%] absolute right-0"
+            />
+          </g>
+        </svg>
+
+        <div className="flex flex-col absolute gap-2 top-[15%] left-[5%]">
+          <h1 className="text-6xl text-white font-bold italic">Our Menu</h1>
+          <p className="text-xl text-white italic">
+            Meats, seafood, vegetables & more — <br /> everything for the perfect grill.
+          </p>
+        </div>
+      </div>
+
 
       <div className="h-full max-md:hidden">
         <motion.div
@@ -215,13 +247,13 @@ function NewMenu() {
           ([key, { title, description, items }]) => (
             <AccordionItem key={key} className="border-[#FFB24F]" value={key}>
               <AccordionTrigger className="items-center px-8">
-                <div className="flex flex-col px-12 pt-12 pb-8 gap-2">
+                <div className="flex flex-col px-6 pt-12 pb-8 gap-2 max-sm:px-4">
                   <h1 className="text-5xl font-bold italic">{title}</h1>
                   <p className="text-xl italic">{description}</p>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="px-8">
-                <div className="grid grid-cols-2 gap-8 px-4 py-8">
+                <div className="grid grid-cols-2 gap-8 px-4 py-8 max-sm:grid-cols-1">
                   {items.map((item, i) => (
                     <motion.div
                       key={`mobile-${key}-${i}`}

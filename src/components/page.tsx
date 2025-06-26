@@ -346,13 +346,13 @@ function Home() {
     <motion.img
       key={i}
       src="/img/smoke-hero.png"
-      className="absolute contrast-500"
+      className="absolute contrast-500 top-[10%]"
       initial={{ scale: 0, x: 0, y: 0, opacity: 0 }}
       animate={{ 
         scale: 3 + i, 
         x: [0, (i % 2 === 0 ? 40 : -40)], 
         y: [0, (i % 2 === 0 ? -40 : 40)], 
-        opacity: [0, 0.4, 0] 
+        opacity: [0, 1, 0] 
       }}
       transition={{
         duration: 3 + i,
