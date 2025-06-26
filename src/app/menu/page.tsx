@@ -168,11 +168,8 @@ function NewMenu() {
           </g>
         </svg>
 
-        <div className="flex flex-col absolute gap-2 top-[15%] left-[5%]">
+        <div className="flex flex-col absolute gap-2 top-[20%] left-[5%]">
           <h1 className="text-6xl text-white font-bold italic">Our Menu</h1>
-          <p className="text-xl text-white italic">
-            Meats, seafood, vegetables & more — <br /> everything for the perfect grill.
-          </p>
         </div>
       </div>
 
@@ -222,12 +219,12 @@ function NewMenu() {
                   ease: "easeOut",
                 }}
               >
-                <Card className="h-full flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <Card className="h-full max-h-[300px] flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <CardHeader className="px-4 pt-4">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full max-h-[170px] rounded-lg object-cover"
+                      className="w-full rounded-lg object-cover"
                       loading="eager"
                     />
                   </CardHeader>
