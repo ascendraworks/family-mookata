@@ -35,6 +35,47 @@ interface LocationDetail {
   details?: string;
 }
 
+interface RegionLabel {
+  id: string;
+  name: string;
+  mapX: string;
+  mapY: string;
+}
+
+// Region Labels
+const regionLabels: RegionLabel[] = [
+  {
+    id: "north",
+    name: "North",
+    mapX: "41%",
+    mapY: "15%",
+  },
+  {
+    id: "east",
+    name: "East",
+    mapX: "63%",
+    mapY: "53.5%",
+  },
+  {
+    id: "north-east",
+    name: "North-East",
+    mapX: "61.5%",
+    mapY: "35%",
+  },
+  {
+    id: "west",
+    name: "West",
+    mapX: "25%",
+    mapY: "40%",
+  },
+  {
+    id: "central",
+    name: "Central",
+    mapX: "47.5%",
+    mapY: "53%",
+  },
+];
+
 async function geocodeAddress(
   address: string
 ): Promise<{ lat: number; lng: number } | null> {
@@ -198,8 +239,23 @@ export default function Locations() {
             alt="Map"
             width={1200}
             height={600}
-            className="w-4/5"
+            className="sm:w-4/5 w-[95%]"
           />
+
+          {/* Region Labels */}
+          {regionLabels.map((region) => (
+            <div
+              key={region.id}
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+              style={{ top: region.mapY, left: region.mapX }}
+            >
+              <div className="bg-black bg-opacity-60 text-white px-3 py-1 rounded-lg text-sm font-semibold shadow-lg">
+                {region.name}
+              </div>
+            </div>
+          ))}
+
+          {/* Location Pins */}
           {locationsData.map((loc) => (
             <div
               key={loc.id}
@@ -207,8 +263,8 @@ export default function Locations() {
               style={{ top: loc.mapY, left: loc.mapX }}
             >
               <Popover>
-                <PopoverTrigger className="bg-white hover:bg-gray-100 hover:cursor-pointer ease-in-out duration-400 rounded-full cursor-pointer p-2">
-                  <MapPinIcon className="h-4 w-4 text-orange-400 sm:h-5 sm:w-5" />
+                <PopoverTrigger className="bg-white text-orange-400 hover:text-white hover:bg-orange-400 hover:cursor-pointer ease-in-out duration-400 rounded-full cursor-pointer p-2">
+                  <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </PopoverTrigger>
                 <PopoverContent className="flex flex-col gap-2">
                   <h3 className="text-sm sm:text-base font-semibold text-gray-800">

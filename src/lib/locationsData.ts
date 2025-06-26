@@ -34,8 +34,8 @@ export const locationsData: LocationDetail[] = [
     postalCode: "Singapore 460509",
     lat: 1.3313,
     lng: 103.935,
-    mapX: "67%",
-    mapY: "50%",
+    mapX: "68%",
+    mapY: "47%",
     operatingHours:
       "Tuesday - Friday : 3pm - 11pm, Saturday - Sunday & PH : 1pm - 11pm",
     phone: "+65 8188 4738",
