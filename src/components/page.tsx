@@ -242,7 +242,7 @@ function Home() {
             >
               <Link href="https://familymookata.eposqr.com/">
                 Place Delivery Order
-              </LInk>
+              </Link>
             </Button>
           </motion.div>
           {/* Desktop: Static Badges */}
