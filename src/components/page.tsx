@@ -230,13 +230,13 @@ function Home() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex gap-8 max-lg:justify-center z-10"
           >
-            <Button
+            <Button asChild
               className="bg-[#FFB24F] shadow-lg hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out"
               size="lg"
             >
               <Link href="/menu">View Menu</Link>
             </Button>
-            <Button
+            <Button asChild
               className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg  hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out hover:border-orange-400 hover:text-white"
               size="lg"
             >
@@ -701,7 +701,7 @@ function Home() {
                     </div>
                   </div>
 
-                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                  <Button asChild className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
                     <Link href="/menu">View Menu</Link>
                   </Button>
                 </div>
@@ -730,7 +730,7 @@ function Home() {
                     </div>
                   </div>
 
-                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                  <Button asChild className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
                     <Link href="/menu">View Menu</Link>
                   </Button>
                 </div>
@@ -756,7 +756,7 @@ function Home() {
                     </div>
                   </div>
 
-                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                  <Button asChild className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
                     <Link href="/locations">Find a Location</Link>
                   </Button>
                 </div>
