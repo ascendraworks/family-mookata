@@ -313,21 +313,21 @@ export default function About() {
         </div>
       </section>
 
-      <section className="w-full bg-[#ffb24f] relative fade-on-scroll">
+      <section className="w-full bg-[#ffb24f] relative">
         <div className="bg-black absolute rounded-t-xl p-6 top-[-84px] left-24 max-md:p-3 max-md:rounded-t-lg max-md:top-[-52px] max-md:left-8">
           <h2 className="text-3xl text-white font-bold italic max-md:text-xl">
             JOIN US
           </h2>
         </div>
-        <div className="bg-white flex flex-col items-center mx-24 my-12 p-16 gap-4 rounded-xl shadow-xl text-center max-sm:mx-8">
+        <div className="fade-on-scroll bg-white flex flex-col items-center mx-24 my-12 p-16 gap-4 rounded-xl shadow-xl text-center max-sm:mx-8">
           <h2 className="text-4xl font-bold italic max-sm:text-3xl">
-            Become Part of Our Family
+            Join Our Free Membership
           </h2>
           <p className="text-2xl max-sm:text-xl">
-            Come be a part of our family, we promise you won&apos;t regret it.
+            Come be a part of our family and enjoy free perks, we promise you won&apos;t regret it.
           </p>
           <Button className="bg-[#ffb24f] text-xl px-8 py-6 font-bold italic mt-4 hover:bg-orange-600">
-            <a href="https://myprofile.eposdata.com/familymookata/register">Join Our Free Membership</a>
+            <a href="https://myprofile.eposdata.com/familymookata/register">Join Us</a>
           </Button>
         </div>
       </section>

@@ -208,34 +208,67 @@ function NewMenu() {
           </div>
 
           <div className="w-full grid grid-cols-3 py-8 px-12 gap-8">
-            {menuData[selectedCategory].items.map((item, i) => (
-              <motion.div
-                key={`${selectedCategory}-${i}`}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: i * 0.1,
-                  ease: "easeOut",
-                }}
-              >
-                <Card className="h-full max-h-[300px] flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <CardHeader className="px-4 pt-4">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full rounded-lg object-cover"
-                      loading="eager"
-                    />
-                  </CardHeader>
-                  <CardContent className="flex flex-col flex-grow justify-between pt-4 pb-6">
-                    <p className="text-xl font-bold text-center max-lg:text-base">
-                      {item.name}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            {menuData[selectedCategory].items.map((item, i) => {
+              if (menuData[selectedCategory].items.length > 3) {
+                return (
+                  <motion.div
+                    key={`${selectedCategory}-${i}`}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: i * 0.1,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <Card className="h-full flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <CardHeader className="px-4 pt-4">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full rounded-lg object-cover"
+                          loading="eager"
+                        />
+                      </CardHeader>
+                      <CardContent className="flex flex-col flex-grow justify-between pt-4 pb-6">
+                        <p className="text-xl font-bold text-center max-lg:text-base">
+                          {item.name}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              } else {
+                return (
+                  <motion.div
+                    key={`${selectedCategory}-${i}`}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: i * 0.1,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <Card className="h-fit flex flex-col bg-[#FFF7ED] border-2 border-[#FFB24F] shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <CardHeader className="px-4 pt-4">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full rounded-lg object-cover"
+                          loading="eager"
+                        />
+                      </CardHeader>
+                      <CardContent className="flex flex-col flex-grow justify-between pt-4 pb-6">
+                        <p className="text-xl font-bold text-center max-lg:text-base">
+                          {item.name}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              }
+            })}
           </div>
         </div>
       </div>
