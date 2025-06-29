@@ -3,6 +3,7 @@
 import React from 'react';
 import { X, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from "next/link";
 
 interface BranchLink {
   name: string;
@@ -69,7 +70,7 @@ const SocialLinksModal: React.FC<SocialLinksModalProps> = ({
 
             <div className="space-y-4">
               {branchLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   target="_blank"
@@ -80,7 +81,7 @@ const SocialLinksModal: React.FC<SocialLinksModalProps> = ({
                     {link.name} Branch
                   </span>
                   <ExternalLink size={20} className="text-orange-500 group-hover:text-orange-600 transition-colors" />
-                </a>
+                </Link>
               ))}
             </div>
             <p className="text-xs text-gray-500 mt-6 text-center">

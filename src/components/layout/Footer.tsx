@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Phone, Instagram, Facebook } from "lucide-react";
 import SocialLinksModal from "./SocialLinksModal";
+import Link from "next/link";
 
 const mainContactNumber = "+65 8927 2782";
 const bedokContactNumber = "+65 8188 4738";
@@ -124,14 +125,14 @@ function Footer() {
       )}
 
       <div className="absolute bottom-2 right-4 text-sm text-white/70">
-      <a
+      <Link
         href="https://wa.me/6587670797?text=Hi%2C%20I%20saw%20your%20work%20%E2%80%94%20can%20you%20tell%20me%20more%20about%20your%20web%20design%20services%3F"
         target="_blank"
         rel="noopener noreferrer"
         className="hover:text-white"
       >
         Made by Ascendra
-      </a>
+      </Link>
 
       </div>
     </div>

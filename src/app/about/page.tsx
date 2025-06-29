@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export default function About() {
   useEffect(() => {
@@ -327,7 +328,7 @@ export default function About() {
             Come be a part of our family and enjoy free perks, we promise you won&apos;t regret it.
           </p>
           <Button className="bg-[#ffb24f] text-xl px-8 py-6 font-bold italic mt-4 hover:bg-orange-600">
-            <a href="https://myprofile.eposdata.com/familymookata/register">Join Us</a>
+            <Link href="https://myprofile.eposdata.com/familymookata/register">Join Us</Link>
           </Button>
         </div>
       </section>

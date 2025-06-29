@@ -61,13 +61,13 @@ function Navbar() {
             <SheetDescription>
               <div className="flex flex-col px-4 gap-8 text-lg overflow-hidden">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
                     href={link.href}
                     className={`${pathname === link.href ? "text-[#ffb24f] font-bold italic" : "hover:text-[#ffb24f] duration-300"}`}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </SheetDescription>

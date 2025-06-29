@@ -33,6 +33,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import Link from "next/link";
 
 const locations = [
   {
@@ -229,19 +230,19 @@ function Home() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex gap-8 max-lg:justify-center z-10"
           >
-            <Button
+            <Button asChild
               className="bg-[#FFB24F] shadow-lg hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out"
               size="lg"
             >
-              <a href="/menu">View Menu</a>
+              <Link href="/menu">View Menu</Link>
             </Button>
-            <Button
+            <Button asChild
               className="bg-white border-2 border-[#FFB24F] text-[#FFB24F] shadow-lg  hover:bg-orange-400 hover:cursor-pointer duration-400 ease-in-out hover:border-orange-400 hover:text-white"
               size="lg"
             >
-              <a href="https://familymookata.eposqr.com/">
+              <Link href="https://familymookata.eposqr.com/">
                 Place Delivery Order
-              </a>
+              </Link>
             </Button>
           </motion.div>
           {/* Desktop: Static Badges */}
@@ -499,7 +500,7 @@ function Home() {
                             <p className="text-xs text-gray-600 mb-2 line-clamp-2">
                               {location.timings}
                             </p>
-                            <a
+                            <Link
                               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                                 location.address + ", " + location.postalCode
                               )}`}
@@ -510,7 +511,7 @@ function Home() {
                             >
                               Get Directions{" "}
                               <ExternalLink className="ml-1 h-3 w-3" />
-                            </a>
+                            </Link>
                           </>
                         )}
                       </div>
@@ -620,12 +621,12 @@ function Home() {
             <p className="text-lg text-center font-bold italic flex flex-col gap-4">
               Scan to sign up instantly and start earning rewards on your next
               visit.
-              <a
+              <Link
                 className="text-xl text-blue-500 underline"
                 href="https://myprofile.eposdata.com/familymookata/register"
               >
                 Register Here
-              </a>
+              </Link>
             </p>
           </div>
         </motion.div>
@@ -700,8 +701,8 @@ function Home() {
                     </div>
                   </div>
 
-                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
-                    <a href="/menu">View Menu</a>
+                  <Button asChild className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                    <Link href="/menu">View Menu</Link>
                   </Button>
                 </div>
 
@@ -729,8 +730,8 @@ function Home() {
                     </div>
                   </div>
 
-                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
-                    <a href="/menu">View Menu</a>
+                  <Button asChild className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                    <Link href="/menu">View Menu</Link>
                   </Button>
                 </div>
 
@@ -755,8 +756,8 @@ function Home() {
                     </div>
                   </div>
 
-                  <Button className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
-                    <a href="/locations">Find a Location</a>
+                  <Button asChild className="bg-orange-500 mt-6 w-full hover:bg-orange-600 hover:cursor-pointer duration-400 ease-in-out">
+                    <Link href="/locations">Find a Location</Link>
                   </Button>
                 </div>
               </motion.div>
@@ -794,9 +795,9 @@ function Home() {
         >
           <div className="flex items-center gap-8">
             <h1 className="text-5xl font-bold italic">Our Reviews</h1>
-            <a href="https://www.google.com/search?sca_esv=019dea2479866187&rlz=1C1GCEA_enSG1156SG1156&sxsrf=AE3TifNdY0iszcteeRG6Gqk33nwGJF6pug:1750755435442&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-EzLYllDvJBG2l2SbT9Cu4ucP0wp5DY8Gwj4tmBi4TXar3j_CMKxuj1BNLcSVfevaLy2qtY4k5GM8q6ewycWnHE-15_U9&q=Family+Mookata+Reviews&sa=X&ved=2ahUKEwiWwcWe2ImOAxXT8DgGHePvNNIQ0bkNegQIJRAE&biw=1920&bih=945&dpr=1">
+            <Link href="https://www.google.com/search?sca_esv=019dea2479866187&rlz=1C1GCEA_enSG1156SG1156&sxsrf=AE3TifNdY0iszcteeRG6Gqk33nwGJF6pug:1750755435442&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-EzLYllDvJBG2l2SbT9Cu4ucP0wp5DY8Gwj4tmBi4TXar3j_CMKxuj1BNLcSVfevaLy2qtY4k5GM8q6ewycWnHE-15_U9&q=Family+Mookata+Reviews&sa=X&ved=2ahUKEwiWwcWe2ImOAxXT8DgGHePvNNIQ0bkNegQIJRAE&biw=1920&bih=945&dpr=1">
               <ExternalLink className="text-blue-500 w-8 h-8" />
-            </a>
+            </Link>
           </div>
           <div className="flex gap-6">
             <p className="text-xl font-bold italic">3.9K+ Google Reviews</p>

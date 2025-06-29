@@ -20,6 +20,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import Link from "next/link";
 
 interface LocationDetail {
   id: string;
@@ -273,7 +274,7 @@ export default function Locations() {
                   <p className="text-[11px] sm:text-xs text-gray-600 whitespace-normal">
                     {loc.address}, {loc.postalCode}
                   </p>
-                  <a
+                  <Link
                     href={googleMapsUrl(loc, searchTerm)}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -283,7 +284,7 @@ export default function Locations() {
                   >
                     Get Directions{" "}
                     <ExternalLink className="ml-1 sm:ml-1.5 h-3 w-3" />
-                  </a>
+                  </Link>
                 </PopoverContent>
               </Popover>
             </div>
@@ -357,14 +358,14 @@ export default function Locations() {
                       <Phone className="h-8 w-8" />
                       <p>{location.phone || "+65 8927 2782"}</p>
                     </div>
-                    <a
+                    <Link
                       href={googleMapsUrl(location, searchTerm)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-4 bg-[#FFB24F] hover:cursor-pointer hover:bg-orange-400 ease-in-out duration-300 font-bold text-white px-4 py-3 rounded-md text-center"
                     >
                       Directions
-                    </a>
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>
